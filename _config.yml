@@ -3,7 +3,7 @@ title: Scott Hosking
 subtitle: AI<>Earth
 email: me@scotthosking.com
 description: I am research scientist bringing AI to<br /> address environment and sustainability challenges
-baseurl: "/webprofile2" # the subpath of your site, e.g. /blog
+baseurl: "/test-site" # the subpath of your site, e.g. /blog
 url: # the base hostname & protocol for your site
 author:
 street_address: 1234 Somewhere Road
