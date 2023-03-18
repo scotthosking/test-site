@@ -1,6 +1,7 @@
 ---
 title: Research
 layout: landing
+permalink: /research
 description: 'AI and Digital Twinning for the natural environment'
 image: assets/images/pic07.jpg
 nav-menu: true
