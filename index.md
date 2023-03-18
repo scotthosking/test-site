@@ -8,4 +8,7 @@ author: null
 show_tile: false
 ---
 
-some text
+<h1 id="content">h1</h1>
+<h2 id="content">h2</h2>
+
+<p>some text</p>
