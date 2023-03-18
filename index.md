@@ -1,7 +1,7 @@
 ---
 layout: home
 title: Home
-landing-title: 'Hi, my name is Forty'
+landing-title: 'Hi, I am helping to bring AI to addres the climate change'
 description: null
 image: null
 author: null
