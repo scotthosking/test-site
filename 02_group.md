@@ -1,11 +1,25 @@
 ---
 layout: page
-title: Elements
+title: Group
 image: assets/images/wwf_spatial_finance.jpg
 nav-menu: true
 ---
 
-<img align="right" width="50%" src="/images/2259THEA_BOOK_DASH_11TH_NOVEMBER_Environ_V1_KB_small.jpg">
+<!-- Main -->
+<div id="main" class="alt">
+
+    <!-- One -->
+    <section id="one">
+        <div class="inner">
+            <header class="major">
+                <h1>Group</h1>
+            </header>
+
+    <!-- Content -->
+    <h2 id="content">Staff</h2>
+
+
+<p><img align="right" width="50%" src="/images/2259THEA_BOOK_DASH_11TH_NOVEMBER_Environ_V1_KB_small.jpg"></p>
 
 I lead a team across two research institutes, the [AI Lab](https://www.bas.ac.uk/ai) at the British Antarctic Survey and a group under the [Environment and Sustainability](https://www.turing.ac.uk/research/research-projects/environment-and-sustainability) theme at The Alan Turing Institute. My team has interests in the application of machine learning for environmental science, and the development of digital twins of the natural environment.
 
@@ -63,3 +77,8 @@ _there are many other members working in this area as part of the [BAS AI Lab](h
 * Aymeric Delon (ENS-Paris-Saclay, MSc, 2019)
 * Daniel Popa-Christobal (BAS, Internship, 2018), Co-supervisor with Daniel Bannister
 * Stratis Markou (University of Cambridge, Internship, 2017), Co-supervisor with Rich Turner
+
+
+
+</div>
+</div>
