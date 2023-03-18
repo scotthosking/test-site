@@ -1,7 +1,7 @@
 ---
-title: Landing
+title: Research
 layout: landing
-description: 'Lorem ipsum dolor sit amet nullam consequa<br />sed veroeros. tempus adipiscing nulla.'
+description: 'AI and Digital Twinning for the natural environment'
 image: assets/images/pic07.jpg
 nav-menu: true
 ---
@@ -15,7 +15,9 @@ nav-menu: true
 		<header class="major">
 			<h2>Sed amet aliquam</h2>
 		</header>
-		<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna.</p>
+		<p>As anthropogenic warming continues to put strain on our natural environments, it now is crucial that decision-makers have ready-access to actionable and timely information on the current states of environmental systems and future projections to help safeguard society and ecosystems around the world. Artificial Intelligence (AI) and Digital Twin technologies are rapidly becoming central to the development of novel digital technologies, leading to step-changes in our capabilities.
+
+		Digital Twinning is a next generation technology for environmental modelling, taking us beyond data assimilation by enabling us to get answers to “what-if” questions within seconds. Digital Twins are already in operation in industry and involve highly interoperable data pipelines, optimisation, and a mixture of knowledge-informed and data-driven probabilistic machine learning. Digital Twins are increasingly becoming a key component for research discovery, education, and aiding discussions at the board-level without having to wait weeks to months for results from traditional computer models.</p>
 	</div>
 </section>
 
@@ -23,14 +25,14 @@ nav-menu: true
 <section id="two" class="spotlights">
 	<section>
 		<a href="generic.html" class="image">
-			<img src="{% link assets/images/pic08.jpg %}" alt="" data-position="center center" />
+			<img src="{% link https://scotthosking.com/images/research/arctic_ice_loss.jpg %}" alt="" data-position="center center" />
 		</a>
 		<div class="content">
 			<div class="inner">
 				<header class="major">
-					<h3>Orci maecenas</h3>
+					<h3>Sea Ice Forecasting</h3>
 				</header>
-				<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
+				<p>IceNet is a probabilistic, deep learning sea ice forecasting system developed by an international team and led by British Antarctic Survey and The Alan Turing Institute [Andersson et al., 2021]. IceNet has been trained on climate simulations and observational data to forecast the next 6 months of monthly-averaged sea ice concentration maps. IceNet advances the range of accurate sea ice forecasts, outperforming a state-of-the-art dynamical model in seasonal forecasts of summer sea ice, particularly for extreme sea ice events. This step-change in sea ice forecasting ability brings us closer to conservation tools that mitigate risks associated with rapid sea ice loss.</p>
 				<ul class="actions">
 					<li><a href="generic.html" class="button">Learn more</a></li>
 				</ul>
@@ -39,7 +41,7 @@ nav-menu: true
 	</section>
 	<section>
 		<a href="generic.html" class="image">
-			<img src="{% link assets/images/pic09.jpg %}" alt="" data-position="top center" />
+			<img src="{% link https://scotthosking.com/images/research/arctic_ice_loss.jpg %}" alt="" data-position="top center" />
 		</a>
 		<div class="content">
 			<div class="inner">
