@@ -3,7 +3,7 @@ title: Research
 layout: landing
 permalink: /research
 description: 'AI and Digital Twinning for the natural environment'
-image: assets/images/pic07.jpg
+image: assets/images/envsensors_main.jpg
 nav-menu: true
 ---
 

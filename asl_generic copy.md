@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Amundsen Sea Low (ASL) Index
-description: ASL Index
-image: assets/images/pic11.jpg
+title: The ASL Climate Index
+description: An index for the Amundsen Sea Low, West Antarctica
+image: assets/images/asl_index-crop3.png
 nav-menu: false
 ---
 

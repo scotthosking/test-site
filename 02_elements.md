@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Elements
-image: assets/images/pic01.jpg
+image: assets/images/wwf_spatial_finance.jpg
 nav-menu: true
 ---
 
