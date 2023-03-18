@@ -1,8 +1,8 @@
 # site settings
 title: Scott Hosking
-subtitle: AI for the planet
+subtitle: AI<>Earth
 email: me@scotthosking.com
-description: I am research scientist bringing AI to<br /> address environment and sustainability challenges.
+description: I am research scientist bringing AI to<br /> address environment and sustainability challenges
 baseurl: "/webprofile2" # the subpath of your site, e.g. /blog
 url: # the base hostname & protocol for your site
 author:
