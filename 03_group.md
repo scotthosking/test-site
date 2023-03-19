@@ -7,23 +7,7 @@ image: assets/images/wwf_spatial_finance.jpg
 nav-menu: true
 ---
 
-<!-- Main -->
-<div id="main" class="alt">
-
-<!-- One -->
-<section id="one">
-	<div class="inner">
-		<header class="major">
-			<h1>Group</h1>
-		</header>
-		<p><img align="right" width="50%" src="/images/2259THEA_BOOK_DASH_11TH_NOVEMBER_Environ_V1_KB_small.jpg"></p>
-	</div>
-</section>
-
-<!-- Content -->
-<h2 id="content">Staff</h2>
-
-</div>
+<h1>Group</h1>
 
 I lead a team across two research institutes, the [AI Lab](https://www.bas.ac.uk/ai) at the British Antarctic Survey and a group under the [Environment and Sustainability](https://www.turing.ac.uk/research/research-projects/environment-and-sustainability) theme at The Alan Turing Institute. My team has interests in the application of machine learning for environmental science, and the development of digital twins of the natural environment.
 
