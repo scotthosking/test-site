@@ -25,7 +25,7 @@ nav-menu: true
 <!-- Two -->
 <section id="two" class="spotlights">
 	<section>
-		<a href="research.html" class="image">
+		<a href="https://icenet.ai" class="image">
 			<img src="{% link assets/images/arctic_ice_loss.jpg %}" alt="" data-position="center center" />
 		</a>
 		<div class="content">

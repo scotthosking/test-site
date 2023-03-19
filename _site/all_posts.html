@@ -1,0 +1,2569 @@
+<!DOCTYPE html>
+<!--
+    Forty by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+  -->
+<html>
+
+  <head>
+	<title>All posts | Scott Hosking</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<!--[if lte IE 8]><script src="/test-site/assets/js/ie/html5shiv.js"></script><![endif]-->
+	<link rel="stylesheet" href="/test-site/assets/css/main.css" />
+	<!--[if lte IE 9]><link rel="stylesheet" href="/test-site/assets/css/ie9.css" /><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" href="/test-site/assets/css/ie8.css" /><![endif]-->
+</head>
+
+
+  <body>
+
+    <!-- Wrapper -->
+<div id="wrapper">
+
+<!-- Header -->
+<header id="header">
+	<a href="http://localhost:4000/test-site/" class="logo"><strong>Scott Hosking</strong> <span>AI<>Earth</span></a>
+	<nav>
+		<a href="#menu">Menu</a>
+	</nav>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+	<ul class="links">
+        
+		    
+		
+		    
+		
+		    
+		
+		    
+		
+		    
+		
+		    
+		
+		    
+		
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/test-site/">Home</a></li>
+	    	
+		
+		    
+		
+		
+		    
+		        <li><a href="http://localhost:4000/test-site/research">Research</a></li>
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/test-site/data-toolkits-notebooks">Data and Tools</a></li>
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/test-site/group">Group</a></li>
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/test-site/04_publications.html">Publications</a></li>
+		    
+		
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/test-site/10_elements.html">Hello</a></li>
+		    
+		
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/test-site/all_posts.html">All posts</a></li>
+		    
+		
+		    
+		
+	</ul>
+	<ul class="actions vertical">
+		<li><a href="#" class="button special fit">Get Started</a></li>
+		<li><a href="#" class="button fit">Log In</a></li>
+	</ul>
+</nav>
+ 
+    
+    
+    <!-- Main -->
+    <div id="main" class="alt">
+
+      <!-- One -->
+      <section id="one">
+	<div class="inner">
+          
+	  
+	  <header class="major">
+	    <h1>Reading and plotting WRF data using wrf-python and Xarray</h1>
+	  </header>
+	  
+	  <p>2019-10-24 00:00:00 +0100</p>
+	  <p><p>This page demonstrates how you can read in and work with output from the <a href="http://www2.mmm.ucar.edu/wrf/users/">Weather Research and Forecasting (WRF) model</a></p>
+
+<p>For more information on the python packages used in this notebook, see:</p>
+<ul>
+  <li><a href="https://wrf-python.readthedocs.io/en/latest/">wrf-python</a></li>
+  <li>Once the WRF data is in an Xarray DataArray there are additional tools you can use to process the data, see <a href="http://xarray.pydata.org/en/stable/">here</a></li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">netCDF4</span> <span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">import</span> <span class="nn">wrf</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="n">xr</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="n">crs</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">from</span> <span class="nn">matplotlib.cm</span> <span class="kn">import</span> <span class="n">get_cmap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="k">as</span> <span class="n">cfe</span>
+
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</code></pre></div></div>
+
+<h3 id="getting-started---simply-reading-a-variable-from-a-wrfout-file-and-producing-a-quick-plot">Getting started - simply reading a variable from a wrfout file and producing a quick plot</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">root_dir</span> <span class="o">=</span> <span class="s">'/data/fiss_aic/WRF/runA_2010'</span>
+<span class="n">nc</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">root_dir</span><span class="o">+</span><span class="s">'/wrfout_d02_2010-03-18_00:00:00'</span><span class="p">)</span>
+<span class="c1"># t2 = wrf.getvar(nc, 'T2', timeidx=wrf.ALL_TIMES)
+</span><span class="n">t2</span> <span class="o">=</span> <span class="n">wrf</span><span class="p">.</span><span class="n">getvar</span><span class="p">(</span><span class="n">nc</span><span class="p">,</span> <span class="s">'T2'</span><span class="p">,</span> <span class="n">timeidx</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># extract 3rd time instance (t=2) - slow....
+</span><span class="n">t2</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray 'T2' (south_north: 201, west_east: 147)&gt;
+array([[245.5202 , 245.26236, 245.24707, ..., 222.38908, 221.92421, 221.39389],
+       [244.88438, 244.30995, 244.07245, ..., 222.51459, 222.09602, 221.68324],
+       [244.3348 , 243.89217, 243.62329, ..., 222.74355, 222.32124, 221.93173],
+       ...,
+       [274.37607, 274.21396, 274.08795, ..., 272.44116, 272.42374, 272.40744],
+       [274.41467, 274.26974, 274.14963, ..., 272.53183, 272.51157, 272.48935],
+       [274.47107, 274.3663 , 274.2573 , ..., 272.62482, 272.60464, 272.5752 ]],
+      dtype=float32)
+Coordinates:
+    XLONG    (south_north, west_east) float32 -123.254684 ... -28.57109
+    XLAT     (south_north, west_east) float32 -78.73641 -78.8672 ... -60.162468
+    XTIME    float32 120.0
+    Time     datetime64[ns] 2010-03-18T02:00:00
+Dimensions without coordinates: south_north, west_east
+Attributes:
+    FieldType:    104
+    MemoryOrder:  XY 
+    description:  TEMP at 2 M
+    units:        K
+    stagger:      
+    coordinates:  XLONG XLAT XTIME
+    projection:   PolarStereographic(stand_lon=-45.0, moad_cen_lat=-75.499992...
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Quick Plot to check all is well
+</span><span class="n">t2</span><span class="p">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="c1"># see below for manually setting up your plots
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.collections.QuadMesh at 0x7f47744716a0&gt;
+</code></pre></div></div>
+
+<p><img src="/images/notebooks/wrf_with_xarray/output_4_1.png" alt="png" /></p>
+
+<h3 id="contour-plots">Contour Plots</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># select one time instance if you have retrieved ALL_TIMES
+# t2 = t2.isel(Time=1)
+</span>
+<span class="c1"># Get the latitude and longitude points (use original data, rather than any processed data)
+</span><span class="n">lats</span><span class="p">,</span> <span class="n">lons</span> <span class="o">=</span> <span class="n">wrf</span><span class="p">.</span><span class="n">latlon_coords</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
+
+<span class="c1"># Get the cartopy mapping object (use original data, rather than any processed data)
+</span><span class="n">cart_proj</span> <span class="o">=</span> <span class="n">wrf</span><span class="p">.</span><span class="n">get_cartopy</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
+
+<span class="c1"># Create a figure
+</span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+<span class="c1"># Set the GeoAxes to the projection used by WRF
+</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">cart_proj</span><span class="p">)</span>
+
+<span class="c1"># Add coastlines
+</span><span class="n">ax</span><span class="p">.</span><span class="n">coastlines</span><span class="p">(</span><span class="s">'50m'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfe</span><span class="p">.</span><span class="n">NaturalEarthFeature</span><span class="p">(</span><span class="s">'physical'</span><span class="p">,</span> <span class="s">'antarctic_ice_shelves_lines'</span><span class="p">,</span> 
+                                       <span class="s">'50m'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">'k'</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">'none'</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="c1"># Plot contours
+</span><span class="n">plt</span><span class="p">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">wrf</span><span class="p">.</span><span class="n">to_np</span><span class="p">(</span><span class="n">lons</span><span class="p">),</span> <span class="n">wrf</span><span class="p">.</span><span class="n">to_np</span><span class="p">(</span><span class="n">lats</span><span class="p">),</span> <span class="n">wrf</span><span class="p">.</span><span class="n">to_np</span><span class="p">(</span><span class="n">t2</span><span class="p">),</span> <span class="mi">10</span><span class="p">,</span> 
+                <span class="n">transform</span><span class="o">=</span><span class="n">crs</span><span class="p">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">get_cmap</span><span class="p">(</span><span class="s">"Reds"</span><span class="p">))</span>
+
+<span class="c1"># Add a color bar
+</span><span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="p">.</span><span class="mi">62</span><span class="p">)</span>
+<span class="n">cbar</span><span class="p">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">t2</span><span class="p">.</span><span class="n">units</span><span class="p">)</span>
+
+<span class="c1"># Set the map limits.  Not really necessary, but used for demonstration.
+</span><span class="n">ax</span><span class="p">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">wrf</span><span class="p">.</span><span class="n">cartopy_xlim</span><span class="p">(</span><span class="n">t2</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">wrf</span><span class="p">.</span><span class="n">cartopy_ylim</span><span class="p">(</span><span class="n">t2</span><span class="p">))</span>
+
+<span class="c1"># Add the gridlines
+</span><span class="n">ax</span><span class="p">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">"black"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">"dotted"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="n">t2</span><span class="p">.</span><span class="n">description</span><span class="o">+</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">t2</span><span class="p">.</span><span class="n">Time</span><span class="p">.</span><span class="n">values</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">''</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/images/notebooks/wrf_with_xarray/output_6_1.png" alt="png" /></p>
+
+<h3 id="wind-vectors-plots">Wind Vectors Plots</h3>
+
+<p>WARNING: These can be tricky to correctly produce as the U/V vectors related to the WRF grid, where as we want to plot vectors on a lon/lat grid</p>
+
+<p>It is always worth checking that what you produce is sensible, e.g., by visually comparing to ERA-Interim</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">u10</span> <span class="o">=</span> <span class="n">wrf</span><span class="p">.</span><span class="n">getvar</span><span class="p">(</span><span class="n">nc</span><span class="p">,</span> <span class="s">'U10'</span><span class="p">,</span> <span class="n">timeidx</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">v10</span> <span class="o">=</span> <span class="n">wrf</span><span class="p">.</span><span class="n">getvar</span><span class="p">(</span><span class="n">nc</span><span class="p">,</span> <span class="s">'V10'</span><span class="p">,</span> <span class="n">timeidx</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">nx</span> <span class="o">=</span> <span class="n">nc</span><span class="p">.</span><span class="n">dimensions</span><span class="p">[</span><span class="s">'west_east'</span><span class="p">].</span><span class="n">size</span>
+<span class="n">ny</span> <span class="o">=</span> <span class="n">nc</span><span class="p">.</span><span class="n">dimensions</span><span class="p">[</span><span class="s">'south_north'</span><span class="p">].</span><span class="n">size</span>
+<span class="n">dt</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span> <span class="o">=</span> <span class="n">nc</span><span class="p">.</span><span class="n">DT</span><span class="p">,</span> <span class="n">nc</span><span class="p">.</span><span class="n">DX</span><span class="p">,</span> <span class="n">nc</span><span class="p">.</span><span class="n">DY</span>
+<span class="n">cen_lat</span><span class="p">,</span> <span class="n">cen_lon</span> <span class="o">=</span> <span class="n">nc</span><span class="p">.</span><span class="n">CEN_LAT</span><span class="p">,</span> <span class="n">nc</span><span class="p">.</span><span class="n">CEN_LON</span>
+<span class="n">truelat1</span><span class="p">,</span> <span class="n">truelat2</span><span class="p">,</span> <span class="n">STAND_LON</span> <span class="o">=</span> <span class="n">nc</span><span class="p">.</span><span class="n">TRUELAT1</span><span class="p">,</span> <span class="n">nc</span><span class="p">.</span><span class="n">TRUELAT2</span><span class="p">,</span> <span class="n">nc</span><span class="p">.</span><span class="n">STAND_LON</span>
+<span class="n">pole_lat</span><span class="p">,</span> <span class="n">pole_lon</span> <span class="o">=</span> <span class="n">nc</span><span class="p">.</span><span class="n">POLE_LAT</span><span class="p">,</span> <span class="n">nc</span><span class="p">.</span><span class="n">POLE_LON</span>
+
+<span class="c1">### Create earth-rotated Dataset
+# https://wrf-python.readthedocs.io/en/latest/user_api/generated/wrf.uvmet.html
+</span><span class="n">cone</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># ???
+</span><span class="n">uv</span>   <span class="o">=</span> <span class="n">wrf</span><span class="p">.</span><span class="n">uvmet</span><span class="p">(</span><span class="n">u10</span><span class="p">,</span> <span class="n">v10</span><span class="p">,</span> <span class="n">u10</span><span class="p">.</span><span class="n">XLONG</span><span class="p">,</span> <span class="n">u10</span><span class="p">.</span><span class="n">XLAT</span><span class="p">,</span> 
+                     <span class="n">cen_lon</span><span class="p">,</span> <span class="n">cone</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s">'m s-1'</span><span class="p">)</span>
+
+<span class="n">uv</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray 'uvmet' (u_v: 2, south_north: 201, west_east: 147)&gt;
+array([[[  2.239094,   2.302225, ..., -12.55818 , -12.089126],
+        [  2.291526,   2.378221, ..., -12.788332, -12.442628],
+        ...,
+        [ -1.114753,  -1.400135, ...,  -6.202898,  -5.938962],
+        [ -1.45267 ,  -1.797253, ...,  -6.033195,  -5.793626]],
+
+       [[ -9.118709,  -9.118726, ...,  -3.944864,  -3.652274],
+        [ -9.197542,  -9.128673, ...,  -4.285994,  -3.985036],
+        ...,
+        [  6.791636,   6.390002, ...,  -4.919767,  -4.815777],
+        [  6.969695,   6.530435, ...,  -5.209907,  -5.115947]]], dtype=float32)
+Coordinates:
+  * u_v      (u_v) &lt;U1 'u' 'v'
+Dimensions without coordinates: south_north, west_east
+Attributes:
+    units:        m s-1
+    description:  earth rotated u,v
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+<span class="c1"># Set the GeoAxes to the projection used by WRF
+</span><span class="n">cart_proj</span> <span class="o">=</span> <span class="n">wrf</span><span class="p">.</span><span class="n">get_cartopy</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">cart_proj</span><span class="p">)</span>
+
+<span class="c1"># Add coastlines
+</span><span class="n">ax</span><span class="p">.</span><span class="n">coastlines</span><span class="p">(</span><span class="s">'50m'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfe</span><span class="p">.</span><span class="n">NaturalEarthFeature</span><span class="p">(</span><span class="s">'physical'</span><span class="p">,</span> <span class="s">'antarctic_ice_shelves_lines'</span><span class="p">,</span> <span class="s">'50m'</span><span class="p">,</span> 
+                                           <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">'k'</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">'none'</span><span class="p">))</span>
+
+<span class="c1"># Plot the wind speed as a contour plot
+</span><span class="n">plt</span><span class="p">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">wrf</span><span class="p">.</span><span class="n">to_np</span><span class="p">(</span><span class="n">lons</span><span class="p">),</span> <span class="n">wrf</span><span class="p">.</span><span class="n">to_np</span><span class="p">(</span><span class="n">lats</span><span class="p">),</span> <span class="n">wrf</span><span class="p">.</span><span class="n">to_np</span><span class="p">(</span><span class="n">t2</span><span class="p">),</span> <span class="mi">10</span><span class="p">,</span> 
+                <span class="n">transform</span><span class="o">=</span><span class="n">crs</span><span class="p">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">get_cmap</span><span class="p">(</span><span class="s">"Reds"</span><span class="p">))</span>
+
+<span class="c1"># Add a color bar
+</span><span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="p">.</span><span class="mi">62</span><span class="p">)</span>
+<span class="n">cbar</span><span class="p">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">t2</span><span class="p">.</span><span class="n">units</span><span class="p">)</span>
+
+<span class="c1"># Set the map limits.  Not really necessary, but used for demonstration.
+</span><span class="n">ax</span><span class="p">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">wrf</span><span class="p">.</span><span class="n">cartopy_xlim</span><span class="p">(</span><span class="n">t2</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">wrf</span><span class="p">.</span><span class="n">cartopy_ylim</span><span class="p">(</span><span class="n">t2</span><span class="p">))</span>
+
+<span class="c1"># Add the gridlines
+</span><span class="n">ax</span><span class="p">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s">"black"</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">"dotted"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="n">t2</span><span class="p">.</span><span class="n">description</span><span class="o">+</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">t2</span><span class="p">.</span><span class="n">Time</span><span class="p">.</span><span class="n">values</span><span class="p">))</span>
+
+<span class="c1"># Add arrows to show the wind vectors !!!!
+</span><span class="n">x</span> <span class="o">=</span> <span class="n">u10</span><span class="p">.</span><span class="n">XLONG</span><span class="p">.</span><span class="n">values</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">u10</span><span class="p">.</span><span class="n">XLAT</span><span class="p">.</span><span class="n">values</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">uv</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">values</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">uv</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">values</span>
+
+<span class="n">Q</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">quiver</span><span class="p">(</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> 
+               <span class="n">pivot</span><span class="o">=</span><span class="s">'middle'</span><span class="p">,</span> 
+               <span class="n">transform</span><span class="o">=</span><span class="n">crs</span><span class="p">.</span><span class="n">PlateCarree</span><span class="p">(),</span> 
+               <span class="n">regrid_shape</span><span class="o">=</span><span class="mi">20</span> 
+               <span class="p">)</span>
+
+<span class="c1">### plot quiver key
+</span><span class="n">qk</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">quiverkey</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> 
+                   <span class="mf">1.07</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span>                  <span class="c1"># x,y label position
+</span>                   <span class="mi">10</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">+</span><span class="s">' '</span><span class="o">+</span><span class="n">u10</span><span class="p">.</span><span class="n">units</span><span class="p">,</span> <span class="c1"># choose units + update string
+</span>                   <span class="n">labelpos</span><span class="o">=</span><span class="s">'E'</span><span class="p">,</span>                <span class="c1"># add label to the right
+</span>                   <span class="n">coordinates</span><span class="o">=</span><span class="s">'axes'</span>
+                   <span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/images/notebooks/wrf_with_xarray/output_9_0.png" alt="png" /></p>
+
+</p>
+	  
+          
+	  
+	  <header class="major">
+	    <h1>Creating an Amundsen Sea Low (ASL) index</h1>
+	  </header>
+	  
+	  <p>2019-10-10 00:00:00 +0100</p>
+	  <p><p>This work is a continuation of my 2013 and 2016 papers as described <a href="https://legacy.bas.ac.uk/data/absl/">here</a></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="n">xr</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="n">ccrs</span>
+<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <span class="n">peak_local_max</span>
+</code></pre></div></div>
+
+<h2 id="read-in-gridded-monthly-mean-data-for-period-1979-2018">Read in gridded monthly mean data for period 1979-2018</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ds</span>   <span class="o">=</span> <span class="n">xr</span><span class="p">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s">'~/DATA/ERAI/erai_Surface_MonthlyMeansFromDaily.nc'</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">xr</span><span class="p">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s">'~/DATA/ERAI/erai_invariant.nc'</span><span class="p">).</span><span class="n">lsm</span><span class="p">.</span><span class="n">squeeze</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">da</span> <span class="o">=</span> <span class="n">ds</span><span class="p">.</span><span class="n">msl</span>
+</code></pre></div></div>
+
+<h2 id="apply-land-sea-mask">Apply land-sea mask</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">da_mask</span> <span class="o">=</span> <span class="n">da</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">da_mask</span><span class="p">.</span><span class="n">mean</span><span class="p">().</span><span class="n">values</span><span class="p">,</span> <span class="n">da</span><span class="p">.</span><span class="n">mean</span><span class="p">().</span><span class="n">values</span> <span class="c1"># these are different, great!
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array(64511.23828125), array(42718.0625))
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">da</span> <span class="o">=</span> <span class="n">da</span><span class="p">.</span><span class="n">sel</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">55</span><span class="p">,</span><span class="o">-</span><span class="mi">90</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span> <span class="mi">121</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="p">.</span><span class="n">Stereographic</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">central_latitude</span><span class="o">=-</span><span class="mf">90.</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">ax1</span><span class="p">.</span><span class="n">set_extent</span><span class="p">([</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="o">-</span><span class="mi">55</span><span class="p">],</span> <span class="n">ccrs</span><span class="p">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+<span class="n">da</span><span class="p">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">plot</span><span class="p">.</span><span class="n">pcolormesh</span><span class="p">(</span> <span class="s">'longitude'</span><span class="p">,</span> <span class="s">'latitude'</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'Reds'</span><span class="p">,</span> 
+                                        <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="p">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">add_colorbar</span><span class="o">=</span><span class="bp">False</span> <span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span> <span class="mi">122</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="p">.</span><span class="n">Stereographic</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">central_latitude</span><span class="o">=-</span><span class="mf">90.</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">ax2</span><span class="p">.</span><span class="n">set_extent</span><span class="p">([</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="o">-</span><span class="mi">55</span><span class="p">],</span> <span class="n">ccrs</span><span class="p">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+<span class="n">da_mask</span><span class="p">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">plot</span><span class="p">.</span><span class="n">pcolormesh</span><span class="p">(</span> <span class="s">'longitude'</span><span class="p">,</span> <span class="s">'latitude'</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'Reds'</span><span class="p">,</span> 
+                                        <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="p">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">add_colorbar</span><span class="o">=</span><span class="bp">False</span> <span class="p">)</span>
+
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.collections.QuadMesh at 0x1c48375d30&gt;
+</code></pre></div></div>
+
+<p><img src="/images/notebooks/Amundsen_Sea_Low/output_8_1.png" alt="png" /></p>
+
+<h2 id="definitions-to-identify-areas-of-low-pressure">Definitions to identify areas of low pressure</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">get_lows</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    
+    <span class="n">invert_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">da</span><span class="o">*-</span><span class="mf">1.</span><span class="p">).</span><span class="n">values</span>     <span class="c1"># search for peaks rather than minima
+</span>    
+    <span class="k">if</span> <span class="n">threshold</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">threshold_abs</span> <span class="o">=</span> <span class="n">invert_data</span><span class="p">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">threshold_abs</span>  <span class="o">=</span> <span class="n">threshold</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1"># define threshold cut-off for peaks (inverted lows)
+</span>                
+    <span class="n">minima_yx</span> <span class="o">=</span> <span class="n">peak_local_max</span><span class="p">(</span><span class="n">invert_data</span><span class="p">,</span>            <span class="c1"># input data
+</span>                           <span class="n">min_distance</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>             <span class="c1"># peaks are separated by at least min_distance
+</span>                           <span class="n">num_peaks</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>                <span class="c1"># maximum number of peaks
+</span>                           <span class="n">exclude_border</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>        <span class="c1"># excludes peaks from within min_distance - pixels of the border
+</span>                           <span class="n">threshold_abs</span><span class="o">=</span><span class="n">threshold_abs</span> <span class="c1"># minimum intensity of peaks
+</span>                           <span class="p">)</span>
+    <span class="k">return</span> <span class="n">minima_yx</span>
+
+
+
+<span class="k">def</span> <span class="nf">sector_mean</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">da</span><span class="p">.</span><span class="n">sel</span><span class="p">(</span> <span class="n">latitude</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">asl_region</span><span class="p">[</span><span class="s">'north'</span><span class="p">],</span><span class="n">asl_region</span><span class="p">[</span><span class="s">'south'</span><span class="p">]),</span> 
+                <span class="n">longitude</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">asl_region</span><span class="p">[</span><span class="s">'west'</span><span class="p">],</span><span class="n">asl_region</span><span class="p">[</span><span class="s">'east'</span><span class="p">])</span> <span class="p">).</span><span class="n">mean</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">a</span>
+
+
+
+<span class="k">def</span> <span class="nf">get_asl</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">region</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+    <span class="s">'''
+    da for one point in time (with lats x lons)
+    '''</span>
+    
+    <span class="n">lons</span><span class="p">,</span> <span class="n">lats</span> <span class="o">=</span> <span class="n">da</span><span class="p">.</span><span class="n">longitude</span><span class="p">.</span><span class="n">values</span><span class="p">,</span> <span class="n">da</span><span class="p">.</span><span class="n">latitude</span><span class="p">.</span><span class="n">values</span>
+    
+    <span class="n">threshold</span> <span class="o">=</span> <span class="n">da</span><span class="p">.</span><span class="n">sel</span><span class="p">(</span> <span class="n">latitude</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">region</span><span class="p">[</span><span class="s">'north'</span><span class="p">],</span> <span class="n">region</span><span class="p">[</span><span class="s">'south'</span><span class="p">]),</span> 
+                        <span class="n">longitude</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">region</span><span class="p">[</span><span class="s">'west'</span><span class="p">],</span> <span class="n">region</span><span class="p">[</span><span class="s">'east'</span><span class="p">])</span> <span class="p">).</span><span class="n">mean</span><span class="p">().</span><span class="n">values</span>
+
+    <span class="n">time_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">da</span><span class="p">.</span><span class="n">time</span><span class="p">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">sec_pres</span> <span class="o">=</span> <span class="n">sector_mean</span><span class="p">(</span><span class="n">da</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span> <span class="o">==</span> <span class="mi">0</span><span class="p">),</span> <span class="n">region</span><span class="p">).</span><span class="n">values</span>
+    
+    <span class="c1"># fill land in with highest value to limit lows being found here
+</span>    <span class="n">da_max</span>   <span class="o">=</span> <span class="n">da</span><span class="p">.</span><span class="nb">max</span><span class="p">().</span><span class="n">values</span>
+    <span class="n">da</span>       <span class="o">=</span> <span class="n">da</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span> <span class="o">==</span> <span class="mi">0</span><span class="p">).</span><span class="n">fillna</span><span class="p">(</span><span class="n">da_max</span><span class="p">)</span>
+    
+    <span class="c1">### get lows for entire domain
+</span>    <span class="n">minima_yx</span> <span class="o">=</span> <span class="n">get_lows</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span>
+    
+    <span class="n">minima_lat</span><span class="p">,</span> <span class="n">minima_lon</span><span class="p">,</span> <span class="n">pressure</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">minima</span> <span class="ow">in</span> <span class="n">minima_yx</span><span class="p">:</span>
+        <span class="n">minima_lat</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">lats</span><span class="p">[</span><span class="n">minima</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+        <span class="n">minima_lon</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">lons</span><span class="p">[</span><span class="n">minima</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+        <span class="n">pressure</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">da</span><span class="p">.</span><span class="n">values</span><span class="p">[</span><span class="n">minima</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">minima</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="n">df</span><span class="p">[</span><span class="s">'lat'</span><span class="p">]</span>      <span class="o">=</span> <span class="n">minima_lat</span>
+    <span class="n">df</span><span class="p">[</span><span class="s">'lon'</span><span class="p">]</span>      <span class="o">=</span> <span class="n">minima_lon</span>
+    <span class="n">df</span><span class="p">[</span><span class="s">'pressure'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pressure</span>
+    <span class="n">df</span><span class="p">[</span><span class="s">'ASL_Sector_Pres'</span><span class="p">]</span> <span class="o">=</span> <span class="n">sec_pres</span>
+    <span class="n">df</span><span class="p">[</span><span class="s">'time'</span><span class="p">]</span>     <span class="o">=</span> <span class="n">time_str</span>
+    
+    <span class="c1">### select only those points within ASL box
+</span>    <span class="n">asl_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s">'lon'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">region</span><span class="p">[</span><span class="s">'west'</span><span class="p">])</span>  <span class="o">&amp;</span> 
+                <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'lon'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">region</span><span class="p">[</span><span class="s">'east'</span><span class="p">])</span>  <span class="o">&amp;</span> 
+                <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'lat'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">region</span><span class="p">[</span><span class="s">'south'</span><span class="p">])</span> <span class="o">&amp;</span> 
+                <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'lat'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">region</span><span class="p">[</span><span class="s">'north'</span><span class="p">])</span> <span class="p">]</span>
+
+    <span class="c1">### For each time, get the row with the lowest minima_number
+</span>    <span class="n">asl_df</span> <span class="o">=</span> <span class="n">asl_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">asl_df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'time'</span><span class="p">)[</span><span class="s">'pressure'</span><span class="p">].</span><span class="n">idxmin</span><span class="p">()]</span>
+    
+    <span class="k">return</span> <span class="n">asl_df</span>
+</code></pre></div></div>
+
+<h2 id="define-area-we-are-interested-in">Define area we are interested in</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">asl_region</span> <span class="o">=</span> <span class="p">{</span><span class="s">'west'</span><span class="p">:</span><span class="mf">170.</span><span class="p">,</span> <span class="s">'east'</span><span class="p">:</span><span class="mf">298.</span><span class="p">,</span> <span class="s">'south'</span><span class="p">:</span><span class="o">-</span><span class="mf">80.</span><span class="p">,</span> <span class="s">'north'</span><span class="p">:</span><span class="o">-</span><span class="mf">60.</span><span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="loop-through-all-times-and-identify-lows">Loop through all times and identify lows</h2>
+<p>record these data in a Pandas DataFrame</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ntime</span>      <span class="o">=</span> <span class="n">da</span><span class="p">.</span><span class="n">time</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">all_lows_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">asl_df</span>      <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">ntime</span><span class="p">):</span>
+    <span class="n">da_t</span>   <span class="o">=</span> <span class="n">da</span><span class="p">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">t</span><span class="p">)</span> <span class="o">/</span> <span class="mf">100.</span>
+    <span class="n">asl_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">([</span><span class="n">asl_df</span><span class="p">,</span> <span class="n">get_asl</span><span class="p">(</span><span class="n">da_t</span><span class="p">,</span> <span class="n">asl_region</span><span class="p">,</span> <span class="n">mask</span><span class="p">)]).</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="show-the-first-7-rows">Show the first 7 rows</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">asl_df</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>pressure</th>
+      <th>ASL_Sector_Pres</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-69.75</td>
+      <td>219.00</td>
+      <td>982.376343</td>
+      <td>986.091736</td>
+      <td>1979-01-01T00:00:00.000000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-71.25</td>
+      <td>196.50</td>
+      <td>973.704346</td>
+      <td>982.958923</td>
+      <td>1979-02-01T00:00:00.000000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-69.75</td>
+      <td>225.00</td>
+      <td>972.301636</td>
+      <td>980.515076</td>
+      <td>1979-03-01T00:00:00.000000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-68.25</td>
+      <td>273.75</td>
+      <td>967.706482</td>
+      <td>979.388428</td>
+      <td>1979-04-01T00:00:00.000000000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-70.50</td>
+      <td>191.25</td>
+      <td>977.467529</td>
+      <td>987.170654</td>
+      <td>1979-05-01T00:00:00.000000000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>-70.50</td>
+      <td>219.00</td>
+      <td>966.901245</td>
+      <td>977.857605</td>
+      <td>1979-06-01T00:00:00.000000000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>-71.25</td>
+      <td>249.75</td>
+      <td>972.692871</td>
+      <td>980.135132</td>
+      <td>1979-07-01T00:00:00.000000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h1 id="plotting-location-of-minimas-in-pressure-field">Plotting: location of minimas in pressure field</h1>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">draw_regional_box</span><span class="p">(</span> <span class="n">region</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="bp">None</span> <span class="p">):</span>
+    <span class="s">'''
+    Draw box around a region on a map
+    region is a dictionary with west,east,south,north
+    '''</span>
+
+    <span class="k">if</span> <span class="n">transform</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">transform</span> <span class="o">=</span> <span class="n">ccrs</span><span class="p">.</span><span class="n">PlateCarree</span><span class="p">()</span>
+
+    <span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">([</span><span class="n">region</span><span class="p">[</span><span class="s">'west'</span><span class="p">],</span> <span class="n">region</span><span class="p">[</span><span class="s">'west'</span><span class="p">]],</span> <span class="p">[</span><span class="n">region</span><span class="p">[</span><span class="s">'south'</span><span class="p">],</span><span class="n">region</span><span class="p">[</span><span class="s">'north'</span><span class="p">]],</span> 
+                 <span class="s">'k-'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">([</span><span class="n">region</span><span class="p">[</span><span class="s">'east'</span><span class="p">],</span> <span class="n">region</span><span class="p">[</span><span class="s">'east'</span><span class="p">]],</span> <span class="p">[</span><span class="n">region</span><span class="p">[</span><span class="s">'south'</span><span class="p">],</span><span class="n">region</span><span class="p">[</span><span class="s">'north'</span><span class="p">]],</span> 
+                 <span class="s">'k-'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="n">np</span><span class="p">.</span><span class="nb">int</span><span class="p">(</span><span class="n">region</span><span class="p">[</span><span class="s">'west'</span><span class="p">]),</span><span class="n">np</span><span class="p">.</span><span class="nb">int</span><span class="p">(</span><span class="n">region</span><span class="p">[</span><span class="s">'east'</span><span class="p">])</span> <span class="p">):</span> 
+        <span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">([</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="n">region</span><span class="p">[</span><span class="s">'south'</span><span class="p">],</span><span class="n">region</span><span class="p">[</span><span class="s">'south'</span><span class="p">]],</span> <span class="s">'k-'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">([</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="n">region</span><span class="p">[</span><span class="s">'north'</span><span class="p">],</span><span class="n">region</span><span class="p">[</span><span class="s">'north'</span><span class="p">]],</span> <span class="s">'k-'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">):</span>
+
+    <span class="n">da_2D</span> <span class="o">=</span> <span class="n">da</span><span class="p">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+    
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span> <span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> 
+                        <span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="p">.</span><span class="n">Stereographic</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> 
+                                                      <span class="n">central_latitude</span><span class="o">=-</span><span class="mf">90.</span><span class="p">)</span> <span class="p">)</span>
+
+    <span class="n">ax</span><span class="p">.</span><span class="n">set_extent</span><span class="p">([</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="o">-</span><span class="mi">55</span><span class="p">],</span> <span class="n">ccrs</span><span class="p">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">da_2D</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">pcolormesh</span><span class="p">(</span> <span class="s">'longitude'</span><span class="p">,</span> <span class="s">'latitude'</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'Reds'</span><span class="p">,</span> 
+                                    <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="p">.</span><span class="n">PlateCarree</span><span class="p">(),</span> 
+                                    <span class="n">add_colorbar</span><span class="o">=</span><span class="bp">False</span> <span class="p">)</span>
+
+    <span class="n">ax</span><span class="p">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s">'110m'</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">'time='</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    
+    <span class="c1">### mark ASL
+</span>    <span class="n">df2</span> <span class="o">=</span> <span class="n">asl_df</span><span class="p">[</span> <span class="n">asl_df</span><span class="p">[</span><span class="s">'time'</span><span class="p">]</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">da_2D</span><span class="p">.</span><span class="n">time</span><span class="p">.</span><span class="n">values</span><span class="p">)]</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="s">'lon'</span><span class="p">],</span> <span class="n">df2</span><span class="p">[</span><span class="s">'lat'</span><span class="p">],</span> <span class="s">'mx'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="p">.</span><span class="n">PlateCarree</span><span class="p">()</span> <span class="p">)</span>
+
+    <span class="n">draw_regional_box</span><span class="p">(</span><span class="n">asl_region</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">''</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/images/notebooks/Amundsen_Sea_Low/output_19_1.png" alt="png" /></p>
+
+</p>
+	  
+          
+	  
+	  <header class="major">
+	    <h1>Working with the RACMO regional climate model</h1>
+	  </header>
+	  
+	  <p>2019-09-23 00:00:00 +0100</p>
+	  <p><p>This notebook was jointly written by Scott Hosking and Tony Phillips (BAS)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="n">xr</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="n">colors</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="n">ccrs</span>
+<span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="k">as</span> <span class="n">cfe</span>
+<span class="kn">import</span> <span class="nn">pyproj</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+</code></pre></div></div>
+
+<h3 id="read-in-data">Read in data</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="p">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s">'~/Documents/RACMO/RACMO2.3p2_ANT27_precip_daily_1979_1980.nc'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="look-at-dataset-we-have-just-read-in">Look at dataset we have just read in</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Examine the dataset (dimensions, coordinates, data variables and global attributes)
+</span><span class="n">ds</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.Dataset&gt;
+Dimensions:       (bnds: 2, height: 1, nblock1: 40, nblock2: 400, rlat: 240, rlon: 262, time: 731)
+Coordinates:
+    lon           (rlat, rlon) float64 ...
+    lat           (rlat, rlon) float64 ...
+  * rlon          (rlon) float64 -32.75 -32.5 -32.25 -32.0 ... 32.0 32.25 32.5
+  * rlat          (rlat) float64 -30.0 -29.75 -29.5 -29.25 ... 29.25 29.5 29.75
+  * height        (height) float64 0.0
+  * time          (time) datetime64[ns] 1979-01-01 1979-01-02 ... 1980-12-31
+Dimensions without coordinates: bnds, nblock1, nblock2
+Data variables:
+    dir           (rlat, rlon) float64 ...
+    block1        (nblock1) int32 ...
+    block2        (nblock2) int32 ...
+    time_bnds     (time, bnds) datetime64[ns] ...
+    dtg           (time) int32 ...
+    date_bnds     (time, bnds) int32 ...
+    hms_bnds      (time, bnds) int32 ...
+    assigned      (time) int32 ...
+    rotated_pole  float32 ...
+    precip        (time, height, rlat, rlon) float32 ...
+Attributes:
+    Conventions:   CF-1.4
+    source:        RACMO2
+    Domain:        ANT27
+    Experiment:    ERAINx_RACMO2.4.1
+    institution:   Royal Netherlands Meteorological Institute (KNMI)
+    CreationDate:  Tue Dec 20 05:06:59 2016
+    comment:       asim2cdf: cpar=precip, iwmo=61, ilvt=105, ilev=0, idh=24, ...
+    title:         Total Precipitative Flux
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Look at the precipitation variable
+</span><span class="n">ds</span><span class="p">.</span><span class="n">precip</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray 'precip' (time: 731, height: 1, rlat: 240, rlon: 262)&gt;
+[45965280 values with dtype=float32]
+Coordinates:
+    lon      (rlat, rlon) float64 ...
+    lat      (rlat, rlon) float64 ...
+  * rlon     (rlon) float64 -32.75 -32.5 -32.25 -32.0 ... 31.75 32.0 32.25 32.5
+  * rlat     (rlat) float64 -30.0 -29.75 -29.5 -29.25 ... 29.0 29.25 29.5 29.75
+  * height   (height) float64 0.0
+  * time     (time) datetime64[ns] 1979-01-01 1979-01-02 ... 1980-12-31
+Attributes:
+    standard_name:  precipitation_flux
+    long_name:      Total Precipitative Flux
+    units:          kg m-2 s-1
+    cell_methods:   time: 24-hr averaged values
+    grid_mapping:   rotated_pole
+</code></pre></div></div>
+
+<h3 id="select-precip-data-variable-and-squeeze-to-remove-redundant-height-coordinate">Select precip ‘Data variable’ and squeeze to remove redundant height coordinate</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">precip</span> <span class="o">=</span> <span class="n">ds</span><span class="p">.</span><span class="n">precip</span><span class="p">.</span><span class="n">squeeze</span><span class="p">()</span>
+<span class="n">precip</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray 'precip' (time: 731, rlat: 240, rlon: 262)&gt;
+[45965280 values with dtype=float32]
+Coordinates:
+    lon      (rlat, rlon) float64 ...
+    lat      (rlat, rlon) float64 ...
+  * rlon     (rlon) float64 -32.75 -32.5 -32.25 -32.0 ... 31.75 32.0 32.25 32.5
+  * rlat     (rlat) float64 -30.0 -29.75 -29.5 -29.25 ... 29.0 29.25 29.5 29.75
+    height   float64 0.0
+  * time     (time) datetime64[ns] 1979-01-01 1979-01-02 ... 1980-12-31
+Attributes:
+    standard_name:  precipitation_flux
+    long_name:      Total Precipitative Flux
+    units:          kg m-2 s-1
+    cell_methods:   time: 24-hr averaged values
+    grid_mapping:   rotated_pole
+</code></pre></div></div>
+
+<h3 id="project-rotated-grid-onto-lat-lon-grid">Project rotated grid onto lat-lon grid</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ds</span><span class="p">.</span><span class="n">rotated_pole</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray 'rotated_pole' ()&gt;
+array(9.96921e+36, dtype=float32)
+Attributes:
+    grid_mapping_name:          rotated_latitude_longitude
+    grid_north_pole_latitude:   -180.0
+    grid_north_pole_longitude:  -170.0
+    proj4_params:               -m 57.295779506 +proj=ob_tran +o_proj=latlon ...
+    proj_parameters:            -m 57.295779506 +proj=ob_tran +o_proj=latlon ...
+    projection_name:            rotated_latitude_longitude
+    long_name:                  projection details
+    EPSG_code:                  
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rad2deg</span> <span class="o">=</span> <span class="mf">180.</span><span class="o">/</span><span class="n">np</span><span class="p">.</span><span class="n">pi</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">pyproj</span><span class="p">.</span><span class="n">Proj</span><span class="p">(</span><span class="s">'+ellps=WGS84 +proj=ob_tran +o_proj=latlon +o_lat_p=-180.0 +o_lon_p=-170.0 +lon_0=180.0'</span><span class="p">)</span>
+
+<span class="n">rlon</span> <span class="o">=</span> <span class="n">ds</span><span class="p">.</span><span class="n">rlon</span><span class="p">.</span><span class="n">values</span>
+<span class="n">rlat</span> <span class="o">=</span> <span class="n">ds</span><span class="p">.</span><span class="n">rlat</span><span class="p">.</span><span class="n">values</span>
+
+<span class="n">x1</span><span class="p">,</span><span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">rlon</span><span class="p">,</span> <span class="n">rlat</span><span class="p">)</span>
+
+<span class="n">lon</span><span class="p">,</span> <span class="n">lat</span> <span class="o">=</span> <span class="n">p</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span> 
+
+<span class="n">lon</span><span class="p">,</span> <span class="n">lat</span> <span class="o">=</span> <span class="n">lon</span><span class="o">*</span><span class="n">rad2deg</span><span class="p">,</span> <span class="n">lat</span><span class="o">*</span><span class="n">rad2deg</span>    <span class="c1"># radians --&gt; degrees
+</span></code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># lets have a look at the data (max and min values)
+</span><span class="n">np</span><span class="p">.</span><span class="nb">min</span><span class="p">(</span><span class="n">precip</span><span class="p">.</span><span class="n">values</span><span class="p">),</span> <span class="n">np</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">precip</span><span class="p">.</span><span class="n">values</span><span class="p">),</span> <span class="n">np</span><span class="p">.</span><span class="nb">min</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span> <span class="n">np</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span> <span class="n">np</span><span class="p">.</span><span class="nb">min</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span> <span class="n">np</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span> <span class="n">np</span><span class="p">.</span><span class="nb">min</span><span class="p">(</span><span class="n">lat</span><span class="p">),</span> <span class="n">np</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(-1.8083428e-07,
+ 0.0028139532,
+ -179.99416710873103,
+ 179.98894588985064,
+ -179.99416710873103,
+ 179.98894588985064,
+ -90.0,
+ -46.74917892351622)
+</code></pre></div></div>
+
+<h3 id="plot-map">Plot map</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># select the first time from the data 
+</span><span class="n">data</span> <span class="o">=</span> <span class="n">precip</span><span class="p">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># see what it looks like (data, coordinates and attributes)
+</span><span class="n">data</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray 'precip' (rlat: 240, rlon: 262)&gt;
+array([[6.673193e-05, 1.738828e-04, 1.959459e-04, ..., 7.532207e-05,
+        7.269982e-05, 6.908291e-05],
+       [2.103231e-04, 2.199079e-04, 2.307586e-04, ..., 8.038575e-05,
+        7.857729e-05, 7.541250e-05],
+       [1.844622e-04, 4.973246e-05, 5.136007e-05, ..., 9.132689e-05,
+        9.195985e-05, 9.006097e-05],
+       ...,
+       [2.233440e-05, 2.025468e-05, 1.808453e-05, ..., 3.345638e-06,
+        3.436061e-06, 3.436061e-06],
+       [2.441412e-05, 2.839271e-05, 2.025468e-05, ..., 3.255216e-06,
+        3.255216e-06, 3.436061e-06],
+       [2.396200e-05, 2.269609e-05, 2.170144e-05, ..., 3.164793e-06,
+        3.255216e-06, 3.345638e-06]], dtype=float32)
+Coordinates:
+    lon      (rlat, rlon) float64 ...
+    lat      (rlat, rlon) float64 ...
+  * rlon     (rlon) float64 -32.75 -32.5 -32.25 -32.0 ... 31.75 32.0 32.25 32.5
+  * rlat     (rlat) float64 -30.0 -29.75 -29.5 -29.25 ... 29.0 29.25 29.5 29.75
+    height   float64 0.0
+    time     datetime64[ns] 1979-01-01
+Attributes:
+    standard_name:  precipitation_flux
+    long_name:      Total Precipitative Flux
+    units:          kg m-2 s-1
+    cell_methods:   time: 24-hr averaged values
+    grid_mapping:   rotated_pole
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span> <span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="p">.</span><span class="n">Stereographic</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">central_latitude</span><span class="o">=-</span><span class="mf">90.</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="n">ax</span><span class="p">.</span><span class="n">set_extent</span><span class="p">([</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="o">-</span><span class="mi">55</span><span class="p">],</span> <span class="n">ccrs</span><span class="p">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+<span class="c1"># set up a Cartopy coordinate reference system for the data (rotated pole as described above)
+</span><span class="n">data_crs</span> <span class="o">=</span> <span class="n">ccrs</span><span class="p">.</span><span class="n">RotatedPole</span><span class="p">(</span><span class="n">pole_longitude</span><span class="o">=</span><span class="n">ds</span><span class="p">.</span><span class="n">rotated_pole</span><span class="p">.</span><span class="n">grid_north_pole_longitude</span><span class="p">,</span>
+                            <span class="n">pole_latitude</span><span class="o">=</span><span class="n">ds</span><span class="p">.</span><span class="n">rotated_pole</span><span class="p">.</span><span class="n">grid_north_pole_latitude</span><span class="p">)</span>
+
+<span class="c1"># set up pseudo-log contour levels and a norm that maps colour indices onto them appropriately 
+</span><span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="p">.</span><span class="n">BoundaryNorm</span><span class="p">(</span><span class="n">boundaries</span><span class="o">=</span><span class="n">levels</span><span class="p">,</span> <span class="n">ncolors</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
+
+<span class="c1"># plot data (converting flux to mm/day)
+</span><span class="n">result</span> <span class="o">=</span> <span class="n">ax</span><span class="p">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">rlon</span><span class="p">,</span> <span class="n">rlat</span><span class="p">,</span> <span class="n">data</span><span class="o">*</span><span class="mf">86400.</span><span class="p">,</span> <span class="n">levels</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s">'both'</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'Blues'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">data_crs</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s">'50m'</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s">'horizontal'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'mm/day'</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s">'both'</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">long_name</span><span class="o">+</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s">'xx-large'</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">''</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/images/notebooks/racmo_with_xarray/output_15_1.png" alt="png" /></p>
+
+<h3 id="plot-deals-with-spatial-dimensions-but-not-time-so-add-time-information-to-title">Plot deals with spatial dimensions but not time, so add time information to title</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># look at the time coordinate
+</span><span class="n">data</span><span class="p">.</span><span class="n">coords</span><span class="p">[</span><span class="s">'time'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray 'time' ()&gt;
+array('1979-01-01T00:00:00.000000000', dtype='datetime64[ns]')
+Coordinates:
+    height   float64 0.0
+    time     datetime64[ns] 1979-01-01
+Attributes:
+    axis:       T
+    long_name:  time
+    dtgstart:   1979010100
+    bounds:     time_bnds
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># time has bounds, so extract the bounds for the first time step
+</span><span class="n">time_bounds</span> <span class="o">=</span> <span class="n">ds</span><span class="p">.</span><span class="n">time_bnds</span><span class="p">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">time_bounds</span><span class="p">.</span><span class="n">values</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['1979-01-01T00:00:00.000000000', '1979-01-02T00:00:00.000000000'],
+      dtype='datetime64[ns]')
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># convert the time bounds to Python datetimes
+</span><span class="n">tb_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">pd</span><span class="p">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">tbv</span><span class="p">).</span><span class="n">to_pydatetime</span><span class="p">()</span> <span class="k">for</span> <span class="n">tbv</span> <span class="ow">in</span> <span class="n">time_bounds</span><span class="p">.</span><span class="n">values</span><span class="p">]</span>
+<span class="n">tb_values</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[datetime.datetime(1979, 1, 1, 0, 0), datetime.datetime(1979, 1, 2, 0, 0)]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># format the time bounds as "From ... to ..."
+# See https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior for format codes
+</span><span class="n">time_fmt</span> <span class="o">=</span> <span class="s">'%Y-%m-%d %H:%M:%S'</span>
+<span class="n">time_bounds_str</span> <span class="o">=</span> <span class="s">'From {} to {}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">tb_values</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">strftime</span><span class="p">(</span><span class="n">time_fmt</span><span class="p">),</span> <span class="n">tb_values</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">strftime</span><span class="p">(</span><span class="n">time_fmt</span><span class="p">))</span>
+<span class="n">time_bounds_str</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'From 1979-01-01 00:00:00 to 1979-01-02 00:00:00'
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span> <span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="p">.</span><span class="n">Stereographic</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">central_latitude</span><span class="o">=-</span><span class="mf">90.</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="n">ax</span><span class="p">.</span><span class="n">set_extent</span><span class="p">([</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="o">-</span><span class="mi">55</span><span class="p">],</span> <span class="n">ccrs</span><span class="p">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+<span class="c1"># set up a Cartopy coordinate reference system for the data (rotated pole as described above)
+</span><span class="n">data_crs</span> <span class="o">=</span> <span class="n">ccrs</span><span class="p">.</span><span class="n">RotatedPole</span><span class="p">(</span><span class="n">pole_longitude</span><span class="o">=</span><span class="n">ds</span><span class="p">.</span><span class="n">rotated_pole</span><span class="p">.</span><span class="n">grid_north_pole_longitude</span><span class="p">,</span>
+                            <span class="n">pole_latitude</span><span class="o">=</span><span class="n">ds</span><span class="p">.</span><span class="n">rotated_pole</span><span class="p">.</span><span class="n">grid_north_pole_latitude</span><span class="p">)</span>
+
+<span class="c1"># set up pseudo-log contour levels and a norm that maps colour indices onto them appropriately 
+</span><span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="p">.</span><span class="n">BoundaryNorm</span><span class="p">(</span><span class="n">boundaries</span><span class="o">=</span><span class="n">levels</span><span class="p">,</span> <span class="n">ncolors</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
+
+<span class="c1"># plot data (converting flux to mm/day)
+</span><span class="n">result</span> <span class="o">=</span> <span class="n">ax</span><span class="p">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">rlon</span><span class="p">,</span> <span class="n">rlat</span><span class="p">,</span> <span class="n">data</span><span class="o">*</span><span class="mf">86400.</span><span class="p">,</span> <span class="n">levels</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s">'both'</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'Blues'</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">data_crs</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s">'50m'</span><span class="p">)</span>
+
+<span class="c1"># oh, and add the ice shelves too (see available features and resolutions at https://www.naturalearthdata.com/features/)
+</span><span class="n">ax</span><span class="p">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfe</span><span class="p">.</span><span class="n">NaturalEarthFeature</span><span class="p">(</span><span class="s">'physical'</span><span class="p">,</span> <span class="s">'antarctic_ice_shelves_lines'</span><span class="p">,</span> <span class="s">'50m'</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">'k'</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s">'horizontal'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'mm/day'</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s">'both'</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">long_name</span><span class="o">+</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="o">+</span><span class="n">time_bounds_str</span><span class="o">+</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s">'xx-large'</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">''</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/images/notebooks/racmo_with_xarray/output_21_1.png" alt="png" /></p>
+
+<h3 id="make-the-same-plot-but-using-the-true-lon-and-lat-coordinates-projected-into-the-plots-coordinate-system">Make the same plot but using the true lon and lat coordinates projected into the plot’s coordinate system</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+
+<span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="p">.</span><span class="n">Stereographic</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">central_latitude</span><span class="o">=-</span><span class="mf">90.</span><span class="p">)</span>
+<span class="n">plot_coords</span> <span class="o">=</span> <span class="n">projection</span><span class="p">.</span><span class="n">transform_points</span><span class="p">(</span><span class="n">ccrs</span><span class="p">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">plot_coords</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">plot_coords</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">projection</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">.</span><span class="n">set_extent</span><span class="p">([</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="o">-</span><span class="mi">55</span><span class="p">],</span> <span class="n">ccrs</span><span class="p">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+<span class="c1"># set up a Cartopy coordinate reference system for the data (rotated pole as described above)
+</span><span class="n">data_crs</span> <span class="o">=</span> <span class="n">ccrs</span><span class="p">.</span><span class="n">RotatedPole</span><span class="p">(</span><span class="n">pole_longitude</span><span class="o">=</span><span class="n">ds</span><span class="p">.</span><span class="n">rotated_pole</span><span class="p">.</span><span class="n">grid_north_pole_longitude</span><span class="p">,</span>
+                            <span class="n">pole_latitude</span><span class="o">=</span><span class="n">ds</span><span class="p">.</span><span class="n">rotated_pole</span><span class="p">.</span><span class="n">grid_north_pole_latitude</span><span class="p">)</span>
+
+<span class="c1"># set up pseudo-log contour levels and a norm that maps colour indices onto them appropriately 
+</span><span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="p">.</span><span class="n">BoundaryNorm</span><span class="p">(</span><span class="n">boundaries</span><span class="o">=</span><span class="n">levels</span><span class="p">,</span> <span class="n">ncolors</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
+
+<span class="c1"># plot data (converting flux to mm/day)
+</span><span class="n">result</span> <span class="o">=</span> <span class="n">ax</span><span class="p">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">data</span><span class="o">*</span><span class="mf">86400.</span><span class="p">,</span> <span class="n">levels</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s">'both'</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'Blues'</span><span class="p">,</span>
+                     <span class="n">transform</span><span class="o">=</span><span class="n">projection</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s">'50m'</span><span class="p">)</span>
+
+<span class="c1"># oh, and add the ice shelves too (see available features and resolutions at https://www.naturalearthdata.com/features/)
+</span><span class="n">ax</span><span class="p">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfe</span><span class="p">.</span><span class="n">NaturalEarthFeature</span><span class="p">(</span><span class="s">'physical'</span><span class="p">,</span> <span class="s">'antarctic_ice_shelves_lines'</span><span class="p">,</span> <span class="s">'50m'</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">'k'</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s">'horizontal'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'mm/day'</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s">'both'</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">long_name</span><span class="o">+</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="o">+</span><span class="n">time_bounds_str</span><span class="o">+</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s">'xx-large'</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">''</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/images/notebooks/racmo_with_xarray/output_23_1.png" alt="png" /></p>
+
+</p>
+	  
+          
+	  
+	  <header class="major">
+	    <h1>Get daily average weather station data (Global)</h1>
+	  </header>
+	  
+	  <p>2018-10-17 00:00:00 +0100</p>
+	  <p><p>A set of Python tools to make it easier to extract weather station data (e.g., temperature, precipitation) from the <a href="https://www.ncdc.noaa.gov/ghcn-daily-description">Global Historical Climatology Network - Daily (GHCND)</a></p>
+
+<p>More information on the data can be found <a href="https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/readme.txt">here</a></p>
+
+<p>The code can be downloaded from the <a href="https://github.com/scotthosking/get-station-data"><em>get_station_data</em></a> github repository</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">get_station_data</span> <span class="kn">import</span> <span class="n">ghcnd</span>
+<span class="kn">from</span> <span class="nn">get_station_data.util</span> <span class="kn">import</span> <span class="n">nearest_stn</span>
+
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span> 
+</code></pre></div></div>
+
+<h3 id="read-station-metadata">Read station metadata</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">stn_md</span> <span class="o">=</span> <span class="n">ghcnd</span><span class="p">.</span><span class="n">get_stn_metadata</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="choose-a-location-lonlat-and-number-of-nearest-neighbours">Choose a location (lon/lat) and number of nearest neighbours</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">london_lon_lat</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.1278</span><span class="p">,</span> <span class="mf">51.5074</span>
+<span class="n">my_stns</span> <span class="o">=</span> <span class="n">nearest_stn</span><span class="p">(</span><span class="n">stn_md</span><span class="p">,</span> 
+                        <span class="n">london_lon_lat</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">london_lon_lat</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> 
+                        <span class="n">n_neighbours</span><span class="o">=</span><span class="mi">5</span> <span class="p">)</span>
+<span class="n">my_stns</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>station</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>elev</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>52113</th>
+      <td>UKE00105915</td>
+      <td>51.5608</td>
+      <td>0.1789</td>
+      <td>137.0</td>
+      <td>HAMPSTEAD</td>
+    </tr>
+    <tr>
+      <th>52165</th>
+      <td>UKM00003772</td>
+      <td>51.4780</td>
+      <td>-0.4610</td>
+      <td>25.3</td>
+      <td>HEATHROW</td>
+    </tr>
+    <tr>
+      <th>52098</th>
+      <td>UKE00105900</td>
+      <td>51.8067</td>
+      <td>0.3581</td>
+      <td>128.0</td>
+      <td>ROTHAMSTED</td>
+    </tr>
+    <tr>
+      <th>52191</th>
+      <td>UKW00035054</td>
+      <td>51.2833</td>
+      <td>0.4000</td>
+      <td>91.1</td>
+      <td>WEST MALLING</td>
+    </tr>
+    <tr>
+      <th>52131</th>
+      <td>UKE00107650</td>
+      <td>51.4789</td>
+      <td>0.4489</td>
+      <td>25.0</td>
+      <td>HEATHROW</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="download-and-extract-data-into-a-pandas-dataframe">Download and extract data into a pandas DataFrame</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">ghcnd</span><span class="p">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">my_stns</span><span class="p">)</span>
+
+<span class="n">df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>station</th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>element</th>
+      <th>value</th>
+      <th>mflag</th>
+      <th>qflag</th>
+      <th>sflag</th>
+      <th>date</th>
+      <th>lon</th>
+      <th>lat</th>
+      <th>elev</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>UKE00105915</td>
+      <td>1959</td>
+      <td>12</td>
+      <td>1</td>
+      <td>TMAX</td>
+      <td>NaN</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>1959-12-01</td>
+      <td>0.1789</td>
+      <td>51.5608</td>
+      <td>137.0</td>
+      <td>HAMPSTEAD</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>UKE00105915</td>
+      <td>1959</td>
+      <td>12</td>
+      <td>2</td>
+      <td>TMAX</td>
+      <td>NaN</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>1959-12-02</td>
+      <td>0.1789</td>
+      <td>51.5608</td>
+      <td>137.0</td>
+      <td>HAMPSTEAD</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>UKE00105915</td>
+      <td>1959</td>
+      <td>12</td>
+      <td>3</td>
+      <td>TMAX</td>
+      <td>NaN</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>1959-12-03</td>
+      <td>0.1789</td>
+      <td>51.5608</td>
+      <td>137.0</td>
+      <td>HAMPSTEAD</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>UKE00105915</td>
+      <td>1959</td>
+      <td>12</td>
+      <td>4</td>
+      <td>TMAX</td>
+      <td>NaN</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>1959-12-04</td>
+      <td>0.1789</td>
+      <td>51.5608</td>
+      <td>137.0</td>
+      <td>HAMPSTEAD</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>UKE00105915</td>
+      <td>1959</td>
+      <td>12</td>
+      <td>5</td>
+      <td>TMAX</td>
+      <td>NaN</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>1959-12-05</td>
+      <td>0.1789</td>
+      <td>51.5608</td>
+      <td>137.0</td>
+      <td>HAMPSTEAD</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="filter-data-for-eg-a-single-variable">Filter data for, e.g., a single variable</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">var</span> <span class="o">=</span> <span class="s">'PRCP'</span>   <span class="c1"># precipitation
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span> <span class="n">df</span><span class="p">[</span><span class="s">'element'</span><span class="p">]</span> <span class="o">==</span> <span class="n">var</span> <span class="p">]</span>
+
+<span class="c1">### Tidy up columns
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s">"value"</span><span class="p">:</span> <span class="n">var</span><span class="p">})</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'element'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>station</th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>PRCP</th>
+      <th>mflag</th>
+      <th>qflag</th>
+      <th>sflag</th>
+      <th>date</th>
+      <th>lon</th>
+      <th>lat</th>
+      <th>elev</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>93</th>
+      <td>UKE00105915</td>
+      <td>1960</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2.5</td>
+      <td></td>
+      <td></td>
+      <td>E</td>
+      <td>1960-01-01</td>
+      <td>0.1789</td>
+      <td>51.5608</td>
+      <td>137.0</td>
+      <td>HAMPSTEAD</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>UKE00105915</td>
+      <td>1960</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1.5</td>
+      <td></td>
+      <td></td>
+      <td>E</td>
+      <td>1960-01-02</td>
+      <td>0.1789</td>
+      <td>51.5608</td>
+      <td>137.0</td>
+      <td>HAMPSTEAD</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>UKE00105915</td>
+      <td>1960</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1.0</td>
+      <td></td>
+      <td></td>
+      <td>E</td>
+      <td>1960-01-03</td>
+      <td>0.1789</td>
+      <td>51.5608</td>
+      <td>137.0</td>
+      <td>HAMPSTEAD</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>UKE00105915</td>
+      <td>1960</td>
+      <td>1</td>
+      <td>4</td>
+      <td>0.8</td>
+      <td></td>
+      <td></td>
+      <td>E</td>
+      <td>1960-01-04</td>
+      <td>0.1789</td>
+      <td>51.5608</td>
+      <td>137.0</td>
+      <td>HAMPSTEAD</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>UKE00105915</td>
+      <td>1960</td>
+      <td>1</td>
+      <td>5</td>
+      <td>0.0</td>
+      <td></td>
+      <td></td>
+      <td>E</td>
+      <td>1960-01-05</td>
+      <td>0.1789</td>
+      <td>51.5608</td>
+      <td>137.0</td>
+      <td>HAMPSTEAD</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'mflag'</span><span class="p">,</span><span class="s">'qflag'</span><span class="p">,</span><span class="s">'sflag'</span><span class="p">]).</span><span class="n">tail</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>station</th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>PRCP</th>
+      <th>date</th>
+      <th>lon</th>
+      <th>lat</th>
+      <th>elev</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>83938</th>
+      <td>UKE00107650</td>
+      <td>2016</td>
+      <td>12</td>
+      <td>22</td>
+      <td>0.0</td>
+      <td>2016-12-22</td>
+      <td>0.4489</td>
+      <td>51.4789</td>
+      <td>25.0</td>
+      <td>HEATHROW</td>
+    </tr>
+    <tr>
+      <th>83939</th>
+      <td>UKE00107650</td>
+      <td>2016</td>
+      <td>12</td>
+      <td>23</td>
+      <td>1.4</td>
+      <td>2016-12-23</td>
+      <td>0.4489</td>
+      <td>51.4789</td>
+      <td>25.0</td>
+      <td>HEATHROW</td>
+    </tr>
+    <tr>
+      <th>83940</th>
+      <td>UKE00107650</td>
+      <td>2016</td>
+      <td>12</td>
+      <td>24</td>
+      <td>0.0</td>
+      <td>2016-12-24</td>
+      <td>0.4489</td>
+      <td>51.4789</td>
+      <td>25.0</td>
+      <td>HEATHROW</td>
+    </tr>
+    <tr>
+      <th>83941</th>
+      <td>UKE00107650</td>
+      <td>2016</td>
+      <td>12</td>
+      <td>25</td>
+      <td>1.0</td>
+      <td>2016-12-25</td>
+      <td>0.4489</td>
+      <td>51.4789</td>
+      <td>25.0</td>
+      <td>HEATHROW</td>
+    </tr>
+    <tr>
+      <th>83942</th>
+      <td>UKE00107650</td>
+      <td>2016</td>
+      <td>12</td>
+      <td>26</td>
+      <td>0.0</td>
+      <td>2016-12-26</td>
+      <td>0.4489</td>
+      <td>51.4789</td>
+      <td>25.0</td>
+      <td>HEATHROW</td>
+    </tr>
+    <tr>
+      <th>83943</th>
+      <td>UKE00107650</td>
+      <td>2016</td>
+      <td>12</td>
+      <td>27</td>
+      <td>0.0</td>
+      <td>2016-12-27</td>
+      <td>0.4489</td>
+      <td>51.4789</td>
+      <td>25.0</td>
+      <td>HEATHROW</td>
+    </tr>
+    <tr>
+      <th>83944</th>
+      <td>UKE00107650</td>
+      <td>2016</td>
+      <td>12</td>
+      <td>28</td>
+      <td>0.2</td>
+      <td>2016-12-28</td>
+      <td>0.4489</td>
+      <td>51.4789</td>
+      <td>25.0</td>
+      <td>HEATHROW</td>
+    </tr>
+    <tr>
+      <th>83945</th>
+      <td>UKE00107650</td>
+      <td>2016</td>
+      <td>12</td>
+      <td>29</td>
+      <td>0.4</td>
+      <td>2016-12-29</td>
+      <td>0.4489</td>
+      <td>51.4789</td>
+      <td>25.0</td>
+      <td>HEATHROW</td>
+    </tr>
+    <tr>
+      <th>83946</th>
+      <td>UKE00107650</td>
+      <td>2016</td>
+      <td>12</td>
+      <td>30</td>
+      <td>0.0</td>
+      <td>2016-12-30</td>
+      <td>0.4489</td>
+      <td>51.4789</td>
+      <td>25.0</td>
+      <td>HEATHROW</td>
+    </tr>
+    <tr>
+      <th>83947</th>
+      <td>UKE00107650</td>
+      <td>2016</td>
+      <td>12</td>
+      <td>31</td>
+      <td>0.4</td>
+      <td>2016-12-31</td>
+      <td>0.4489</td>
+      <td>51.4789</td>
+      <td>25.0</td>
+      <td>HEATHROW</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="save-to-file">Save to file</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">'London_5stns_GHCN-D.csv'</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="plot-histogram-of-all-data">Plot histogram of all data</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[</span><span class="s">'PRCP'</span><span class="p">].</span><span class="n">plot</span><span class="p">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11ae36898&gt;
+</code></pre></div></div>
+
+<p><img src="/images/notebooks/ghcn_daily_data/output_14_1.png" alt="png" /></p>
+
+<h3 id="plot-time-series-for-one-station">Plot time series for one station</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">heathrow</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span> <span class="n">df</span><span class="p">[</span><span class="s">'name'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'HEATHROW'</span> <span class="p">]</span>
+<span class="n">heathrow</span><span class="p">[</span><span class="s">'PRCP'</span><span class="p">].</span><span class="n">plot</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x81f0d7240&gt;
+</code></pre></div></div>
+
+<p><img src="/images/notebooks/ghcn_daily_data/output_16_1.png" alt="png" /></p>
+
+</p>
+	  
+          
+	  
+	  <header class="major">
+	    <h1>Get monthly average weather station data (Global)</h1>
+	  </header>
+	  
+	  <p>2018-10-17 00:00:00 +0100</p>
+	  <p><p>Extract countries of interest (along with their coordinates) from the
+<a href="https://www.ncdc.noaa.gov/ghcnm/v3.php">Global Historical Climatology Network - Monthly (GHCNM) Version 3</a></p>
+
+<p>A README file can be found <a href="ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/v3/README">here</a></p>
+
+<p>To run this script you will need to download the .dat and .inv files stored in the compressed files (ghncm.*.tar.gz) found <a href="ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/v3/">here</a></p>
+
+<p>The code can be downloaded from the <a href="https://github.com/scotthosking/get-station-data"><em>get_station_data</em></a> github repository</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">from</span> <span class="nn">get_station_data</span> <span class="kn">import</span> <span class="n">ghcnm</span>
+</code></pre></div></div>
+
+<h3 id="name-of-original-data-file-from-ghcn-m">Name of original data file from GHCN-M</h3>
+<p>ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/v3/</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data_version</span> <span class="o">=</span> <span class="s">'v3.3.0.20180404'</span>
+<span class="n">data_fname</span>   <span class="o">=</span> <span class="s">'raw_data/ghcnm.tavg.'</span><span class="o">+</span><span class="n">data_version</span><span class="o">+</span><span class="s">'.qca.dat'</span>
+<span class="n">stn_md_fname</span> <span class="o">=</span> <span class="s">'raw_data/ghcnm.tavg.'</span><span class="o">+</span><span class="n">data_version</span><span class="o">+</span><span class="s">'.qca.inv'</span>
+
+<span class="n">stn_md</span> <span class="o">=</span> <span class="n">ghcnm</span><span class="p">.</span><span class="n">get_stn_metadata</span><span class="p">(</span><span class="n">stn_md_fname</span><span class="p">)</span>
+
+<span class="n">stn_md</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>station</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>elev</th>
+      <th>name</th>
+      <th>country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10160355000</td>
+      <td>36.93</td>
+      <td>6.95</td>
+      <td>7.0</td>
+      <td>SKIKDA</td>
+      <td>ALGERIA</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10160360000</td>
+      <td>36.83</td>
+      <td>7.82</td>
+      <td>4.0</td>
+      <td>ANNABA</td>
+      <td>ALGERIA</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>10160390000</td>
+      <td>36.72</td>
+      <td>3.25</td>
+      <td>25.0</td>
+      <td>DAR-EL-BEIDA</td>
+      <td>ALGERIA</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>10160395001</td>
+      <td>36.52</td>
+      <td>4.18</td>
+      <td>942.0</td>
+      <td>FT. NATIONAL</td>
+      <td>ALGERIA</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>10160400001</td>
+      <td>36.80</td>
+      <td>5.10</td>
+      <td>230.0</td>
+      <td>CAP CARBON</td>
+      <td>ALGERIA</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="specify-countries-to-extract-data-from">Specify countries to extract data from</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">country_names</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Egypt'</span><span class="p">,</span> <span class="s">'Libya'</span><span class="p">,</span> <span class="s">'Sudan'</span><span class="p">,</span> <span class="s">'ISRAEL'</span><span class="p">,</span> \
+                    <span class="s">'SAUDI ARABIA'</span><span class="p">,</span> <span class="s">'Chad'</span><span class="p">,</span> <span class="s">'Jordan'</span><span class="p">]</span>
+
+<span class="n">my_stns</span> <span class="o">=</span> <span class="n">ghcnm</span><span class="p">.</span><span class="n">extract_countries</span><span class="p">(</span><span class="n">stn_md</span><span class="p">,</span> <span class="n">country_names</span><span class="p">)</span>
+
+<span class="n">my_stns</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>station</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>elev</th>
+      <th>name</th>
+      <th>country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>132</th>
+      <td>11064700000</td>
+      <td>12.13</td>
+      <td>15.03</td>
+      <td>295.0</td>
+      <td>NDJAMENA</td>
+      <td>CHAD</td>
+    </tr>
+    <tr>
+      <th>133</th>
+      <td>11064701000</td>
+      <td>14.12</td>
+      <td>15.32</td>
+      <td>355.0</td>
+      <td>MAO</td>
+      <td>CHAD</td>
+    </tr>
+    <tr>
+      <th>134</th>
+      <td>11064702000</td>
+      <td>13.43</td>
+      <td>14.73</td>
+      <td>292.0</td>
+      <td>BOL-BERIM</td>
+      <td>CHAD</td>
+    </tr>
+    <tr>
+      <th>135</th>
+      <td>11064705000</td>
+      <td>10.48</td>
+      <td>16.72</td>
+      <td>336.0</td>
+      <td>BOUSSO</td>
+      <td>CHAD</td>
+    </tr>
+    <tr>
+      <th>136</th>
+      <td>11064706000</td>
+      <td>8.62</td>
+      <td>16.07</td>
+      <td>422.0</td>
+      <td>MOUNDOU</td>
+      <td>CHAD</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="extract-data-for-specified-stations-into-a-pandas-dataframe">Extract data for specified stations into a Pandas DataFrame</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">ghcnm</span><span class="p">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">data_fname</span><span class="p">,</span> <span class="n">my_stns</span><span class="p">)</span>
+<span class="n">df</span><span class="p">.</span><span class="n">columns</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Index(['country', 'name', 'station', 'lat', 'lon', 'elev', 'year', 'month',
+       'variable', 'value', 'dmflag', 'qcflag', 'dsflag'],
+      dtype='object')
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'dmflag'</span><span class="p">,</span> <span class="s">'qcflag'</span><span class="p">,</span> <span class="s">'dsflag'</span><span class="p">]).</span><span class="n">tail</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>name</th>
+      <th>station</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>elev</th>
+      <th>year</th>
+      <th>month</th>
+      <th>variable</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>79298</th>
+      <td>JORDAN</td>
+      <td>AQABA AIRPORT</td>
+      <td>62440340000</td>
+      <td>29.63</td>
+      <td>35.02</td>
+      <td>51</td>
+      <td>1990</td>
+      <td>3</td>
+      <td>TAVG</td>
+      <td>18.9</td>
+    </tr>
+    <tr>
+      <th>79299</th>
+      <td>JORDAN</td>
+      <td>AQABA AIRPORT</td>
+      <td>62440340000</td>
+      <td>29.63</td>
+      <td>35.02</td>
+      <td>51</td>
+      <td>1990</td>
+      <td>4</td>
+      <td>TAVG</td>
+      <td>24.3</td>
+    </tr>
+    <tr>
+      <th>79300</th>
+      <td>JORDAN</td>
+      <td>AQABA AIRPORT</td>
+      <td>62440340000</td>
+      <td>29.63</td>
+      <td>35.02</td>
+      <td>51</td>
+      <td>1990</td>
+      <td>5</td>
+      <td>TAVG</td>
+      <td>26.9</td>
+    </tr>
+    <tr>
+      <th>79301</th>
+      <td>JORDAN</td>
+      <td>AQABA AIRPORT</td>
+      <td>62440340000</td>
+      <td>29.63</td>
+      <td>35.02</td>
+      <td>51</td>
+      <td>1990</td>
+      <td>6</td>
+      <td>TAVG</td>
+      <td>30.5</td>
+    </tr>
+    <tr>
+      <th>79302</th>
+      <td>JORDAN</td>
+      <td>AQABA AIRPORT</td>
+      <td>62440340000</td>
+      <td>29.63</td>
+      <td>35.02</td>
+      <td>51</td>
+      <td>1990</td>
+      <td>7</td>
+      <td>TAVG</td>
+      <td>32.4</td>
+    </tr>
+    <tr>
+      <th>79303</th>
+      <td>JORDAN</td>
+      <td>AQABA AIRPORT</td>
+      <td>62440340000</td>
+      <td>29.63</td>
+      <td>35.02</td>
+      <td>51</td>
+      <td>1990</td>
+      <td>8</td>
+      <td>TAVG</td>
+      <td>31.7</td>
+    </tr>
+    <tr>
+      <th>79304</th>
+      <td>JORDAN</td>
+      <td>AQABA AIRPORT</td>
+      <td>62440340000</td>
+      <td>29.63</td>
+      <td>35.02</td>
+      <td>51</td>
+      <td>1990</td>
+      <td>9</td>
+      <td>TAVG</td>
+      <td>28.9</td>
+    </tr>
+    <tr>
+      <th>79305</th>
+      <td>JORDAN</td>
+      <td>AQABA AIRPORT</td>
+      <td>62440340000</td>
+      <td>29.63</td>
+      <td>35.02</td>
+      <td>51</td>
+      <td>1990</td>
+      <td>10</td>
+      <td>TAVG</td>
+      <td>26.8</td>
+    </tr>
+    <tr>
+      <th>79306</th>
+      <td>JORDAN</td>
+      <td>AQABA AIRPORT</td>
+      <td>62440340000</td>
+      <td>29.63</td>
+      <td>35.02</td>
+      <td>51</td>
+      <td>1990</td>
+      <td>11</td>
+      <td>TAVG</td>
+      <td>23.2</td>
+    </tr>
+    <tr>
+      <th>79307</th>
+      <td>JORDAN</td>
+      <td>AQABA AIRPORT</td>
+      <td>62440340000</td>
+      <td>29.63</td>
+      <td>35.02</td>
+      <td>51</td>
+      <td>1990</td>
+      <td>12</td>
+      <td>TAVG</td>
+      <td>18.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="save-to-file">Save to file</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">'Egypt_surrounding_ghcnm.csv'</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+</p>
+	  
+          
+	  
+	  <header class="major">
+	    <h1>Using BASpy to read in climate model data (CMIP5) into Xarray</h1>
+	  </header>
+	  
+	  <p>2018-10-17 00:00:00 +0100</p>
+	  <p><p>For this notebook to work you will need to install:</p>
+<ul>
+  <li><a href="https://github.com/scotthosking/baspy">BASpy</a> (for getting data)</li>
+  <li><a href="http://xarray.pydata.org/en/stable/installing.html">Xarray</a> (for processing data)</li>
+  <li><a href="https://scitools.org.uk/cartopy/docs/latest/installing.html#installing">Cartopy</a> (for plotting maps)</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">baspy</span> <span class="k">as</span> <span class="n">bp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="n">ccrs</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="n">xr</span>
+
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span> 
+</code></pre></div></div>
+
+<h1 id="using-baspy">Using BASpy</h1>
+<h3 id="define-the-cmip5-data-we-want-to-work-with">Define the CMIP5 data we want to work with</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">catlg</span> <span class="o">=</span> <span class="n">bp</span><span class="p">.</span><span class="n">catalogue</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="s">'cmip5'</span><span class="p">,</span> <span class="n">Experiment</span><span class="o">=</span><span class="s">'historical'</span><span class="p">,</span> 
+                         <span class="n">Frequency</span><span class="o">=</span><span class="s">'mon'</span><span class="p">,</span> <span class="n">Var</span><span class="o">=</span><span class="s">'tas'</span><span class="p">,</span> 
+                         <span class="n">Model</span><span class="o">=</span><span class="s">'HadGEM2-ES'</span><span class="p">)</span>
+<span class="n">catlg</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'Path'</span><span class="p">,</span><span class="s">'DataFiles'</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Updating cached catalogue...
+catalogue memory usage (MB): 28.786099
+&gt;&gt; Current cached values (can be extended by specifying additional values or by setting read_everything=True) &lt;&lt;
+{'Experiment': ['piControl', 'rcp85', 'historical', 'rcp26', 'rcp45'], 'Frequency': ['mon']}
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Centre</th>
+      <th>Model</th>
+      <th>Experiment</th>
+      <th>Frequency</th>
+      <th>SubModel</th>
+      <th>CMOR</th>
+      <th>RunID</th>
+      <th>Version</th>
+      <th>Var</th>
+      <th>StartDate</th>
+      <th>EndDate</th>
+      <th>dataset</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>489465</th>
+      <td>MOHC</td>
+      <td>HadGEM2-ES</td>
+      <td>historical</td>
+      <td>mon</td>
+      <td>atmos</td>
+      <td>Amon</td>
+      <td>r2i1p1</td>
+      <td>v20110418</td>
+      <td>tas</td>
+      <td>185912</td>
+      <td>200512</td>
+      <td>cmip5</td>
+    </tr>
+    <tr>
+      <th>489511</th>
+      <td>MOHC</td>
+      <td>HadGEM2-ES</td>
+      <td>historical</td>
+      <td>mon</td>
+      <td>atmos</td>
+      <td>Amon</td>
+      <td>r4i1p1</td>
+      <td>v20110418</td>
+      <td>tas</td>
+      <td>185912</td>
+      <td>200511</td>
+      <td>cmip5</td>
+    </tr>
+    <tr>
+      <th>489557</th>
+      <td>MOHC</td>
+      <td>HadGEM2-ES</td>
+      <td>historical</td>
+      <td>mon</td>
+      <td>atmos</td>
+      <td>Amon</td>
+      <td>r3i1p1</td>
+      <td>v20110418</td>
+      <td>tas</td>
+      <td>185912</td>
+      <td>200512</td>
+      <td>cmip5</td>
+    </tr>
+    <tr>
+      <th>489605</th>
+      <td>MOHC</td>
+      <td>HadGEM2-ES</td>
+      <td>historical</td>
+      <td>mon</td>
+      <td>atmos</td>
+      <td>Amon</td>
+      <td>r1i1p1</td>
+      <td>v20120928</td>
+      <td>tas</td>
+      <td>185912</td>
+      <td>200511</td>
+      <td>cmip5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="select-one-model-run-one-row">Select one model run (one row)</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">row</span> <span class="o">=</span> <span class="n">catlg</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">row</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Centre                                                     MOHC
+Model                                                HadGEM2-ES
+Experiment                                           historical
+Frequency                                                   mon
+SubModel                                                  atmos
+CMOR                                                       Amon
+RunID                                                    r1i1p1
+Version                                               v20120928
+Var                                                         tas
+StartDate                                                185912
+EndDate                                                  200511
+Path          /MOHC/HadGEM2-ES/historical/mon/atmos/Amon/r1i...
+DataFiles     tas_Amon_HadGEM2-ES_historical_r1i1p1_185912-1...
+dataset                                                   cmip5
+Name: 489605, dtype: object
+</code></pre></div></div>
+
+<h1 id="using-xarray">Using Xarray</h1>
+
+<p>At this point (if the data is stored on the system we are on) we can read in multiple files as a Dataset using:
+ds = bp.open_dataset(row)</p>
+
+<p>However, assuming you do not have access to the CMIP5 or CMIP6 data archive, you can download 
+and get going with some CMIP6 sample data by running this line:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ds</span> <span class="o">=</span> <span class="n">bp</span><span class="p">.</span><span class="n">eg_Dataset</span><span class="p">()</span>
+<span class="n">ds</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.Dataset&gt;
+Dimensions:    (bnds: 2, lat: 180, lon: 288, time: 420)
+Coordinates:
+  * bnds       (bnds) float64 1.0 2.0
+    height     float64 ...
+  * lat        (lat) float64 -89.5 -88.5 -87.5 -86.5 -85.5 -84.5 -83.5 -82.5 ...
+  * lon        (lon) float64 0.625 1.875 3.125 4.375 5.625 6.875 8.125 9.375 ...
+  * time       (time) datetime64[ns] 1980-01-16T12:00:00 1980-02-15T12:00:00 ...
+Data variables:
+    lat_bnds   (lat, bnds) float64 ...
+    lon_bnds   (lon, bnds) float64 ...
+    tas        (time, lat, lon) float32 ...
+    time_bnds  (time, bnds) datetime64[ns] ...
+Attributes:
+    title:                 NOAA GFDL GFDL-AM4 model output prepared for CMIP6...
+    history:               File was processed by fremetar (GFDL analog of CMO...
+    table_id:              Amon
+    contact:               gfdl.climate.model.info@noaa.gov
+    comment:               &lt;null ref&gt;
+    tracking_id:           hdl:21.14100/3b95ceac-9bd6-42c9-a130-130fc1ba108c
+    further_info_url:      https://furtherinfo.es-doc.org/CMIP6.NOAA-GFDL.GFD...
+    branch_time_in_child:  0.0
+    branch_method:         no parent
+    creation_date:         2018-08-07T17:02:18Z
+    Conventions:           CF-1.7 CMIP-6.0 UGRID-1.0
+    sub_experiment:        none
+    frequency:             monC
+    forcing_index:         1
+    physics_index:         1
+    initialization_index:  1
+    realization_index:     1
+    parent_variant_label:  no parent
+    parent_experiment_id:  no parent
+    data_specs_version:    01.00.27
+    experiment_id:         amip
+    experiment:            AMIP
+    activity_id:           CMIP
+    source_id:             GFDL-AM4
+    source_type:           AGCM
+    institution_id:        NOAA-GFDL
+    institution:           National Oceanic and Atmospheric Administration, G...
+    variable_id:           tas
+    variant_info:          N/A
+    mip_era:               CMIP6
+    source:                "GFDL-AM4 (2017): aerosol: interactive;atmos: GFDL...
+    parent_activity_id:    no parent
+    parent_mip_era:        no parent
+    parent_source_id:      no parent
+    parent_time_units:     no parent
+    sub_experiment_id:     none
+    grid:                  atmos data regridded from Cubed-sphere (c96) to 18...
+    variant_label:         r1i1p1f1
+    grid_label:            gr1
+    license:               CMIP6 model data produced by NOAA-GFDL is licensed...
+    nominal_resolution:    100 km
+    product:               model-output
+    realm:                 atmos
+    references:            see further_info_url attribute
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># read a DataArray (e.g., a single variable) from the Dataset
+</span><span class="n">da</span> <span class="o">=</span> <span class="n">ds</span><span class="p">.</span><span class="n">tas</span>
+<span class="n">da</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;xarray.DataArray 'tas' (time: 420, lat: 180, lon: 288)&gt;
+[21772800 values with dtype=float32]
+Coordinates:
+    height   float64 ...
+  * lat      (lat) float64 -89.5 -88.5 -87.5 -86.5 -85.5 -84.5 -83.5 -82.5 ...
+  * lon      (lon) float64 0.625 1.875 3.125 4.375 5.625 6.875 8.125 9.375 ...
+  * time     (time) datetime64[ns] 1980-01-16T12:00:00 1980-02-15T12:00:00 ...
+Attributes:
+    long_name:      Near-Surface Air Temperature
+    units:          K
+    cell_methods:   area: time: mean
+    cell_measures:  area: areacella
+    standard_name:  air_temperature
+    interp_method:  conserve_order2
+    original_name:  tas
+</code></pre></div></div>
+
+<h1 id="plotting">Plotting</h1>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">da</span><span class="p">.</span><span class="n">plot</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(array([  69415.,  442264.,  428669., 1430675., 1719399., 1709979.,
+        4552300., 4731607., 6553416.,  135076.]),
+ array([198.42273, 210.32277, 222.22281, 234.12283, 246.02287, 257.9229 ,
+        269.82294, 281.723  , 293.62302, 305.52307, 317.4231 ],
+       dtype=float32),
+ &lt;a list of 10 Patch objects&gt;)
+</code></pre></div></div>
+
+<p><img src="/images/notebooks/baspy_example/output_10_2.png" alt="png" /></p>
+
+<h3 id="plot-map-for-first-time-index">Plot map for first time index</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">da</span><span class="p">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">plot</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.collections.QuadMesh at 0x3292b76a0&gt;
+</code></pre></div></div>
+
+<p><img src="/images/notebooks/baspy_example/output_12_1.png" alt="png" /></p>
+
+<h3 id="plot-using-a-polarstereo-map-projection">Plot using a polarstereo map projection</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">crs</span> <span class="o">=</span> <span class="n">ccrs</span><span class="p">.</span><span class="n">SouthPolarStereo</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">crs</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">set_extent</span><span class="p">([</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="o">-</span><span class="mi">60</span><span class="p">],</span> <span class="n">ccrs</span><span class="p">.</span><span class="n">PlateCarree</span><span class="p">()</span> <span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">ylocs</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">da</span><span class="p">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">plot</span><span class="p">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="p">.</span><span class="n">PlateCarree</span><span class="p">(),</span> 
+                                  <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="p">.</span><span class="n">cm</span><span class="p">.</span><span class="n">Blues_r</span><span class="p">,</span> 
+                                  <span class="n">extend</span><span class="o">=</span><span class="s">'both'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">coastlines</span><span class="p">(</span><span class="s">'110m'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'k'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x32af969e8&gt;
+</code></pre></div></div>
+
+<p><img src="/images/notebooks/baspy_example/output_14_1.png" alt="png" /></p>
+
+</p>
+	  
+          
+	  
+	  <header class="major">
+	    <h1>Aliquam</h1>
+	  </header>
+	  <span class="image main"><img src="/test-site/assets/images/pic01.jpg" alt="" /></span>
+	  <p>2016-08-25 00:00:00 +0100</p>
+	  <p><p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. 
+Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. 
+Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. 
+Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. 
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. 
+Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. 
+Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. 
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. 
+Pellentesque aliquam maximus risus, vel sed vehicula.</p>
+
+<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. 
+Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. 
+Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+</p>
+	  
+          
+	  
+	  <header class="major">
+	    <h1>Tempus</h1>
+	  </header>
+	  <span class="image main"><img src="/test-site/assets/images/pic02.jpg" alt="" /></span>
+	  <p>2016-08-24 00:00:00 +0100</p>
+	  <p><p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. 
+Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. 
+Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. 
+Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. 
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. 
+Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. 
+Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. 
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. 
+Pellentesque aliquam maximus risus, vel sed vehicula.</p>
+
+<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. 
+Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. 
+Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+</p>
+	  
+          
+	  
+	  <header class="major">
+	    <h1>Magna</h1>
+	  </header>
+	  <span class="image main"><img src="/test-site/assets/images/pic03.jpg" alt="" /></span>
+	  <p>2016-08-23 00:00:00 +0100</p>
+	  <p><p><img src="http://localhost:4000/assets/images/pic03.jpg" alt="test image" /></p>
+
+<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis.
+Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat.
+Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris.
+Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis.
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum.
+Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum.
+Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus.
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus.
+Pellentesque aliquam maximus risus, vel sed vehicula.</p>
+
+<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis.
+Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit.
+Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+</p>
+	  
+          
+	  
+	  <header class="major">
+	    <h1>Ipsum</h1>
+	  </header>
+	  <span class="image main"><img src="/test-site/assets/images/pic04.jpg" alt="" /></span>
+	  <p>2016-08-22 00:00:00 +0100</p>
+	  <p><p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. 
+Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. 
+Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. 
+Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. 
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. 
+Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. 
+Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. 
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. 
+Pellentesque aliquam maximus risus, vel sed vehicula.</p>
+
+<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. 
+Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. 
+Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+</p>
+	  
+          
+	  
+	  <header class="major">
+	    <h1>Consequat</h1>
+	  </header>
+	  <span class="image main"><img src="/test-site/assets/images/pic05.jpg" alt="" /></span>
+	  <p>2016-08-21 00:00:00 +0100</p>
+	  <p><p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. 
+Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. 
+Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. 
+Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. 
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. 
+Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. 
+Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. 
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. 
+Pellentesque aliquam maximus risus, vel sed vehicula.</p>
+
+<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. 
+Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. 
+Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+</p>
+	  
+          
+	  
+	  <header class="major">
+	    <h1>Etiam</h1>
+	  </header>
+	  <span class="image main"><img src="/test-site/assets/images/pic06.jpg" alt="" /></span>
+	  <p>2016-08-20 00:00:00 +0100</p>
+	  <p><p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. 
+Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. 
+Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. 
+Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. 
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. 
+Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. 
+Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. 
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. 
+Pellentesque aliquam maximus risus, vel sed vehicula.</p>
+
+<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. 
+Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. 
+Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+</p>
+	  
+          
+	  
+	  <header class="major">
+	    <h1>Smoothing a noisy time series</h1>
+	  </header>
+	  
+	  <p>2016-06-09 00:00:00 +0100</p>
+	  <p><ul>
+  <li>using a low-pass filter</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">lpfilter</span><span class="p">(</span><span class="n">input_signal</span><span class="p">,</span> <span class="n">win</span><span class="p">):</span>
+    <span class="c1"># Low-pass linear Filter
+</span>    <span class="c1"># (2*win)+1 is the size of the window that determines the values that influence 
+</span>    <span class="c1"># the filtered result, centred over the current measurement
+</span>    <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span>
+    <span class="n">kernel</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">lib</span><span class="p">.</span><span class="n">pad</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">win</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">win</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="s">'reflect'</span><span class="p">)</span> 
+    <span class="n">kernel</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">divide</span><span class="p">(</span><span class="n">kernel</span><span class="p">,</span><span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">kernel</span><span class="p">))</span> <span class="c1"># normalise
+</span>    <span class="n">output_signal</span> <span class="o">=</span> <span class="n">ndimage</span><span class="p">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">input_signal</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)</span> 
+    <span class="k">return</span> <span class="n">output_signal</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="c1">### make up some data
+</span><span class="n">t</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">unsmoothed</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span><span class="o">*</span><span class="mf">0.4</span>
+
+<span class="c1">### smooth data using def
+</span><span class="n">smoothed</span> <span class="o">=</span> <span class="n">lpfilter</span><span class="p">(</span><span class="n">unsmoothed</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">unsmoothed</span><span class="p">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">smoothed</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1">### plot data
+</span><span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">unsmoothed</span><span class="p">,</span> <span class="s">'k'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">smoothed</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>((100,), (100,))
+</code></pre></div></div>
+
+<p><img src="/images/notebooks/smooth_timeseries/output_2_1.png" alt="png" /></p>
+
+</p>
+	  
+          
+	  
+	  <header class="major">
+	    <h1>Layout: Header Image Overlay with Custom Tagline</h1>
+	  </header>
+	  
+	  <p>2012-03-15 00:00:00 +0000</p>
+	  <p><p>This post should display a <strong>header with an overlay image</strong> and <strong>custom tagline</strong>, if the theme supports it.</p>
+
+<p>Non-square images can provide some unique styling issues.</p>
+
+<p>This post tests overlay header images with custom <code class="language-plaintext highlighter-rouge">page.tagline</code>.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">tagline</span><span class="pi">:</span> <span class="s2">"</span><span class="s">This</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">custom</span><span class="nv"> </span><span class="s">tagline</span><span class="nv"> </span><span class="s">content</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">overrides</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">default</span><span class="nv"> </span><span class="s">page</span><span class="nv"> </span><span class="s">excerpt."</span>
+<span class="na">header</span><span class="pi">:</span>
+  <span class="na">overlay_image</span><span class="pi">:</span> <span class="s">/assets/images/unsplash-image-1.jpg</span>
+  <span class="na">caption</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Photo</span><span class="nv"> </span><span class="s">credit:</span><span class="nv"> </span><span class="s">[**Unsplash**](https://unsplash.com)"</span>
+</code></pre></div></div>
+</p>
+	  
+          
+	  
+	  <header class="major">
+	    <h1>Layout: Post Date Enabled</h1>
+	  </header>
+	  
+	  <p>2012-01-02 00:00:00 +0000</p>
+	  <p><p>This post has post date enabled. The date the post was published should show if <code class="language-plaintext highlighter-rouge">show_date: true</code> is added to it’s YAML Front Matter or as a default in <code class="language-plaintext highlighter-rouge">_config.yml</code>.</p>
+
+<p>If you could keep awake (but of course you can’t) you would see your own mother doing this, and you would find it very interesting to watch her. It is quite like tidying up drawers. You would see her on her knees, I expect, lingering humorously over some of your contents, wondering where on earth you had picked this thing up, making discoveries sweet and not so sweet, pressing this to her cheek as if it were as nice as a kitten, and hurriedly stowing that out of sight. When you wake in the morning, the naughtiness and evil passions with which you went to bed have been folded up small and placed at the bottom of your mind and on the top, beautifully aired, are spread out your prettier thoughts, ready for you to put on.</p>
+
+<p>I don’t know whether you have ever seen a map of a person’s mind. Doctors sometimes draw maps of other parts of you, and your own map can become intensely interesting, but catch them trying to draw a map of a child’s mind, which is not only confused, but keeps going round all the time. There are zigzag lines on it, just like your temperature on a card, and these are probably roads in the island, for the Neverland is always more or less an island, with astonishing splashes of colour here and there, and coral reefs and rakish-looking craft in the offing, and savages and lonely lairs, and gnomes who are mostly tailors, and caves through which a river runs, and princes with six elder brothers, and a hut fast going to decay, and one very small old lady with a hooked nose. It would be an easy map if that were all, but there is also first day at school, religion, fathers, the round pond, needle-work, murders, hangings, verbs that take the dative, chocolate pudding day, getting into braces, say ninety-nine, three-pence for pulling out your tooth yourself, and so on, and either these are part of the island or they are another map showing through, and it is all rather confusing, especially as nothing will stand still.</p>
+
+<p>Of course the Neverlands vary a good deal. John’s, for instance, had a lagoon with flamingoes flying over it at which John was shooting, while Michael, who was very small, had a flamingo with lagoons flying over it. John lived in a boat turned upside down on the sands, Michael in a wigwam, Wendy in a house of leaves deftly sewn together. John had no friends, Michael had friends at night, Wendy had a pet wolf forsaken by its parents, but on the whole the Neverlands have a family resemblance, and if they stood still in a row you could say of them that they have each other’s nose, and so forth. On these magic shores children at play are for ever beaching their coracles [simple boat]. We too have been there; we can still hear the sound of the surf, though we shall land no more.</p>
+
+<p>Of all delectable islands the Neverland is the snuggest and most compact, not large and sprawly, you know, with tedious distances between one adventure and another, but nicely crammed. When you play at it by day with the chairs and table-cloth, it is not in the least alarming, but in the two minutes before you go to sleep it becomes very real. That is why there are night-lights.</p>
+
+<p>Occasionally in her travels through her children’s minds Mrs. Darling found things she could not understand, and of these quite the most perplexing was the word Peter. She knew of no Peter, and yet he was here and there in John and Michael’s minds, while Wendy’s began to be scrawled all over with him. The name stood out in bolder letters than any of the other words, and as Mrs. Darling gazed she felt that it had an oddly cocky appearance.</p>
+</p>
+	  
+          
+	  
+	  <header class="major">
+	    <h1>Layout: Post Date Disabled</h1>
+	  </header>
+	  
+	  <p>2012-01-02 00:00:00 +0000</p>
+	  <p><p>This post has the date disabled. The date this post was published should not be showing if <code class="language-plaintext highlighter-rouge">show_date: false</code> is set in <code class="language-plaintext highlighter-rouge">_config.yml</code> or in this post’s YAML Front Matter.</p>
+
+<p>If you could keep awake (but of course you can’t) you would see your own mother doing this, and you would find it very interesting to watch her. It is quite like tidying up drawers. You would see her on her knees, I expect, lingering humorously over some of your contents, wondering where on earth you had picked this thing up, making discoveries sweet and not so sweet, pressing this to her cheek as if it were as nice as a kitten, and hurriedly stowing that out of sight. When you wake in the morning, the naughtiness and evil passions with which you went to bed have been folded up small and placed at the bottom of your mind and on the top, beautifully aired, are spread out your prettier thoughts, ready for you to put on.</p>
+
+<p>I don’t know whether you have ever seen a map of a person’s mind. Doctors sometimes draw maps of other parts of you, and your own map can become intensely interesting, but catch them trying to draw a map of a child’s mind, which is not only confused, but keeps going round all the time. There are zigzag lines on it, just like your temperature on a card, and these are probably roads in the island, for the Neverland is always more or less an island, with astonishing splashes of colour here and there, and coral reefs and rakish-looking craft in the offing, and savages and lonely lairs, and gnomes who are mostly tailors, and caves through which a river runs, and princes with six elder brothers, and a hut fast going to decay, and one very small old lady with a hooked nose. It would be an easy map if that were all, but there is also first day at school, religion, fathers, the round pond, needle-work, murders, hangings, verbs that take the dative, chocolate pudding day, getting into braces, say ninety-nine, three-pence for pulling out your tooth yourself, and so on, and either these are part of the island or they are another map showing through, and it is all rather confusing, especially as nothing will stand still.</p>
+
+<p>Of course the Neverlands vary a good deal. John’s, for instance, had a lagoon with flamingoes flying over it at which John was shooting, while Michael, who was very small, had a flamingo with lagoons flying over it. John lived in a boat turned upside down on the sands, Michael in a wigwam, Wendy in a house of leaves deftly sewn together. John had no friends, Michael had friends at night, Wendy had a pet wolf forsaken by its parents, but on the whole the Neverlands have a family resemblance, and if they stood still in a row you could say of them that they have each other’s nose, and so forth. On these magic shores children at play are for ever beaching their coracles [simple boat]. We too have been there; we can still hear the sound of the surf, though we shall land no more.</p>
+
+<p>Of all delectable islands the Neverland is the snuggest and most compact, not large and sprawly, you know, with tedious distances between one adventure and another, but nicely crammed. When you play at it by day with the chairs and table-cloth, it is not in the least alarming, but in the two minutes before you go to sleep it becomes very real. That is why there are night-lights.</p>
+
+<p>Occasionally in her travels through her children’s minds Mrs. Darling found things she could not understand, and of these quite the most perplexing was the word Peter. She knew of no Peter, and yet he was here and there in John and Michael’s minds, while Wendy’s began to be scrawled all over with him. The name stood out in bolder letters than any of the other words, and as Mrs. Darling gazed she felt that it had an oddly cocky appearance.</p>
+</p>
+	  
+          
+	  
+	  <header class="major">
+	    <h1>Edge Case: Post with multiline excerpt</h1>
+	  </header>
+	  
+	  <p>2009-10-05 00:00:00 +0100</p>
+	  <p><p>Et ex ullamco duis don’t
+combine these words quis laborum sunt sint. Nisi et Lorem reprehenderit cupidatat. Aliqua fugiat aliquip officia culpa elit. Adipisicing do eu duis aute et aute amet anim ut cillum aliqua. Aliqua adipisicing occaecat et ullamco fugiat.</p>
+</p>
+	  
+          
+	</div>
+      </section>
+
+    </div>
+
+    <!-- Contact -->
+<section id="contact">
+	<div class="inner">
+		<section>
+			<form action="https://formspree.io/me@scotthosking.com" method="POST">
+				<div class="field half first">
+					<label for="name">Name</label>
+					<input type="text" name="name" id="name" />
+				</div>
+				<div class="field half">
+					<label for="email">Email</label>
+					<input type="text" name="_replyto" id="email" />
+				</div>
+				<div class="field">
+					<label for="message">Message</label>
+					<textarea name="message" id="message" rows="6"></textarea>
+				</div>
+				<ul class="actions">
+					<li><input type="submit" value="Send Message" class="special" /></li>
+					<li><input type="reset" value="Clear" /></li>
+				</ul>
+			</form>
+		</section>
+		<section class="split">
+			<section>
+				<div class="contact-method">
+					<span class="icon alt fa-envelope"></span>
+					<h3>Email</h3>
+					<a href="mailto:me@scotthosking.com">me@scotthosking.com</a>
+				</div>
+			</section>
+			<section>
+				<div class="contact-method">
+					<span class="icon alt fa-phone"></span>
+					<h3>Phone</h3>
+					<a href="tel:(716) 555-5555">(716) 555-5555</a>
+				</div>
+			</section>
+			<section>
+				<div class="contact-method">
+					<span class="icon alt fa-home"></span>
+					<h3>Address</h3>
+					<span>
+					
+					    1234 Somewhere Road<br />
+					
+					
+					    Cambridge,
+					
+					
+					    Cambridgeshire 
+					
+					
+					    CB3 0BN<br />
+					
+					
+					    UK
+					
+					</span>
+				</div>
+			</section>
+		</section>
+	</div>
+</section>
+
+<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<ul class="icons">
+				
+					
+						<li>
+							<a href="https://github.com/scotthosking" class="icon alt fa-github" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+								<span class="label">GitHub</span>
+							</a>
+						</li>
+					
+				
+					
+						<li>
+							<a href="https://www.linkedin.com/in/scotthosking" class="icon alt fa-linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+								<span class="label">LinkedIn</span>
+							</a>
+						</li>
+					
+				
+					
+						<li>
+							<a href="https://twitter.com/scotthosking" class="icon alt fa-twitter" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+								<span class="label">Twitter</span>
+							</a>
+						</li>
+					
+				
+			</ul>
+			<ul class="copyright">
+				<li>&copy; Scott Hosking AI<>Earth</li>
+				<li>Design: <a href="https://html5up.net" target="_blank">HTML5 UP</a></li>
+				<li>Jekyll integration: <a href="http://andrewbanchi.ch" target="_blank">Andrew Banchich</a></li>
+
+			</ul>
+		</div>
+	</footer>
+
+</div>
+
+<!-- Scripts -->
+	<script src="http://localhost:4000/test-site/assets/js/jquery.min.js"></script>
+	<script src="http://localhost:4000/test-site/assets/js/jquery.scrolly.min.js"></script>
+	<script src="http://localhost:4000/test-site/assets/js/jquery.scrollex.min.js"></script>
+	<script src="http://localhost:4000/test-site/assets/js/skel.min.js"></script>
+	<script src="http://localhost:4000/test-site/assets/js/util.js"></script>
+	<!--[if lte IE 8]><script src="http://localhost:4000/test-site/assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="http://localhost:4000/test-site/assets/js/main.js"></script>
+
+
+  </body>
+
+</html>
