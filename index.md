@@ -54,6 +54,28 @@ I am also a Co-Director for the Centre for Doctoral Training (CDT) in the [Appli
 * Environmental Data Analysis, University of Cambridge, 2019
 * Earth System Science Spring School, National Centre for Atmospheric Science, UK, 2010-2014
 
+## Funding
+I have secured over £15m in grant funding from public and private sectors as both Principal-Investigator (PI) and Co-Investigator (Co-I). These include:
+
+* [Surface Fluxes in Antarctica (SURFEIT)](https://surfeit.ac.uk/), NERC 2022-2026 (Co-I)
+* [Using artificial intelligence to improve weather forecasts](https://www.deepweather.org.nz/), 2022 Endeavour Smart Ideas, New Zealand, 2022-2024 (Co-I)
+* [DEFIANT: Drivers and Effects of Fluctuations in sea Ice in the ANTarctic](https://defiant.ac.uk/), NERC (NE/W004747/1), 2021-2025 (Co-I)
+* [Scivision: A toolkit for scientific image analysis](https://github.com/alan-turing-institute/scivision), Phase 3, 2022-2026 (PI)
+* Towards an Antarctic Digital Twin for Instantaneous Decision-Making, NERC, 2021-22 (PI)
+* Five projects funded by The Alan Turing Institute, under the Strategic Priorities Fund "[AI for science and government (ASG)](https://www.turing.ac.uk/research/asg)" ([EP/T001569/1](https://gtr.ukri.org/projects?ref=EP%2FT001569%2F1)):
+    * [Environmental monitoring: blending satellite and surface data](https://www.turing.ac.uk/research/research-projects/environmental-monitoring-blending-satellite-and-surface-data), 2021-2023 (PI)
+    * [Scivision: A toolkit for scientific image analysis](https://github.com/alan-turing-institute/scivision), Phase 1 & 2, 2021-2022 (Co-I)
+    * [Understanding Arctic sea ice loss](https://www.turing.ac.uk/research/research-projects/understanding-arctic-sea-ice-loss), 2019-2021 (PI)
+    * [Improving tracking of iceberg populations in the Southern Ocean](https://www.turing.ac.uk/research/research-projects/improving-tracking-iceberg-populations-southern-ocean), 2019-2021 (Co-I)
+    * Detecting changes in Himalayan glaciers and impacts on water security, 2020-2021 (PI)
+* [Supporting Pangeo: the community-driven platform for Big Data geoscience](https://www.turing.ac.uk/research/research-projects/supporting-pangeo-community-driven-platform-big-data-geoscience), Microsoft AI for Earth, 2020-2021 (Co-I)
+* [AI for Earth Observation (AI4EO) Accelerator](https://www.bas.ac.uk/project/ai4eoaccelerator/), European Space Agency (ESA), 2020-2022 (Co-I)
+* [Peruvian Glacier Retreat and its Impact on Water Security](https://gtr.ukri.org/projects?ref=NE%2FS013296%2F1) (Peru GROWS), NERC (NE/S013296/1) - Newton-Paulet Fund, 2019-2022 (Co-I)
+* [Emergence of Climate Hazards](https://gtr.ukri.org/projects?ref=NE%2FS004726%2F1), NERC (NE/S004726/1), 2019-2022 (Co-I)
+* [Future Water Security for communities reliant on the Upper Indus, Himalayas](https://gtr.ukri.org/projects?ref=NE%2FR000107%2F1), NERC (NE/R000107/1), 2017-2020 (Co-I)
+* [The North Atlantic Climate System Integrated Study (ACSIS)](https://gtr.ukri.org/projects?ref=NE%2FN018028%2F1), NERC (NE/N018028/1), 2016-2021 (Co-I)
+* [Ice shelves in a warming world: Filchner Ice Shelf system, Antarctica (FISS)](https://gtr.ukri.org/projects?ref=NE%2FL013770%2F1), NERC (NE/L013770/1), 2015-2020 (Co-I)
+
 ## News
 
 **2022/10** - Co-Chair of the [12th International Conference on Climate Informatics](https://cambridge-iccs.github.io/climate-informatics-2023/), University of Cambridge, UK

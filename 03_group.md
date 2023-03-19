@@ -2,8 +2,8 @@
 layout: page
 title: Group
 permalink: /group
-description: 'Scientists, Engineers, Community Leaders'
-image: assets/images/wwf_spatial_finance.jpg
+description: 'Scientists, Engineers, Research Community Leaders'
+image: assets/images/wind_turbines.jpg
 nav-menu: true
 ---
 
