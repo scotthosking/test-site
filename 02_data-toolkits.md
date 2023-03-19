@@ -1,7 +1,8 @@
 ---
-layout: post
-title: Generic
-description: Lorem ipsum dolor est
+layout: page
+title: Data and Tools
+permalink: /data-toolkits-notebooks
+description: Environmental Datasets, Toolkits and Notebooks
 image: assets/images/iceberg_tracking.jpg
 nav-menu: true
 ---
