@@ -41,8 +41,8 @@ nav-menu: true
 		</div>
 	</section>
 	<section>
-		<a href="generic.html" class="image">
-			<img src="{% link /test-site/assets/images/envsensors_main.jpg %}" alt="" data-position="top center" />
+		<a href="https://www.turing.ac.uk/research/research-projects/environmental-monitoring-blending-satellite-and-surface-data" class="image">
+			<img src="{% link assets/images/envsensors_main.jpg %}" alt="" data-position="top center" />
 		</a>
 		<div class="content">
 			<div class="inner">
@@ -51,7 +51,7 @@ nav-menu: true
 				</header>
 				<p>This project aims to lay the foundations for ambitious research programmes to tackle our greatest environmental changes. We will develop and deploy reproducible and interpretable methods to increase scientific understanding, build tools to help environmental measurement planning, and provide the underpinning tools for intelligent real-time monitoring. The project aims to strengthen collaborations across the environmental and machine learning/AI communities by enhancing open-source and user-friendly computing platform.</p>
 				<ul class="actions">
-					<li><a href="generic.html" class="button">Learn more</a></li>
+					<li><a href="https://www.turing.ac.uk/research/research-projects/environmental-monitoring-blending-satellite-and-surface-data" class="button">Learn more</a></li>
 				</ul>
 			</div>
 		</div>
