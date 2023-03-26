@@ -42,7 +42,7 @@ nav-menu: true
 	</section>
 	<section>
 		<a href="generic.html" class="image">
-			<img src="{% link assets/images/envsensors_main.jpg %}" alt="" data-position="top center" />
+			<img src="{% link /test-site/assets/images/envsensors_main.jpg %}" alt="" data-position="top center" />
 		</a>
 		<div class="content">
 			<div class="inner">
