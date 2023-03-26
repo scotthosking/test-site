@@ -15,16 +15,16 @@ Our projects include the [intelligent fusion of data from satellite and in-situ 
 I am also a Co-Director for the Centre for Doctoral Training (CDT) in the [Application of AI to the study of Environmental Risks](https://ai4er-cdt.esc.cam.ac.uk/) (AI4ER), a £6m UKRI funded programme to train over 50 top students to become future global leaders in environmental science. 
 
 ## Career History
-* Environmental Scientist, [British Antarctic Survey](http://www.bas.ac.uk)
+* [British Antarctic Survey](http://www.bas.ac.uk)
     * Founder and Leader of the [BAS AI Lab](http://www.bas.ac.uk/ai), 2018-present
     * Environmental Data Scientist, 2016-
     * Global Climate Modeller, 2009-2016
-* Senior Research Fellow, [The Alan Turing Institute](https://www.turing.ac.uk/), 2020-
-    * Environmental Science Lead, [Data Science for Science](https://www.turing.ac.uk/research/research-programmes/data-science-science) programme
+* [The Alan Turing Institute](https://www.turing.ac.uk/)
+    * Senior Research Fellow, Group Leader for Environmental Science, [Data Science for Science](https://www.turing.ac.uk/research/research-programmes/data-science-science) programme, 2020-
 * Co-Director, UKRI Centre for Doctoral Training (CDT) in [AI for Environmental Risks (AI4ER)](https://ai4er-cdt.esc.cam.ac.uk/), co-led by University of Cambridge and BAS, 2019-2027
 * PhD, Climate Science, University of Cambridge, 2005-2009
     * Supervisors: Prof. John Pyle FRS, Prof. Peter Haynes
-    * NERC [e-Science](https://en.wikipedia.org/wiki/E-Science) funded PhD student
+    * NERC [e-Science](https://en.wikipedia.org/wiki/E-Science) (Computationally Intensive) funded PhD student
 
 ## Awards and Prizes
 * [The Laws Prize](https://basclub.org/about/the-laws-prize/), British Antarctic Survey Club, 2017

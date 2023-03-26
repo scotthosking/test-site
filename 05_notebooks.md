@@ -1,8 +1,8 @@
 ---
 layout: page
-title: Notebooks
+title: Python Notebooks
 permalink: /notebooks
-description: 'Open source notebooks for data science'
+description: 'Open-source python notebooks for data science'
 image: assets/images/wind_turbines.jpg
 nav-menu: true
 ---

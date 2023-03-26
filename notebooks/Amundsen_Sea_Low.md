@@ -78,7 +78,7 @@ da_mask.isel(time=0).plot.pcolormesh( 'longitude', 'latitude', cmap='Reds',
 
 
 
-![png](/images/notebooks/Amundsen_Sea_Low/output_8_1.png)
+![png](/notebooks/images/Amundsen_Sea_Low/output_8_1.png)
 
 
 ## Definitions to identify areas of low pressure
@@ -329,10 +329,7 @@ for i in range(0,9):
 print('')
 ```
 
-    
 
-
-
-![png](/images/notebooks/Amundsen_Sea_Low/output_19_1.png)
+![png](/notebooks/images/Amundsen_Sea_Low/output_19_1.png)
 
 
