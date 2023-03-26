@@ -26,6 +26,7 @@ I lead a team across two research institutes, the [AI Lab](https://www.bas.ac.uk
 * Jonathan Smith, BAS (Net Zero Operations)
 * Michael Thorne, BAS (Net Zero Operations)
 * Louisa van Zeeland, Turing (Earth Observation, Sea Ice)
+* Peter Yatsyshin, Turing (Deep Generative Modelling, Digital Twins)
 * Donya Yazdani, BAS (Net Zero Operations)
 
 _there are many other members working in this area as part of the [BAS AI Lab](https://www.bas.ac.uk/team/science-teams/ai-lab/#people) and the Turing's [Data Science for Science Programme](https://www.turing.ac.uk/research/research-programmes/data-science-science)_

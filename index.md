@@ -21,10 +21,11 @@ I am also a Co-Director for the Centre for Doctoral Training (CDT) in the [Appli
     * Global Climate Modeller, 2009-2016
 * [The Alan Turing Institute](https://www.turing.ac.uk/)
     * Senior Research Fellow, Group Leader for Environmental Science, [Data Science for Science](https://www.turing.ac.uk/research/research-programmes/data-science-science) programme, 2020-
-* Co-Director, UKRI Centre for Doctoral Training (CDT) in [AI for Environmental Risks (AI4ER)](https://ai4er-cdt.esc.cam.ac.uk/), co-led by University of Cambridge and BAS, 2019-2027
-* PhD, Climate Science, University of Cambridge, 2005-2009
-    * Supervisors: Prof. John Pyle FRS, Prof. Peter Haynes
-    * NERC [e-Science](https://en.wikipedia.org/wiki/E-Science) (Computationally Intensive) funded PhD student
+* [University of Cambridge](https://www.cam.ac.uk/)
+    * Co-Director, UKRI Centre for Doctoral Training (CDT) in [AI for Environmental Risks (AI4ER)](https://ai4er-cdt.esc.cam.ac.uk/), co-led by University of Cambridge and BAS, 2019-2027
+    * PhD Student, Climate Science, University of Cambridge, 2005-2009
+        * Supervisors: Prof. John Pyle FRS, Prof. Peter Haynes
+        * Funded under NERC [e-Science](https://en.wikipedia.org/wiki/E-Science) (Computationally Intensive Science) scheme
 
 ## Awards and Prizes
 * [The Laws Prize](https://basclub.org/about/the-laws-prize/), British Antarctic Survey Club, 2017
