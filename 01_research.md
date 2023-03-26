@@ -42,7 +42,7 @@ nav-menu: true
 	</section>
 	<section>
 		<a href="https://www.turing.ac.uk/research/research-projects/environmental-monitoring-blending-satellite-and-surface-data" class="image">
-			<img src="assets/images/envsensors_main.jpg" alt="" data-position="top center" />
+			<img src="{% link assets/images/envsensors_main.jpg %}" alt="" data-position="top center" />
 		</a>
 		<div class="content">
 			<div class="inner">
