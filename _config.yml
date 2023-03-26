@@ -2,7 +2,7 @@
 title: Scott Hosking
 subtitle: AI<>Earth
 email: me@scotthosking.com
-description: I am research scientist bringing AI to<br /> address environment and sustainability challenges
+description: AI and Digital Twins to address the climate and biodiversity crisis
 baseurl: "/test-site" # the subpath of your site, e.g. /blog
 url: # the base hostname & protocol for your site
 author:
@@ -15,7 +15,7 @@ phone: (716) 555-5555
 
 # homepage tiles
 tiles-source: pages # accepts "posts" or "pages"
-tiles-count: 6
+tiles-count: 4
 
 # social settings (key must match name of font awesome icon)
 # see https://fontawesome.com/icons?d=gallery&p=2&s=brands
@@ -25,6 +25,7 @@ socials:
   GitHub: https://github.com/scotthosking
   LinkedIn: https://www.linkedin.com/in/scotthosking
   Twitter: https://twitter.com/scotthosking
+  Envelope: mailto:me@scotthosking.com
 
 # build settings
 markdown: kramdown

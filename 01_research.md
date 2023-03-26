@@ -42,14 +42,14 @@ nav-menu: true
 	</section>
 	<section>
 		<a href="generic.html" class="image">
-			<img src="{% link assets/images/pic10.jpg %}" alt="" data-position="top center" />
+			<img src="{% link assets/images/envsensors_main.jpg %}" alt="" data-position="top center" />
 		</a>
 		<div class="content">
 			<div class="inner">
 				<header class="major">
-					<h3>Rhoncus magna</h3>]]]
+					<h3>Environmental monitoring: blending satellite and surface data</h3>
 				</header>
-				<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
+				<p>This project aims to lay the foundations for ambitious research programmes to tackle our greatest environmental changes. We will develop and deploy reproducible and interpretable methods to increase scientific understanding, build tools to help environmental measurement planning, and provide the underpinning tools for intelligent real-time monitoring. The project aims to strengthen collaborations across the environmental and machine learning/AI communities by enhancing open-source and user-friendly computing platform.</p>
 				<ul class="actions">
 					<li><a href="generic.html" class="button">Learn more</a></li>
 				</ul>
@@ -57,17 +57,17 @@ nav-menu: true
 		</div>
 	</section>
 	<section>
-		<a href="generic.html" class="image">
-			<img src="{% link assets/images/pic10.jpg %}" alt="" data-position="25% 25%" />
+		<a href="https://www.turing.ac.uk/research/research-projects/improving-tracking-iceberg-populations-southern-ocean" class="image">
+			<img src="{% link assets/images/iceberg_tracking.jpg %}" alt="" data-position="25% 25%" />
 		</a>
 		<div class="content">
 			<div class="inner">
 				<header class="major">
-					<h3>Sed nunc ligula</h3>
+					<h3>Improving tracking of iceberg populations in the Southern Ocean</h3>
 				</header>
-				<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
+				<p>There are established methods for identification of icebergs in radar satellite imagery mainly based on CFAR (Constant False Alarm Rate) detection methods. However there are a number of limitations to these approaches, e.g. they work well in open ocean, but are less effective for icebergs within the sea ice pack or tabular icebergs in close proximity. New approaches will aim to identify icebergs in both the open ocean and in sea ice. Further improvements will consider information about iceberg size and shape, and tracking icebergs trajectories.</p>
 				<ul class="actions">
-					<li><a href="generic.html" class="button">Learn more</a></li>
+					<li><a href="https://www.turing.ac.uk/research/research-projects/improving-tracking-iceberg-populations-southern-ocean" class="button">Learn more</a></li>
 				</ul>
 			</div>
 		</div>
@@ -78,11 +78,11 @@ nav-menu: true
 <section id="three">
 	<div class="inner">
 		<header class="major">
-			<h2>Massa libero</h2>
+			<h2>Tools for Digital Twinning</h2>
 		</header>
-		<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</p>
+		<p>BAS scientists and engineers are developing open-source tools for digital twinning of the natural environments, as well as the BAS research ship and automated underwater vehicles for operational planning. By collaborating with a wide range of international research institutes and businesses our aim is to support international efforts to develop a Digital Twin Earth.</p>
 		<ul class="actions">
-			<li><a href="generic.html" class="button next">Get Started</a></li>
+			<li><a href="data-toolkits-notebooks" class="button next">Get Started</a></li>
 		</ul>
 	</div>
 </section>

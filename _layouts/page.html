@@ -11,7 +11,19 @@
 <body>
     <script type="text/javascript">document.body.classList.add("is-loading");</script>
 
-    {% include header.html %} {{ content }} {% include footer.html %}
+    {% include header.html %} 
+	
+	<section id="main">
+		<div class="inner">
+			<p>{{ content }}</p>
+			<ul class="actions">
+				<li><a href="research" class="button">Research</a></li>
+				<li><a href="data-toolkits-notebooks" class="button">Data and Tools</a></li>
+			</ul>
+		</div>
+	</section>
+	
+	{% include footer.html %}
 
 </body>
 
