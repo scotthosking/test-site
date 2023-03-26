@@ -49,5 +49,5 @@ plt.show()
 
 
 
-![png](/images/notebooks/smooth_timeseries/output_2_1.png)
+![png](/notebooks/images/smooth_timeseries/output_2_1.png)
 

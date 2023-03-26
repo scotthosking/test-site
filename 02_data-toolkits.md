@@ -1,8 +1,8 @@
 ---
 layout: landing
-title: Data and Tools
+title: Tools and Datasets
 permalink: /data-toolkits-notebooks
-description: Environmental Datasets, Toolkits and Notebooks
+description: Toolkits, Datasets and Notebooks
 image: assets/images/iceberg_tracking.jpg
 nav-menu: true
 ---
@@ -77,7 +77,7 @@ nav-menu: true
 </section>
 
 <!-- Three -->
-<section id="three">
+<!-- <section id="three">
 	<div class="inner">
 		<header class="major">
 			<h2>Digital Infrastructure for Environmental Research</h2>
@@ -87,6 +87,6 @@ nav-menu: true
 			<li><a href="https://www.bas.ac.uk/project/digital-twins-of-the-polar-regions/" class="button next">See Project Page</a></li>
 		</ul>
 	</div>
-</section>
+</section> -->
 
 </div>

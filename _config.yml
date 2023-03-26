@@ -6,12 +6,12 @@ description: Research and engineering lead for developing AI and Digital Twins t
 baseurl: # the subpath of your site, e.g. /blog
 url: # the base hostname & protocol for your site
 author:
-street_address: 1234 Somewhere Road
+street_address:
 city: Cambridge
-state: Cambridgeshire
-zip_code: CB3 0BN
+state:
+zip_code:
 country: UK
-phone: (716) 555-5555
+phone:
 
 # homepage tiles
 tiles-source: pages # accepts "posts" or "pages"
