@@ -7,11 +7,10 @@ image: assets/images/wind_turbines.jpg
 nav-menu: true
 ---
 
-<h1>Group</h1>
+<h1>Team</h1>
 
-I lead a team across two research institutes, the [AI Lab](https://www.bas.ac.uk/ai) at the British Antarctic Survey and a group under the [Environment and Sustainability](https://www.turing.ac.uk/research/research-projects/environment-and-sustainability) theme at The Alan Turing Institute. My team has interests in the application of machine learning for environmental science, and the development of digital twins of the natural environment.
+I lead a team across two research institutes, the [AI Lab](https://www.bas.ac.uk/ai) at the British Antarctic Survey and a group under the [Environment and Sustainability](https://www.turing.ac.uk/research/research-projects/environment-and-sustainability) theme at The Alan Turing Institute. We focus on the application of AI for environmental science, decarbonising polar operations, and the development of digital twins of the natural environment.
 
-## Staff
 * Harrison Abbot, BAS (Net Zero Operations)
 * Tom Andersson, BAS (Environmental Prediction)
 * Ellie Bowler, BAS (Earth Observation, Wildlife)

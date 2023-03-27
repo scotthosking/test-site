@@ -88,7 +88,7 @@ t2.plot()
 
 
 
-![png](/images/notebooks/wrf_with_xarray/output_4_1.png)
+![png](/notebooks/images/wrf_with_xarray/output_4_1.png)
 
 
 ### Contour Plots
@@ -138,7 +138,7 @@ print('')
 
 
 
-![png](/images/notebooks/wrf_with_xarray/output_6_1.png)
+![png](/notebooks/images/wrf_with_xarray/output_6_1.png)
 
 
 ### Wind Vectors Plots 
@@ -243,5 +243,5 @@ qk = plt.quiverkey(Q,
 ```
 
 
-![png](/images/notebooks/wrf_with_xarray/output_9_0.png)
+![png](/notebooks/images/wrf_with_xarray/output_9_0.png)
 

@@ -269,7 +269,7 @@ print('')
 
 
 
-![png](/images/notebooks/racmo_with_xarray/output_15_1.png)
+![png](/notebooks/images/racmo_with_xarray/output_15_1.png)
 
 
 ### Plot deals with spatial dimensions but not time, so add time information to title
@@ -376,7 +376,7 @@ print('')
 
 
 
-![png](/images/notebooks/racmo_with_xarray/output_21_1.png)
+![png](/notebooks/images/racmo_with_xarray/output_21_1.png)
 
 
 ### Make the same plot but using the true lon and lat coordinates projected into the plot's coordinate system
@@ -421,5 +421,5 @@ print('')
 
 
 
-![png](/images/notebooks/racmo_with_xarray/output_23_1.png)
+![png](/notebooks/images/racmo_with_xarray/output_23_1.png)
 
