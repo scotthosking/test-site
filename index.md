@@ -2,7 +2,7 @@
 layout: home
 title: Home
 landing-title: 'Hi, I am Scott'
-description: I lead a team focused on the development of AI and digital twin technologies for the environment
+description: Science team leader focused on the development of AI and digital twin technologies for the environment
 image: null
 author: null
 show_tile: false
@@ -15,21 +15,17 @@ Our projects include the [intelligent fusion of data from satellite and in-situ 
 I am also a Co-Director for the Centre for Doctoral Training (CDT) in the [Application of AI to the study of Environmental Risks](https://ai4er-cdt.esc.cam.ac.uk/) (AI4ER), a £6m UKRI funded programme to train over 50 top students to become future global leaders in environmental science. 
 
 ## Career History
-* [British Antarctic Survey](http://www.bas.ac.uk)
+* [British Antarctic Survey](http://www.bas.ac.uk) (BAS)
     * Founder and Leader of the [BAS AI Lab](http://www.bas.ac.uk/ai), 2018-present
     * Environmental Data Scientist, 2016-
     * Global Climate Modeller, 2009-2016
 * [The Alan Turing Institute](https://www.turing.ac.uk/)
     * Senior Research Fellow, Group Leader for Environmental Science, [Data Science for Science](https://www.turing.ac.uk/research/research-programmes/data-science-science) programme, 2020-
 * [University of Cambridge](https://www.cam.ac.uk/)
-    * Co-Director, UKRI Centre for Doctoral Training (CDT) in [AI for Environmental Risks (AI4ER)](https://ai4er-cdt.esc.cam.ac.uk/), co-led by University of Cambridge and BAS, 2019-2027
+    * Co-Director, Centre for Doctoral Training (CDT) in [AI for Environmental Risks (AI4ER)](https://ai4er-cdt.esc.cam.ac.uk/), co-led by BAS, 2019-2027
     * PhD Student, Climate Science, University of Cambridge, 2005-2009
         * Supervisors: Prof. John Pyle FRS, Prof. Peter Haynes
         * Funded under NERC [e-Science](https://en.wikipedia.org/wiki/E-Science) (Computationally Intensive Science) scheme
-
-## Awards and Prizes
-* [The Laws Prize](https://basclub.org/about/the-laws-prize/), British Antarctic Survey Club, 2017
-    *  _awarded to outstanding young scientists of the British Antarctic Survey in recognition of their achievements, whilst fulfilling the primary purpose of the British Antarctic Survey_
 
 ## Other Roles
 * Athena Swan Committee, BAS, 2022-
@@ -47,6 +43,10 @@ I am also a Co-Director for the Centre for Doctoral Training (CDT) in the [Appli
 * Deputy Chair, [Cambridge Earth System Science DTP](http://essdtp.esc.cam.ac.uk/), University of Cambridge, 2017-18 
 * Secretary, [Global Environmental Research Committee](https://royalsociety.org/topics-policy/energy-environment-climate/global-environmental-research-committee/), The Royal Society, 2016-2017
 * Innovation Champion, BAS, 2014-2016
+
+## Awards and Prizes
+* [The Laws Prize](https://basclub.org/about/the-laws-prize/), British Antarctic Survey Club, 2017
+    *  _awarded to outstanding young scientists of the British Antarctic Survey in recognition of their achievements, whilst fulfilling the primary purpose of the British Antarctic Survey_
 
 ## Teaching
 * Waves and geosciences spring school: Infrasound and beyond, l'Ecole Centrale de Lyon and Sorbonne University, 2022

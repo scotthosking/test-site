@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Group
-permalink: /group
+title: Team
+permalink: /team
 description: 'Scientists, Engineers, Research Community Leaders'
 image: assets/images/wind_turbines.jpg
 nav-menu: true
