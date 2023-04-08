@@ -14,11 +14,9 @@ nav-menu: true
 <section id="one">
 	<div class="inner">
 		<header class="major">
-			<h2>AI, Data Science and Digital Twinning</h2>
+			<h2>Open-source and reusable toolkits, datasets and notebooks</h2>
 		</header>
-		<p>As anthropogenic warming continues to put strain on our natural environments, it now is crucial that decision-makers have ready-access to actionable and timely information on the current states of environmental systems and future projections to help safeguard society and ecosystems around the world. Artificial Intelligence (AI) and Digital Twin technologies are rapidly becoming central to the development of novel digital technologies, leading to step-changes in our capabilities. 
-		<br><br>
-		Digital Twinning is a next generation technology for purely process-based environmental modelling, taking us beyond purely process-based simulation models by enabling us to get answers to “what-if” questions within seconds. Digital Twins are already in operation in industry and involve highly interoperable data pipelines, optimisation, and a mixture of knowledge-informed and data-driven probabilistic machine learning. Digital Twins are increasingly becoming a key component for research discovery, education, and aiding discussions at the board-level without having to wait weeks to months for results from traditional computer models.</p>
+		<p>To democratise AI and digital twinning technology our team are developing open-source toolkits and resuable pipelines to make sure our tools can be adopted by the wider research community and stakeholders.</p>
 	</div>
 </section>
 
