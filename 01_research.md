@@ -80,7 +80,7 @@ nav-menu: true
 		<header class="major">
 			<h2>Tools for Digital Twinning</h2>
 		</header>
-		<p>BAS scientists and engineers are developing open-source tools for digital twinning of the natural environments, as well as the BAS research ship and automated underwater vehicles for operational planning. By collaborating with a wide range of international research institutes and businesses our aim is to support international efforts to develop a Digital Twin Earth.</p>
+		<p>My team are developing open-source tools for digital twinning of the natural environments, as well as the BAS research ship and automated underwater vehicles for operational planning. By collaborating with a wide range of international research institutes and businesses our aim is to support international efforts to develop a Digital Twin Earth.</p>
 		<ul class="actions">
 			<li><a href="data-toolkits-notebooks" class="button next">Get Started</a></li>
 		</ul>
