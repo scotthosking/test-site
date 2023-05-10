@@ -13,6 +13,7 @@ I lead a team across two research institutes, the [AI Lab](https://www.bas.ac.uk
 
 * Harrison Abbot, BAS (Net Zero Operations)
 * Tom Andersson, BAS (Environmental Prediction)
+* Meghna Asthana, Turing (Earth Observation, Computer Vision)
 * Ellie Bowler, BAS (Earth Observation, Wildlife)
 * James Byrne, BAS (Research Software Engineer, Digital Infrastructure)
 * Alejandro Coca Castro, Turing (Environmental Prediction)
