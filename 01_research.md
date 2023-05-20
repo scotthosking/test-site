@@ -73,17 +73,17 @@ nav-menu: true
 		</div>
 	</section>
 	<section>
-		<a href="https://www.turing.ac.uk/research/research-projects/improving-tracking-iceberg-populations-southern-ocean" class="image">
-			<img src="{% link assets/images/iceberg_tracking.jpg %}" alt="" data-position="25% 25%" />
+		<a href="https://www.defiant.ac.uk" class="image">
+			<img src="{% link assets/images/defiant.jpg %}" alt="" data-position="25% 25%" />
 		</a>
 		<div class="content">
 			<div class="inner">
 				<header class="major">
-					<h3>Improving tracking of sea ice floes and icebergs from satellite imagery</h3>
+					<h3>Automated tracking of sea ice and icebergs from satellites</h3>
 				</header>
-				<p>There are established methods for identification of icebergs in radar satellite imagery mainly based on CFAR (Constant False Alarm Rate) detection methods. However there are a number of limitations to these approaches, e.g. they work well in open ocean, but are less effective for icebergs within the sea ice pack or tabular icebergs in close proximity. New approaches will aim to identify icebergs in both the open ocean and in sea ice. Further improvements will consider information about iceberg size and shape, and tracking icebergs trajectories.</p>
+				<p>There are established methods for identification of sea ice floes and icebergs in radar satellite imagery although they struggle when different ice types are within close proximity. We are developing approaches that can combine various satellite products and associated weather information.</p>
 				<ul class="actions">
-					<li><a href="https://www.turing.ac.uk/research/research-projects/improving-tracking-iceberg-populations-southern-ocean" class="button">Learn more</a></li>
+					<li><a href="https://www.defiant.ac.uk" class="button">Learn more</a></li>
 				</ul>
 			</div>
 		</div>
