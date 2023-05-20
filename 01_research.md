@@ -74,7 +74,7 @@ nav-menu: true
 	</section>
 	<section>
 		<a href="https://www.defiant.ac.uk" class="image">
-			<img src="{% link assets/images/defiant.jpg %}" alt="" data-position="25% 25%" />
+			<img src="{% link assets/images/sea_ice_segment.png %}" alt="" data-position="25% 25%" />
 		</a>
 		<div class="content">
 			<div class="inner">
