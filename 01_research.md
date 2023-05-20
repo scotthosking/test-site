@@ -56,6 +56,22 @@ nav-menu: true
 			</div>
 		</div>
 	</section>
+		<section>
+		<a href="https://www.bas.ac.uk/project/ai-for-smart-conservation/" class="image">
+			<img src="{% link assets/images/smart_conservation.jpg %}" alt="" data-position="center center" />
+		</a>
+		<div class="content">
+			<div class="inner">
+				<header class="major">
+					<h3>AI for Smart Conservation</h3>
+				</header>
+				<p>Climate change is an increasingly pervasive threat to global biodiversity. Animal populations in the rapidly changing Arctic are often seen as a litmus test for the response of wildlife to climate change, particularly those whose life histories are inextricably tied to seasonal sea ice, such as polar bears, walrus, and certain caribou populations. As Arctic species navigate their increasingly unpredictable and diminishing sea ice habitat, conservation practitioners must develop adaptive management plans which are effective in these rapidly changing environments.</p>
+				<ul class="actions">
+					<li><a href="https://www.bas.ac.uk/project/ai-for-smart-conservation/" class="button">Learn more</a></li>
+				</ul>
+			</div>
+		</div>
+	</section>
 	<section>
 		<a href="https://www.turing.ac.uk/research/research-projects/improving-tracking-iceberg-populations-southern-ocean" class="image">
 			<img src="{% link assets/images/iceberg_tracking.jpg %}" alt="" data-position="25% 25%" />
