@@ -79,7 +79,7 @@ nav-menu: true
 		<div class="content">
 			<div class="inner">
 				<header class="major">
-					<h3>Improving tracking of iceberg populations in the Southern Ocean</h3>
+					<h3>Improving tracking of sea ice floes and icebergs from satellite imagery</h3>
 				</header>
 				<p>There are established methods for identification of icebergs in radar satellite imagery mainly based on CFAR (Constant False Alarm Rate) detection methods. However there are a number of limitations to these approaches, e.g. they work well in open ocean, but are less effective for icebergs within the sea ice pack or tabular icebergs in close proximity. New approaches will aim to identify icebergs in both the open ocean and in sea ice. Further improvements will consider information about iceberg size and shape, and tracking icebergs trajectories.</p>
 				<ul class="actions">

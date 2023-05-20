@@ -8,7 +8,7 @@ author: null
 show_tile: false
 ---
 
-I lead a team of scientists and engineers across both the [British Antarctic Survey](http://www.bas.ac.uk/ai) and [The Alan Turing Institute](https://www.turing.ac.uk/) who are focused on the development of AI and digital twin technologies for monitoring, understanding, predicting and designing solutions for environmental change. 
+I am a Co-Director for the Turing Research and Innovation Cluster in Digital Twins ([TRIC-DT](https://www.turing.ac.uk/research/harnessing-power-digital-twins/turing-research-and-innovation-cluster-digital-twins)) and lead a team of scientists and engineers across both the [British Antarctic Survey](http://www.bas.ac.uk/ai) and [The Alan Turing Institute](https://www.turing.ac.uk/). Our aim is in the development of AI and digital twin technologies for monitoring, understanding, predicting and designing solutions for environmental change. 
 
 Our projects include the [intelligent fusion of data from satellite and in-situ surface sensors](https://www.turing.ac.uk/research/research-projects/environmental-monitoring-blending-satellite-and-surface-data) to help understand our changing planet; probabilistic machine learning for localised climate impacts; [AI for seasonal sea ice forecasting](/icenet) and improving climate models; and [computer vision toolkits](https://github.com/alan-turing-institute/scivision) for tracking environmental change and wildlife monitoring.
 
@@ -20,7 +20,8 @@ I am also a Co-Director for the Centre for Doctoral Training (CDT) in the [Appli
     * Environmental Data Scientist, 2016-
     * Global Climate Modeller, 2009-2016
 * [The Alan Turing Institute](https://www.turing.ac.uk/)
-    * Senior Research Fellow, Group Leader for Environmental Science, [Data Science for Science](https://www.turing.ac.uk/research/research-programmes/data-science-science) programme, 2020-
+    * Co-Director, Turing Research and Innovation Cluster in Digital Twins ([TRIC-DT](https://www.turing.ac.uk/research/harnessing-power-digital-twins/turing-research-and-innovation-cluster-digital-twins)), 2023-
+    * Senior Research Fellow, Group Leader for Environmental Science, [Data Science for Science](https://www.turing.ac.uk/research/research-programmes/data-science-science) programme, 2020-2023
 * [University of Cambridge](https://www.cam.ac.uk/)
     * Co-Director, Centre for Doctoral Training (CDT) in [AI for Environmental Risks (AI4ER)](https://ai4er-cdt.esc.cam.ac.uk/), co-led by BAS, 2019-2027
     * PhD Student, Climate Science, University of Cambridge, 2005-2009
@@ -79,7 +80,9 @@ I have secured over £15m in grant funding from public and private sectors as bo
 
 ## News
 
-**2022/10** - Co-Chair of the [12th International Conference on Climate Informatics](https://cambridge-iccs.github.io/climate-informatics-2023/), University of Cambridge, UK
+**2023/06** - Co-Director, Turing Research and Innovation Cluster in Digital Twins ([TRIC-DT](https://www.turing.ac.uk/research/harnessing-power-digital-twins/turing-research-and-innovation-cluster-digital-twins)), The Alan Turing Institute, UK
+
+**2023/04** - Co-Chair of the [12th International Conference on Climate Informatics](https://cambridge-iccs.github.io/climate-informatics-2023/), University of Cambridge, UK
 
 **2022/03** - Joined the Digital Research and Infrastructure Group (DRIG), to deliver [NERC’s 10-year Digital Strategy](https://www.ukri.org/publications/natural-environment-research-council-nerc-digital-strategy-2021-2030/)
 
