@@ -31,7 +31,7 @@ nav-menu: true
 		<div class="content">
 			<div class="inner">
 				<header class="major">
-					<h3>Sea Ice Forecasting</h3>
+					<h3>Sea ice forecasting with deep learning</h3>
 				</header>
 				<p>IceNet is a probabilistic, deep learning sea ice forecasting system developed by an international team and led by British Antarctic Survey and The Alan Turing Institute [Andersson et al., 2021]. IceNet has been trained on climate simulations and observational data to forecast the next 6 months of monthly-averaged sea ice concentration maps. IceNet advances the range of accurate sea ice forecasts, outperforming a state-of-the-art dynamical model in seasonal forecasts of summer sea ice, particularly for extreme sea ice events. This step-change in sea ice forecasting ability brings us closer to conservation tools that mitigate risks associated with rapid sea ice loss.</p>
 				<ul class="actions">

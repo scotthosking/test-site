@@ -23,6 +23,22 @@ nav-menu: true
 <!-- Two -->
 <section id="two" class="spotlights">
 	<section>
+		<a href="https://www.turing.ac.uk/tricdigitaltwins" class="image">
+			<img src="{% link assets/images/tric-dt.jpg %}" alt="" data-position="center center" />
+		</a>
+		<div class="content">
+			<div class="inner">
+				<header class="major">
+					<h3>Digital Twinning for decision-making</h3>
+				</header>
+				<p>Kickstated by a £6m investment, we are developing digital twin technologies solving significant societal challenges and generating tangible societal benefits in three interrelated areas: Environment and Sustainability, Infrastructure, and Health.</p>
+				<ul class="actions">
+					<li><a href="https://www.turing.ac.uk/tricdigitaltwins" class="button">Learn more</a></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<section>
 		<a href="https://sci.vision" class="image">
 			<img src="{% link assets/images/scivision_webpage.png %}" alt="" data-position="center center" />
 		</a>
