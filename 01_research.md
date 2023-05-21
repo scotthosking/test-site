@@ -16,7 +16,7 @@ nav-menu: true
 		<header class="major">
 			<h2>AI, Data Science and Digital Twinning</h2>
 		</header>
-		<p>As anthropogenic warming continues to put strain on our natural environments, it now is crucial that decision-makers have ready-access to actionable and timely information on the current states of environmental systems and future projections to help safeguard society and ecosystems around the world. Artificial Intelligence (AI) and Digital Twin technologies are rapidly becoming a central component to environmental research.
+		<p>As anthropogenic warming continues to put strain on our natural environments, it now is crucial that decision-makers have ready-access to actionable and timely information on the current states of environmental systems and future projections to help safeguard society and ecosystems around the world. Artificial Intelligence (AI) and Digital Twin technologies are rapidly becoming a central component to environmental research.</p>
 	</div>
 </section>
 
