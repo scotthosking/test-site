@@ -2,7 +2,7 @@
 title: Science
 layout: landing
 permalink: /research
-description: 'AI and Data Science for the natural environment'
+description: 'Understanding and predicting environmental change'
 image: assets/images/envsensors_main.jpg
 nav-menu: true
 ---

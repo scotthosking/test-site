@@ -1,6 +1,6 @@
 ---
 layout: landing
-title: Digital Solutions and Datasets
+title: Digital Solutions
 permalink: /data-toolkits-notebooks
 description: Open-source reusable toolkits, datasets and notebooks
 image: assets/images/iceberg_tracking.jpg
@@ -16,7 +16,8 @@ nav-menu: true
 		<header class="major">
 			<h2>Open-source and reusable toolkits, datasets and notebooks</h2>
 		</header>
-		<p>To democratise AI and digital twinning technology our team are developing open-source toolkits and resuable pipelines to make sure our tools can be adopted by the wider research community and stakeholders. Digital Twinning is a next generation technology for environmental modelling, taking us beyond traditional climate simulation models by enabling us to get answers to “what-if” questions within seconds. Digital Twins are already in operation in industry and involve highly interoperable data pipelines, optimisation, and a mixture of knowledge-informed and data-driven probabilistic machine learning. Digital Twins are increasingly becoming a key component for research discovery, and aiding discussions at the board-level without having to wait weeks to months for results from traditional computer models.</p></p>
+		<p>To democratise AI and digital twinning technology our team are developing open-source toolkits and resuable pipelines to make sure our tools can be adopted by the wider research community and stakeholders.<br><br>
+		Digital Twinning is a next generation technology for environmental modelling, taking us beyond traditional climate simulation models by enabling us to get answers to “what-if” questions within seconds. Digital Twins are already in operation in industry and involve highly interoperable data pipelines, optimisation, and a mixture of knowledge-informed and data-driven probabilistic machine learning. Digital Twins are increasingly becoming a key component for research discovery, and aiding discussions at the board-level without having to wait weeks to months for results from traditional computer models.</p>
 	</div>
 </section>
 
