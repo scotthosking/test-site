@@ -67,7 +67,7 @@ nav-menu: true
 				</header>
 				<p>Scivision is both a webapp and a Python package for discovering, and using pre-trained computer vision models and image datasets from science and the humanities. These models and datasets are available in a catalog, which researchers working in diverse fields have contributed to.</p>
 				<ul class="actions">
-					<li><a href="https://sci.vision" class="button">Learn more</a></li>
+					<li><a href="https://sci.vision" class="button">https://sci.vision</a></li>
 				</ul>
 			</div>
 		</div>
@@ -83,7 +83,7 @@ nav-menu: true
 				</header>
 				<p>An open and community-driven online resource to showcase and support the publication of data, research and open-source tools for collaborative, reproducible and transparent Environmental Data Science.</p>
 				<ul class="actions">
-					<li><a href="https://edsbook.org/" class="button">Learn more</a></li>
+					<li><a href="https://edsbook.org/" class="button">https://edsbook.org</a></li>
 				</ul>
 			</div>
 		</div>
