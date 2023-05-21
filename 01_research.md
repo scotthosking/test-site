@@ -94,7 +94,7 @@ nav-menu: true
 		<header class="major">
 			<h2>Digital Solutions</h2>
 		</header>
-		<p>My team are developing open-source digital tools and for digital twinning technologies for the natural environments, as well automated operational planning for the Royal Research Ship Sir David Attenborough, one of the most advanced polar research vessels in the world. By collaborating with a wide range of international research institutes and businesses our aim is to integrate AI, models and observatios to support international efforts to develop a Digital Twin Earth.</p>
+		<p>My team are developing open-source digital tools, AI and digital twinning technologies for environment and sustainability. Our projects include autonomous marine operations planning for the Royal Research Ship Sir David Attenborough, one of the most advanced polar research vessels in the world. By collaborating with a wide range of international research institutes and businesses our aim is to integrate AI, models, earth observation and in-situ sensors to support international efforts to develop a Digital Twin Earth.</p>
 		<ul class="actions">
 			<li><a href="digital_solutions" class="button next">Find out more</a></li>
 		</ul>
