@@ -1,7 +1,7 @@
 ---
 layout: landing
 title: Digital Solutions
-permalink: /data-toolkits-notebooks
+permalink: /digital_solutions
 description: Open-source reusable toolkits, datasets and notebooks
 image: assets/images/iceberg_tracking.jpg
 nav-menu: true
@@ -36,6 +36,22 @@ nav-menu: true
 				<ul class="actions">
 					<li><a href="https://www.turing.ac.uk/tricdigitaltwins" class="button">turing.ac.uk</a></li>
 					<li><a href="https://www.bas.ac.uk/project/digital-twins-of-the-polar-regions/" class="button">bas.ac.uk</a></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<section>
+		<a href="https://www.bas.ac.uk/project/autonomous-marine-operations-planning/" class="image">
+			<img src="{% link assets/images/AMOP.jpg %}" alt="" data-position="center center" />
+		</a>
+		<div class="content">
+			<div class="inner">
+				<header class="major">
+					<h3>Autonomous Marine Operations Planning</h3>
+				</header>
+				<p>The project Autonomous Marine Operations Planning is investigating and developing Artificial Intelligence and Machine Learning toolkits to provide decision support for marine operations planning, to minimise the fuel usage across marine vehicles in multiple-year science cruise planning..</p>
+				<ul class="actions">
+					<li><a href="https://www.bas.ac.uk/project/autonomous-marine-operations-planning/" class="button">Learn more</a></li>
 				</ul>
 			</div>
 		</div>
