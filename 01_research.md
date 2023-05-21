@@ -92,11 +92,11 @@ nav-menu: true
 <section id="three">
 	<div class="inner">
 		<header class="major">
-			<h2>Tools for Digital Twinning</h2>
+			<h2>Digital Solutions</h2>
 		</header>
-		<p>My team are developing open-source tools for digital twinning of the natural environments, as well as the BAS research ship and automated underwater vehicles for operational planning. By collaborating with a wide range of international research institutes and businesses our aim is to support international efforts to develop a Digital Twin Earth.</p>
+		<p>My team are developing open-source digital tools and for digital twinning technologies for the natural environments, as well automated operational planning for the Royal Research Ship Sir David Attenborough, one of the most advanced polar research vessels in the world. By collaborating with a wide range of international research institutes and businesses our aim is to integrate AI, models and observatios to support international efforts to develop a Digital Twin Earth.</p>
 		<ul class="actions">
-			<li><a href="data-toolkits-notebooks" class="button next">Find out more</a></li>
+			<li><a href="digital_solutions" class="button next">Find out more</a></li>
 		</ul>
 	</div>
 </section>
