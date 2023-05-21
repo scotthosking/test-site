@@ -31,7 +31,7 @@ I am also a Co-Director for the Centre for Doctoral Training (CDT) in the [Appli
         * Funded under NERC [e-Science](https://en.wikipedia.org/wiki/E-Science) (Computationally Intensive Science) scheme
 
 * [Bangor Univeristy](https://www.bangor.ac.uk/), Wales, UK
-    * Degree in Chemistry, integrated Masters MChem (Hons))
+    * Degree in Chemistry, integrated Masters MChem (Hons)
     * Dissertation in computational modelling and quantum physics
 
 
