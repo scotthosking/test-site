@@ -1,6 +1,6 @@
 ---
 layout: landing
-title: Tools and Datasets
+title: Digital Solitions and Datasets
 permalink: /data-toolkits-notebooks
 description: Open-source reusable toolkits, datasets and notebooks
 image: assets/images/iceberg_tracking.jpg
