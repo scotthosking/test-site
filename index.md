@@ -53,8 +53,8 @@ I am also a Co-Director for the Centre for Doctoral Training (CDT) in the [Appli
 * Innovation Champion, BAS, 2014-2016
 
 ## Recognition, Awards and Prizes
-* NERC featured of our research as the primary example in AI in their [Digital Strategy (2021 to 2030)](https://www.ukri.org/publications/natural-environment-research-council-nerc-digital-strategy-2021-2030/)  
-* The journal Nature Communications highlighted our research as being [one of 25 most downloaded Nature Communications articles across Earth, environmental, and planetary sciences published in 2021](https://www.nature.com/collections/afchdbedbe)
+* Our research featured as the primary AI example in the [NERC Digital Strategy (2021 to 2030)](https://www.ukri.org/publications/natural-environment-research-council-nerc-digital-strategy-2021-2030/)  
+* The journal Nature Communications highlighted our research in the [25 most downloaded Nature Communications articles across Earth, environmental, and planetary sciences published in 2021](https://www.nature.com/collections/afchdbedbe)
 * Awarded [The Laws Prize](https://basclub.org/about/the-laws-prize/) by the British Antarctic Survey Club in 2017. The prize is _awarded to outstanding young scientists of the British Antarctic Survey in recognition of their achievements, whilst fulfilling the primary purpose of the British Antarctic Survey_
 
 ## Teaching
