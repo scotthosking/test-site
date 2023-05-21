@@ -88,7 +88,7 @@ nav-menu: true
 			</div>
 		</div>
 	</section>
-	<section>
+	<!-- <section>
 		<a href="asl_index" class="image">
 			<img src="{% link assets/images/asl_index-crop3.png %}" alt="" data-position="25% 25%" />
 		</a>
@@ -105,14 +105,14 @@ nav-menu: true
 				</ul>
 			</div>
 		</div>
-	</section>
+	</section> -->
 </section>
 
 <!-- Three -->
 <!-- <section id="three">
 	<div class="inner">
 		<header class="major">
-			<h2>Digital Infrastructure for Environmental Research</h2>
+			<h2>Digital Infrastructure for Environmental Data Science</h2>
 		</header>
 		<p>BAS scientists and engineers are developing Digital Twins of the Antarctic and Arctic natural environments, polar research bases, our research ship and automated vehicles, and operational planning. By collaborating with a wide range of international research institutes and businesses our aim is to support international efforts to develop a Digital Twin Earth.</p>
 		<ul class="actions">
