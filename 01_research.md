@@ -63,7 +63,7 @@ nav-menu: true
 				<header class="major">
 					<h3>AI for Smart Conservation</h3>
 				</header>
-				<p>Climate change is an increasingly pervasive threat to global biodiversity. Animal populations in the rapidly changing Arctic are often seen as a litmus test for the response of wildlife to climate change, particularly those whose life histories are inextricably tied to seasonal sea ice, such as polar bears, walrus, and certain caribou populations. As Arctic species navigate their increasingly unpredictable and diminishing sea ice habitat, conservation practitioners must develop adaptive management plans which are effective in these rapidly changing environments.</p>
+				<p>In the AI for smart conservation project we are collaborating with the Government of Nunavut and WWF to develop practical tools for conservation decision making. By combining satellite observations, GPS tracking and AI-forecasting with local expert knowledge, we develop AI-informed systems which can give early warning and alerts for important environmental tipping points. This information can empower regional experts to design adaptive management plans, ultimately limiting species loss for vulnerable polar wildlife.</p>
 				<ul class="actions">
 					<li><a href="https://www.bas.ac.uk/project/ai-for-smart-conservation/" class="button">Learn more</a></li>
 				</ul>
