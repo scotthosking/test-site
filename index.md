@@ -36,7 +36,7 @@ I am also a Co-Director for the Centre for Doctoral Training (CDT) in the [Appli
 
 
 ## Other Roles
-* Delivery Board Member, [Future Marine Research Infrastructure (FMRI)](https://fmri.ac.uk), a programme aimed to deliver new technologies to create a sustainable and inclusive research environment that enables new and different science, 2023- 
+* Delivery Board member, [Future Marine Research Infrastructure (FMRI)](https://fmri.ac.uk), NERC, 2023- 
 * Member, Digital Research and Infrastructure Group (DRIG), NERC, 2022-
 * Senior Expert, [Constructing a Digital Environment Strategic Priorities Fund programme](https://digitalenvironment.org/), Natural Environment Research Council (NERC), 2021-
 * Committee Member, [Environment and Sustainability Interest Group](https://www.turing.ac.uk/research/interest-groups/environment-and-sustainability), The Alan Turing Institute, 2020-
