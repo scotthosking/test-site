@@ -36,14 +36,13 @@ I am also a Co-Director for the Centre for Doctoral Training (CDT) in the [Appli
 
 
 ## Other Roles
-* Athena Swan Committee, BAS, 2022-
+* Delivery Board Member, [Future Marine Research Infrastructure (FMRI)](https://fmri.ac.uk), a programme aimed to deliver new technologies to create a sustainable and inclusive research environment that enables new and different science, 2023- 
 * Member, Digital Research and Infrastructure Group (DRIG), NERC, 2022-
 * Senior Expert, [Constructing a Digital Environment Strategic Priorities Fund programme](https://digitalenvironment.org/), Natural Environment Research Council (NERC), 2021-
 * Committee Member, [Environment and Sustainability Interest Group](https://www.turing.ac.uk/research/interest-groups/environment-and-sustainability), The Alan Turing Institute, 2020-
 * Committee Member, [The Alan Turing Institute-UK Met Office Operational Alliance](https://www.metoffice.gov.uk/about-us/press-office/news/corporate/2020/alan-turing-institute), 2020-
 * Chair, [AI4ER](https://ai4er-cdt.esc.cam.ac.uk/) Research Committee, University of Cambridge, 2019-2020
 * Board member, [Cambridge Centre for Climate Science](https://www.climatescience.cam.ac.uk/), University of Cambridge, 2011-
-* Committee Member, [Net Zero Oceanographic Capability (NZOC)](https://projects.noc.ac.uk/nzoc/), a £250k scoping project funded by NERC to inform planning for the future low carbon oceanographic research capability in line with UKRI’s objectives of becoming a net zero organisation, 2020 
 * Member, [Centre for Science and Policy](http://www.csap.cam.ac.uk/about-csap/people/our-network/), University of Cambridge, 2015-
 * Committee Member, [International Commission on Polar Meteorology](http://www.icpm-iamas.aq/), 2015-2023
 * Committee Member, NERC-STFC [JASMIN](http://www.jasmin.ac.uk/) committee to develop capacity for AI computing, 2020-
@@ -91,6 +90,8 @@ I have secured over £15m in grant funding from public and private sectors as bo
 **2023/06** - Secured the role of Co-Director, Turing Research and Innovation Cluster in Digital Twins ([TRIC-DT](https://www.turing.ac.uk/tricdigitaltwins)), The Alan Turing Institute, UK
 
 **2023/04** - Invited to Co-Chair the [12th International Conference on Climate Informatics](https://cambridge-iccs.github.io/climate-informatics-2023/), University of Cambridge, UK
+
+**2023/04** - Joined the Delivery Board for the [Future Marine Research Infrastructure (FMRI)](https://fmri.ac.uk), NERC, UK
 
 **2022/03** - Invited to join the Digital Research and Infrastructure Group (DRIG) to deliver [NERC’s 10-year Digital Strategy](https://www.ukri.org/publications/natural-environment-research-council-nerc-digital-strategy-2021-2030/)
 
