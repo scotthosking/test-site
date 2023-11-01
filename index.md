@@ -88,6 +88,8 @@ I have secured over £15m in grant funding from public and private sectors as bo
 
 ## News
 
+**2023/10** - Science Lead (Turing), AI for Numerical Weather Prediction project ([AI4NWP](https://www.turing.ac.uk/research/research-projects/ai-numerical-weather-prediction-nwp-ai4nwp)), The Alan Turing Institute and Met Office, UK
+
 **2023/06** - Secured the role of Co-Director, Turing Research and Innovation Cluster in Digital Twins ([TRIC-DT](https://www.turing.ac.uk/tricdigitaltwins)), The Alan Turing Institute, UK
 
 **2023/04** - Invited to Co-Chair the [12th International Conference on Climate Informatics](https://cambridge-iccs.github.io/climate-informatics-2023/), University of Cambridge, UK
