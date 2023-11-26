@@ -38,7 +38,6 @@ nav-menu: true
 			</div>
 		</div>
 	</section>
-<section id="two" class="spotlights">
 	<section>
 		<a href="https://www.turing.ac.uk/research/research-projects/ai-numerical-weather-prediction-nwp-ai4nwp" class="image">
 			<img src="{% link assets/images/ai4nwp.jpg %}" alt="" data-position="center center" />
