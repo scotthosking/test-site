@@ -38,6 +38,23 @@ nav-menu: true
 			</div>
 		</div>
 	</section>
+<section id="two" class="spotlights">
+	<section>
+		<a href="https://www.turing.ac.uk/research/research-projects/ai-numerical-weather-prediction-nwp-ai4nwp" class="image">
+			<img src="{% link assets/images/ai4nwp.jpg %}" alt="" data-position="center center" />
+		</a>
+		<div class="content">
+			<div class="inner">
+				<header class="major">
+					<h3>AI for Weather Prediction</h3>
+				</header>
+				<p>The AI for Numerical Weather Prediction (AI4NWP) programme draws together the Met Office AI projects and Turing expertise to drive forward development for data-driven approaches to weather forecasting. The new collaboration will accelerate work to deploy machine learning technology alongside traditional techniques to improve the forecasting of some extreme weather events, such as exceptional rainfall or impactful thunderstorms, with even greater accuracy, helping communities to increase their resilience.</p>
+				<ul class="actions">
+					<li><a href="https://www.turing.ac.uk/research/research-projects/ai-numerical-weather-prediction-nwp-ai4nwp" class="button">turing.ac.uk</a></li>
+				</ul>
+			</div>
+		</div>
+	</section>
 	<section>
 		<a href="https://www.turing.ac.uk/research/research-projects/environmental-monitoring-blending-satellite-and-surface-data" class="image">
 			<img src="{% link assets/images/envsensors_main.jpg %}" alt="" data-position="top center" />
