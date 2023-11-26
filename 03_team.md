@@ -32,12 +32,10 @@ I lead a team across two research institutes, the [AI Lab](https://www.bas.ac.uk
 ## PhD Students
 * Andrew Clelland (BAS & Durham University, 2021-), Supervisors: Gareth Marshall, Bob Baxter and Scott Hosking
 * Marc Girona-Mata (BAS & University of Cambridge, 2020-), Supervisors: Andrew Orr, Rich Turner, Scott Hosking
-    * [Enrichment Student](https://www.turing.ac.uk/people/enrichment-students/marc-girona-mata), The Alan Turing Institute
 * Andrew McDonald (BAS & University of Cambridge, 2023-), Supervisors: Scott Hosking and Rich Turner
 * Raghul Parthipan (BAS & University of Cambridge, 2020-), Supervisors: Damon Wischik, Scott Hosking and Hannah Christensen
 * Kenza Tazi (BAS & University of Cambridge, 2020-), Supervisors: Scott Hosking, Rich Turner, Andrew Orr
 * Risa Ueno (BAS & University of Cambridge, 2018-), Supervisors: Scott Hosking and Alex Archibald
-    * [Enrichment Student](https://www.turing.ac.uk/people/risa-ueno), The Alan Turing Institute
 * Arron Watson (University of Birmingham, 2022-), Supervisors: Luisa Orsini, Jiarui (Albert) Zhou, Scott Hosking
 
 <!-- ## Masters Students -->
