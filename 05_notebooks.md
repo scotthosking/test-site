@@ -4,7 +4,7 @@ title: Python Notebooks
 permalink: /notebooks
 description: 'Open-source python notebooks for data science'
 image: assets/images/wind_turbines.jpg
-nav-menu: true
+nav-menu: false
 ---
 
 <h1>Notebooks</h1>
