@@ -49,7 +49,7 @@ nav-menu: true
 				</header>
 				<p>The AI for Numerical Weather Prediction (AI4NWP) programme draws together the Met Office AI projects and Turing expertise to drive forward development for data-driven approaches to weather forecasting. The new collaboration will accelerate work to deploy machine learning technology alongside traditional techniques to improve the forecasting of some extreme weather events, such as exceptional rainfall or impactful thunderstorms, with even greater accuracy, helping communities to increase their resilience.</p>
 				<ul class="actions">
-					<li><a href="https://www.turing.ac.uk/research/research-projects/ai-numerical-weather-prediction-nwp-ai4nwp" class="button">turing.ac.uk</a></li>
+					<li><a href="https://www.turing.ac.uk/research/research-projects/ai-numerical-weather-prediction-nwp-ai4nwp" class="button">Learn more</a></li>
 				</ul>
 			</div>
 		</div>
