@@ -9,9 +9,7 @@ nav-menu: true
 
 <h1>Team</h1>
 
-I lead a team across two research institutes, the [AI Lab](https://www.bas.ac.uk/ai) at the British Antarctic Survey and a group under the [Environment and Sustainability](https://www.turing.ac.uk/research/environment-and-sustainability) Grand Challenge at The Alan Turing Institute. We focus on the application of AI for environmental science, decarbonising polar operations, and the development of digital twins of the natural environment.
-
-<!-- * Harrison Abbot, BAS (Net Zero Operations)
+* Harrison Abbot, BAS (Net Zero Operations)
 * Meghna Asthana, Turing (Biodiversity Monitoring)
 * Ellie Bowler, BAS (Earth Observation, Wildlife)
 * Alejandro Coca Castro, Turing (Reproducible Infrastructure)
@@ -27,7 +25,7 @@ I lead a team across two research institutes, the [AI Lab](https://www.bas.ac.uk
 * Michael Thorne, BAS (Net Zero Operations)
 * Louisa van Zeeland, Turing (Earth Observation, Sea Ice)
 * Peter Yatsyshin, Turing (Environmental Forecast, Digital Twins)
-* Donya Yazdani, BAS (Net Zero Operations) -->
+* Donya Yazdani, BAS (Net Zero Operations)
 
 ## PhD Students
 * Andrew Clelland (BAS & Durham University, 2021-), Supervisors: Gareth Marshall, Bob Baxter and Scott Hosking
