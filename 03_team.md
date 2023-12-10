@@ -41,7 +41,7 @@ nav-menu: true
 <!-- ## Internship Students -->
 
 
-## Completed students & past members
+## Past Members
 * Tom Andersson, BAS (Research Associate, Environmental Prediction, 2019-2023)
 * Robert Rouse (University of Cambridge, PhD, 2018-2023), Co-supervisor with Allan McRobie and Emily Shuckburgh
 * Will Tebbutt (University of Cambridge, PhD, 2017-2022), Co-supervisor with Rich Turner

@@ -16,6 +16,7 @@ I am also a Co-Director for the Centre for Doctoral Training (CDT) in the [Appli
 
 ## Career History
 * [The Alan Turing Institute](https://www.turing.ac.uk/), UK
+    * Programme Director (Interim), ([Environment and Sustainability](https://www.turing.ac.uk/research/environment-and-sustainability)), 2023-2024
     * Co-Director, Turing Research and Innovation Cluster in Digital Twins ([TRIC-DT](https://www.turing.ac.uk/research/harnessing-power-digital-twins/turing-research-and-innovation-cluster-digital-twins)), 2023-
     * Senior Research Fellow, Group Leader for Environmental Science, [Data Science for Science](https://www.turing.ac.uk/research/research-programmes/data-science-science) programme, 2020-2023
 
