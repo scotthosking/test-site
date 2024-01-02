@@ -66,7 +66,7 @@ monthly indices.</p>  -->
 
 <p>ASL indices derived from <u>monthly ERA5</u> reanalysis data
 <ul>
-<li>Data<sup>*</sup> (<a href="https://github.com/scotthosking/amundsen-sea-low-index/raw/master/asli_era5_v3-latest.csv">csv</a>, 1959-01 to 2022-10<sup>**</sup>)</li>
+<li>Data<sup>*</sup> (<a href="https://github.com/scotthosking/amundsen-sea-low-index/raw/master/asli_era5_v3-latest.csv">csv</a>, 1959-01 to 2023-10<sup>**</sup>)</li>
 <li>Code (<a href="https://github.com/scotthosking/amundsen-sea-low-index/">GitHub repo</a>)</li>
 <li>Pressure maps with ASL locations (<a href="https://github.com/scotthosking/amundsen-sea-low-index/blob/master/asli_era5_v3-latest.pdf">view pdf via GitHub</a>)</li>
 <li>Timeseries (<a href="https://github.com/scotthosking/amundsen-sea-low-index/raw/master/asli_era5_v3_monthly_timeseries.png">png</a>)</li>
