@@ -12,7 +12,7 @@ From the icy plains of Antarctica to the forefront of AI research, my career has
 
 It all started with a deep fascination for Earth's intricate climate system. As a PhD student at Cambridge, I dove into the world of global climate modeling, building complex simulations to unravel the mysteries of our planet's changing behavior. This journey led me to the British Antarctic Survey, where I established the [AI Lab](https://www.bas.ac.uk/ai) – a hub for exploring the potential of AI in environmental research.
 
-Our projects are as diverse as the ecosystems we study. We're merging data from satellites and ground sensors to create a real-time pulse of our planet, using machine learning to forecast localised climate impacts, and developing AI-powered tools to track wildlife populations and monitor environmental change. I'm particularly excited about our [Antarctic Digital Twin programme](https://www.bas.ac.uk/project/digital-twins-of-the-polar-regions/), which aims to provide near-instantaneous insights for informed decision-making in this crucial region.
+Our projects are as diverse as the ecosystems we study. We're [merging data from satellites and ground sensors](https://www.turing.ac.uk/research/research-projects/environmental-monitoring-blending-satellite-and-surface-data) to create a real-time pulse of our planet, developing new machine learning algorithms to [forecast our weather](https://www.turing.ac.uk/research/research-projects/ai-numerical-weather-prediction-nwp-ai4nwp), and developing AI-powered tools to [track wildlife populations](https://www.bas.ac.uk/project/ai-for-smart-conservation/) and monitor environmental change. I'm particularly excited about our [Antarctic Digital Twin programme](https://www.bas.ac.uk/project/digital-twins-of-the-polar-regions/), which aims to provide near-instantaneous insights for informed decision-making in this crucial region.
 
 My journey has been fueled by incredible collaborations, partnerships, and a dash of recognition along the way. Our research has been featured in [Nature Communications](https://www.bas.ac.uk/media-post/artificial-intelligence-to-help-predict-arctic-sea-ice-loss/), [Nvidia](https://blogs.nvidia.com/blog/ai-model-predicts-sea-ice-loss/), [Wired Magazine](https://www.wired.com/story/as-the-arctic-warms-ai-forecasts-scope-out-shifting-sea-ice/) and our group was acknowledged as an ["AI for Good" exemplar by the UK government](https://www.linkedin.com/posts/scitechgovuk_aisafetysummit-aisafetysummit-activity-7125422735781961728-ucda/). But the most rewarding moments are witnessing the impact of our work – informing policies, shaping sustainable practices, and ultimately, giving our planet a voice through the power of AI.
 
@@ -78,7 +78,7 @@ I am also a Co-Director for the Centre for Doctoral Training (CDT) in the [Appli
 * Earth System Science Spring School, National Centre for Atmospheric Science, UK, 2010-2014
 
 ## Funding
-I have secured over £15m in grant funding from public and private sectors as both Principal-Investigator (PI) and Co-Investigator (Co-I). These include:
+I have secured over £20m in grant funding from public and private sectors as both Principal-Investigator (PI) and Co-Investigator (Co-I). These include:
 
 * [Surface Fluxes in Antarctica (SURFEIT)](https://surfeit.ac.uk/), NERC 2022-2026 (Co-I)
 * [Using artificial intelligence to improve weather forecasts](https://www.deepweather.org.nz/), 2022 Endeavour Smart Ideas, New Zealand, 2022-2024 (Co-I)
