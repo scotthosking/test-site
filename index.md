@@ -18,7 +18,7 @@ My journey has been fueled by incredible collaborations, partnerships, and a das
 
 There's still so much to explore, and I'm excited to continue this journey, one digital twin at a time. If you share my passion for protecting our planet, [let's](https://twitter.com/scotthosking) [connect!](https://www.linkedin.com/in/scotthosking/) I'm always eager to collaborate, share knowledge, and inspire others to join the fight for a sustainable future.
 
-P.S. I'm a firm believer in the power of open collaboration. Feel free to [reach out](mailto:me@scotthosking.com) if you're interested in joining our mission!
+P.S. I'm a firm believer in the power of open collaboration. Feel free to [join our Slack](https://forms.office.com/pages/responsepage.aspx?id=p_SVQ1XklU-Knx-672OE-ZmEJNLHTHVFkqQ97AaCfn9UNU1PMUo4QkdYWTdXR0VPRlZSRjJQTktRWC4u) if you're interested in joining our mission!
 
 <!-- I am a Co-Director for the Turing Research and Innovation Cluster in Digital Twins ([TRIC-DT](https://www.turing.ac.uk/tricdigitaltwins)), leading a team of scientists and engineers across both [the Alan Turing Institute](https://www.turing.ac.uk/) and the [British Antarctic Survey](http://www.bas.ac.uk/ai). Our aim is in the development of AI and digital twin technologies for monitoring, understanding, predicting and designing solutions for environmental change. 
 
@@ -38,7 +38,7 @@ I am also a Co-Director for the Centre for Doctoral Training (CDT) in the [Appli
     * Global Climate Modeller, 2009-2016
 
 * [University of Cambridge](https://www.cam.ac.uk/), UK
-    * Co-Director, Centre for Doctoral Training (CDT) in [AI for Environmental Risks (AI4ER)](https://ai4er-cdt.esc.cam.ac.uk/), co-led by BAS, 2019-2027
+    * Co-Director, Centre for Doctoral Training (CDT) in [AI for Environmental Risks (AI4ER)](https://ai4er-cdt.esc.cam.ac.uk/), co-led by BAS, 2019-2023
     * PhD Student, Climate Science, University of Cambridge, 2005-2009
         * Supervisors: Prof. John Pyle FRS, Prof. Peter Haynes
         * Funded under NERC [e-Science](https://en.wikipedia.org/wiki/E-Science) (Computationally Intensive Science) scheme
