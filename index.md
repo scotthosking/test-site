@@ -8,11 +8,23 @@ author: null
 show_tile: false
 ---
 
-I am a Co-Director for the Turing Research and Innovation Cluster in Digital Twins ([TRIC-DT](https://www.turing.ac.uk/tricdigitaltwins)), leading a team of scientists and engineers across both [the Alan Turing Institute](https://www.turing.ac.uk/) and the [British Antarctic Survey](http://www.bas.ac.uk/ai). Our aim is in the development of AI and digital twin technologies for monitoring, understanding, predicting and designing solutions for environmental change. 
+From the icy plains of Antarctica to the forefront of AI research, my career has been driven by a singular passion: protecting our planet. Today, I stand at the intersection of these two worlds, leading a team of brilliant minds at the [Alan Turing Institute](https://www.turing.ac.uk/) and [British Antarctic Survey](https://www.bas.ac.uk/). Together, we're harnessing the power of Artificial Intelligence to create digital twins – virtual replicas of Earth's systems – that can help us understand, predict, and ultimately solve the challenges of climate change.
+
+It all started with a deep fascination for Earth's intricate climate system. As a PhD student at Cambridge, I dove into the world of global climate modeling, building complex simulations to unravel the mysteries of our planet's changing behavior. This journey led me to the British Antarctic Survey, where I established the [AI Lab](https://www.bas.ac.uk/ai) – a hub for exploring the potential of AI in environmental research.
+
+Our projects are as diverse as the ecosystems we study. We're merging data from satellites and ground sensors to create a real-time pulse of our planet, using machine learning to forecast localised climate impacts, and developing AI-powered tools to track wildlife populations and monitor environmental change. I'm particularly excited about our [Antarctic Digital Twin programme](https://www.bas.ac.uk/project/digital-twins-of-the-polar-regions/), which aims to provide near-instantaneous insights for informed decision-making in this crucial region.
+
+My journey has been fueled by incredible collaborations, partnerships, and a dash of recognition along the way. Our research has been featured in [Nature Communications](https://www.bas.ac.uk/media-post/artificial-intelligence-to-help-predict-arctic-sea-ice-loss/), [Nvidia](https://blogs.nvidia.com/blog/ai-model-predicts-sea-ice-loss/), [Wired Magazine](https://www.wired.com/story/as-the-arctic-warms-ai-forecasts-scope-out-shifting-sea-ice/) and our group was acknowledged as an ["AI for Good" exemplar by the UK government](https://www.linkedin.com/posts/scitechgovuk_aisafetysummit-aisafetysummit-activity-7125422735781961728-ucda/). But the most rewarding moments are witnessing the impact of our work – informing policies, shaping sustainable practices, and ultimately, giving our planet a voice through the power of AI.
+
+There's still so much to explore, and I'm excited to continue this journey, one digital twin at a time. If you share my passion for protecting our planet, [let's](https://twitter.com/scotthosking) [connect!](https://www.linkedin.com/in/scotthosking/) I'm always eager to collaborate, share knowledge, and inspire others to join the fight for a sustainable future.
+
+P.S. I'm a firm believer in the power of open collaboration. Feel free to [reach out](mailto:me@scotthosking.com) if you're interested in joining our mission!
+
+<!-- I am a Co-Director for the Turing Research and Innovation Cluster in Digital Twins ([TRIC-DT](https://www.turing.ac.uk/tricdigitaltwins)), leading a team of scientists and engineers across both [the Alan Turing Institute](https://www.turing.ac.uk/) and the [British Antarctic Survey](http://www.bas.ac.uk/ai). Our aim is in the development of AI and digital twin technologies for monitoring, understanding, predicting and designing solutions for environmental change. 
 
 Our projects include the [intelligent fusion of data from satellite and in-situ surface sensors](https://www.turing.ac.uk/research/research-projects/environmental-monitoring-blending-satellite-and-surface-data) to help understand our changing planet; probabilistic machine learning for localised climate impacts; [AI for seasonal sea ice forecasting](/icenet) and improving climate models; and [computer vision toolkits](https://github.com/alan-turing-institute/scivision) for tracking environmental change and wildlife monitoring.
 
-I am also a Co-Director for the Centre for Doctoral Training (CDT) in the [Application of AI to the study of Environmental Risks](https://ai4er-cdt.esc.cam.ac.uk/) (AI4ER), a £6m UKRI funded programme to train over 50 top students to become future global leaders in environmental science. 
+I am also a Co-Director for the Centre for Doctoral Training (CDT) in the [Application of AI to the study of Environmental Risks](https://ai4er-cdt.esc.cam.ac.uk/) (AI4ER), a £6m UKRI funded programme to train over 50 top students to become future global leaders in environmental science.  -->
 
 ## Career History
 * [The Alan Turing Institute](https://www.turing.ac.uk/), UK
@@ -53,7 +65,7 @@ I am also a Co-Director for the Centre for Doctoral Training (CDT) in the [Appli
 * Innovation Champion, BAS, 2014-2016
 
 ## Recognition
-* Our group was acknowledged as one of four "[AI for Good](https://www.linkedin.com/posts/scitechgovuk_aisafetysummit-aisafetysummit-activity-7125422735781961728-ucda/?utm_source=share&utm_medium=member_desktop)" exemplars by the UK Department for Science, Innovation and Technology as part of the AI Safety Summit, 2023
+* Our group was acknowledged as one of four "[AI for Good](https://www.linkedin.com/posts/scitechgovuk_aisafetysummit-aisafetysummit-activity-7125422735781961728-ucda/)" exemplars by the UK Department for Science, Innovation and Technology as part of the AI Safety Summit, 2023
 * Our research featured as the primary AI example in the [NERC Digital Strategy (2021 to 2030)](https://www.ukri.org/publications/natural-environment-research-council-nerc-digital-strategy-2021-2030/)  
 * The journal Nature Communications highlighted our research in the [25 most downloaded Nature Communications articles across Earth, environmental, and planetary sciences published in 2021](https://www.nature.com/collections/afchdbedbe)
 * Awarded [The Laws Prize](https://basclub.org/about/the-laws-prize/) by the British Antarctic Survey Club in 2017. The prize is _awarded to outstanding young scientists of the British Antarctic Survey in recognition of their achievements, whilst fulfilling the primary purpose of the British Antarctic Survey_
