@@ -30,10 +30,10 @@ nav-menu: true
 ## PhD Students
 * Andrew Clelland (BAS & Durham University, 2021-), Supervisors: Gareth Marshall, Bob Baxter and Scott Hosking
 * Marc Girona-Mata (BAS & University of Cambridge, 2020-), Supervisors: Andrew Orr, Rich Turner, Scott Hosking
-* Andrew McDonald (BAS & University of Cambridge, 2023-), Supervisors: Scott Hosking and Rich Turner
+* Flo Greaves (Univ. Leeds and BAS, 2023-), Supervisors: Andrew Ross, Leif Denby, Paul Field, Scott Hosking, Thomas Bracegirdle, Floortje Van Den Heuvel
+* Andrew McDonald (BAS & University of Cambridge, 2023-), Supervisors: Scott Hosking, Jonathan Smith and Rich Turner
 * Raghul Parthipan (BAS & University of Cambridge, 2020-), Supervisors: Damon Wischik, Scott Hosking and Hannah Christensen
 * Kenza Tazi (BAS & University of Cambridge, 2020-), Supervisors: Scott Hosking, Rich Turner, Andrew Orr
-* Risa Ueno (BAS & University of Cambridge, 2018-), Supervisors: Scott Hosking and Alex Archibald
 * Arron Watson (University of Birmingham, 2022-), Supervisors: Luisa Orsini, Jiarui (Albert) Zhou, Scott Hosking
 
 <!-- ## Masters Students -->
@@ -42,6 +42,7 @@ nav-menu: true
 
 
 ## Past Members
+* Risa Ueno, PhD student at BAS & University of Cambridge, 2018-2023, Supervisor with Alex Archibald
 * Tom Andersson, BAS (Research Associate, Environmental Prediction, 2019-2023)
 * Robert Rouse (University of Cambridge, PhD, 2018-2023), Co-supervisor with Allan McRobie and Emily Shuckburgh
 * Will Tebbutt (University of Cambridge, PhD, 2017-2022), Co-supervisor with Rich Turner
@@ -62,6 +63,3 @@ nav-menu: true
 * Aymeric Delon (ENS-Paris-Saclay, MSc, 2019)
 * Daniel Popa-Christobal (BAS, Internship, 2018), Co-supervisor with Daniel Bannister
 * Stratis Markou (University of Cambridge, Internship, 2017), Co-supervisor with Rich Turner
-
-
-
