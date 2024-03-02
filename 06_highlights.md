@@ -15,9 +15,9 @@ nav-menu: true
 
 * [Turing Podcast: Building Digital Tools for Polar Research](https://turing.podbean.com/e/building-digital-tools-for-polar-research/) (Dec 2023)
 
-* [Met Office Blog: Can AI transform how we forecast the weather?](https://blog.metoffice.gov.uk/2023/10/31/can-ai-transform-how-we-forecast-the-weather/) (Oct 2023)
-
 * [Fox Weather: New AI tool helps detect icebergs](https://www.foxweather.com/weather-news/iceberg-a23a-weddell-sea-antarctic-peninsula) (Nov 2023)
+
+* [Met Office Blog: Can AI transform how we forecast the weather?](https://blog.metoffice.gov.uk/2023/10/31/can-ai-transform-how-we-forecast-the-weather/) (Oct 2023)
 
 * [Phys.org: Polar Science for a Sustainable Planet: new science strategy](https://phys.org/news/2023-06-sustainability-center-british-polar-science.html) (June 2023)
 
