@@ -78,9 +78,9 @@ I am also a Co-Director for the Centre for Doctoral Training (CDT) in the [Appli
 * Earth System Science Spring School, National Centre for Atmospheric Science, UK, 2010-2014
 
 ## Funding
-I have secured over £20m in grant funding from public and private sectors as both Principal-Investigator (PI) and Co-Investigator (Co-I). These include:
+I have secured over £25m in grant funding from public and private sectors as both Principal-Investigator (PI) and Co-Investigator (Co-I). These include:
 
-* [£5m award to kicktstart Turing's new focus in Environment and Sustainability: "A national UK programme in AI and digital twins to address the biodiversity and climate crisis"](https://gow.epsrc.ukri.org/NGBOViewGrant.aspx?GrantRef=EP/Y028880/1), EPSRC, 2023-2024 (PI)
+* [£5m award to kicktstart the Alan Turing Institute's new Grand Challenge in Environment and Sustainability: "A national UK programme in AI and digital twins to address the biodiversity and climate crisis"](https://gow.epsrc.ukri.org/NGBOViewGrant.aspx?GrantRef=EP/Y028880/1), EPSRC, 2023-2024 (PI)
 * [Surface Fluxes in Antarctica (SURFEIT)](https://surfeit.ac.uk/), NERC 2022-2026 (Co-I)
 * [Using artificial intelligence to improve weather forecasts](https://www.deepweather.org.nz/), 2022 Endeavour Smart Ideas, New Zealand, 2022-2024 (Co-I)
 * [DEFIANT: Drivers and Effects of Fluctuations in sea Ice in the ANTarctic](https://defiant.ac.uk/), NERC (NE/W004747/1), 2021-2025 (Co-I)
