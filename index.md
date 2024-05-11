@@ -30,7 +30,6 @@ I am also a Co-Director for the Centre for Doctoral Training (CDT) in the [Appli
 * [The Alan Turing Institute](https://www.turing.ac.uk/), UK
     * Co-Director Natural Environment, Turing Research and Innovation Cluster in Digital Twins ([TRIC-DT](https://www.turing.ac.uk/research/research-projects/tric-dt)), 2023-
     * Scoping Lead and Director (Interim), [Environment and Sustainability Grand Challenge](https://www.turing.ac.uk/research/environment-and-sustainability), 2022-2024
- 
     * Senior Research Fellow, Group Leader for Environmental Science, [Data Science for Science](https://www.turing.ac.uk/research/research-programmes/data-science-science) programme, 2020-2023
 
 * [British Antarctic Survey](http://www.bas.ac.uk) (BAS), UK
