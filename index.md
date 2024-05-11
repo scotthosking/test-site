@@ -10,7 +10,7 @@ show_tile: false
 
 From the icy plains of Antarctica to the forefront of AI research, my career has been driven by a singular passion: protecting our planet. Today, I stand at the intersection of these two worlds, leading a team of brilliant minds at the [Alan Turing Institute](https://www.turing.ac.uk/) and [British Antarctic Survey](https://www.bas.ac.uk/). Together, we're harnessing the power of Artificial Intelligence to create digital twins – virtual replicas of Earth's systems – that can help us understand, predict, and ultimately solve the challenges of climate change.
 
-It all started with a deep fascination for Earth's intricate climate system. As a PhD student at Cambridge, I dove into the world of global climate modeling, building complex simulations to unravel the mysteries of our planet's changing behavior. This journey led me to the British Antarctic Survey, where I established the [AI Lab](https://www.bas.ac.uk/ai) – a hub for exploring the potential of AI in environmental research.
+It all started with a deep fascination for Earth's intricate climate system. As a PhD student at Cambridge, I dove into the world of global climate modeling, building complex simulations to unravel the mysteries of our planet's changing behavior. This journey led me to the British Antarctic Survey, where I established the [AI Lab](https://www.bas.ac.uk/ai) – a hub for exploring the potential of AI in environmental research. Joining the Turing was the logical next step, merging my expertise in environmental science and AI to foster groundbreaking collaborations.
 
 Our projects are as diverse as the ecosystems we study. We're [merging data from satellites and ground sensors](https://www.turing.ac.uk/research/research-projects/environmental-monitoring-blending-satellite-and-surface-data) to create a real-time pulse of our planet, developing new machine learning algorithms to [forecast our weather](https://www.turing.ac.uk/research/research-projects/ai-numerical-weather-prediction-nwp-ai4nwp), and developing AI-powered tools to [track wildlife populations](https://www.bas.ac.uk/project/ai-for-smart-conservation/) and monitor environmental change. I'm particularly excited about our [Antarctic Digital Twin programme](https://www.bas.ac.uk/project/digital-twins-of-the-polar-regions/), which aims to provide near-instantaneous insights for informed decision-making in this crucial region.
 
@@ -28,8 +28,9 @@ I am also a Co-Director for the Centre for Doctoral Training (CDT) in the [Appli
 
 ## Career History
 * [The Alan Turing Institute](https://www.turing.ac.uk/), UK
-    * Programme Director (Interim), [Environment and Sustainability](https://www.turing.ac.uk/research/environment-and-sustainability), 2023-2024
-    * Co-Director, Turing Research and Innovation Cluster in Digital Twins ([TRIC-DT](https://www.turing.ac.uk/research/harnessing-power-digital-twins/turing-research-and-innovation-cluster-digital-twins)), 2023-
+    * Co-Director Natural Environment, Turing Research and Innovation Cluster in Digital Twins ([TRIC-DT](https://www.turing.ac.uk/research/research-projects/tric-dt)), 2023-
+    * Scoping Lead and Director (Interim), [Environment and Sustainability Grand Challenge](https://www.turing.ac.uk/research/environment-and-sustainability), 2022-2024
+ 
     * Senior Research Fellow, Group Leader for Environmental Science, [Data Science for Science](https://www.turing.ac.uk/research/research-programmes/data-science-science) programme, 2020-2023
 
 * [British Antarctic Survey](http://www.bas.ac.uk) (BAS), UK
