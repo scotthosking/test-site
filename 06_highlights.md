@@ -7,7 +7,9 @@ image: assets/images/wind_turbines.jpg
 nav-menu: true
 ---
 
-<h1>News, Interviews and Quotes</h1>
+<h1>Seminars, News, Interviews and Quotes</h1>
+
+* [Seminar: "Developing AI and research pipelines for operational use: towards Digital Twins" - James Byrne and Jonathan Smith](/videos/csdms_seminar_feb24) (Feb 2024)
 
 * [The Engineer: A national UK programme in AI and digital twins to address the biodiversity and climate crisis](https://www.theengineer.co.uk/content/news/a-national-uk-programme-in-ai-and-digital-twins-to-address-the-biodiversity-and-climate-crisis) (Dec 2023)
 
