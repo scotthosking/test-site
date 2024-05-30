@@ -1,10 +1,5 @@
 ---
-layout: post
-title: Seminars, Videos
-permalink: videos
-description: Recordings from our research
-image: assets/images/asl_index-crop3.png
-nav-menu: false
+title: "Developing AI and research pipelines for operational use: towards Digital Twins"
 ---
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/mIv3BvHn9LM?si=S8FR9IqRsYKz1m4k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
