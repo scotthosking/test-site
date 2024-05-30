@@ -118,7 +118,7 @@ I have secured over £25m in grant funding from public and private sectors as bo
 
 **2022/03** - Appointed as BAS Science Leader for AI, Joined the BAS Science Strategy Executive Board
 
-**2022/02** Joined the Advisory Group for the [UK AI Research Infrastructure Review](https://www.turing.ac.uk/work-turing/uk-ai-research-infrastructure-requirements-review), a key component of the UK's National AI strategy
+**2022/02** - Joined the Advisory Group for the [UK AI Research Infrastructure Review](https://www.turing.ac.uk/work-turing/uk-ai-research-infrastructure-requirements-review), a key component of the UK's National AI strategy
 
 **2021/05** - Secured the role of Senior Expert to the [NERC Constructing a Digital Environment (CDE) Programme](https://digitalenvironment.org/) 
 
