@@ -34,7 +34,7 @@ nav-menu: true
 				</header>
 				<p>Boosted by a £6m investment, we are developing digital twin technologies solving significant societal challenges and generating tangible societal benefits in Environment and Sustainability.</p>
 				<ul class="actions">
-					<li><a href="https://www.turing.ac.uk/tricdigitaltwins" class="button">turing.ac.uk</a></li>
+					<li><a href="https://www.turing.ac.uk/research/research-projects/tric-dt" class="button">turing.ac.uk</a></li>
 					<li><a href="https://www.bas.ac.uk/project/digital-twins-of-the-polar-regions/" class="button">bas.ac.uk</a></li>
 				</ul>
 			</div>
