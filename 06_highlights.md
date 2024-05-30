@@ -7,7 +7,9 @@ image: assets/images/wind_turbines.jpg
 nav-menu: true
 ---
 
-<h1>Seminars, News, Interviews and Quotes</h1>
+<h1>Seminars, Blogs, News, Interviews and Quotes</h1>
+
+* [Turing Blog: Forecasting our future: how climate informatics can protect and improve our environment](https://www.turing.ac.uk/blog/forecasting-our-future-how-climate-informatics-can-protect-and-improve-our-environment) (Apr 2024)
 
 * [Seminar: "Developing AI and research pipelines for operational use: towards Digital Twins" - James Byrne and Jonathan Smith](/videos/csdms_seminar_feb24) (Feb 2024)
 
