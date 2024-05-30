@@ -9,7 +9,9 @@ tags:
   - icenet
 ---
 
-# 'Developing AI and research pipelines for operational use: towards Digital Twins'
+# Developing AI and research pipelines for operational use: towards Digital Twins
+
+Date: 2024-02-19
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/mIv3BvHn9LM?si=S8FR9IqRsYKz1m4k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
