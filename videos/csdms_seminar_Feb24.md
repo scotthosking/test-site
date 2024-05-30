@@ -9,11 +9,12 @@ tags:
   - icenet
 ---
 
+# 'Developing AI and research pipelines for operational use: towards Digital Twins'
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/mIv3BvHn9LM?si=S8FR9IqRsYKz1m4k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-# Summary 
-## (AI generated from YouTube Transcript)
+## Summary 
+**(AI generated from YouTube Transcript)**
 
 The Community Surface Dynamics Modeling System (CSDMS) webinar featured James Byrne and Jonathan Smith from the British Antarctic Survey (BAS), discussing their innovative use of AI and research pipelines to develop digital twins for environmental research and operations.
 
