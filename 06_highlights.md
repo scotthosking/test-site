@@ -9,6 +9,8 @@ nav-menu: true
 
 <h1>Seminars, Blogs, News, Interviews and Quotes</h1>
 
+* [Nature Magazine: Google AI predicts long-term climate trends and weather — in minutes](https://www.nature.com/articles/d41586-024-02391-9) (Jul 2024)
+
 * [Turing Blog: Forecasting our future: how climate informatics can protect and improve our environment](https://www.turing.ac.uk/blog/forecasting-our-future-how-climate-informatics-can-protect-and-improve-our-environment) (Apr 2024)
 
 * [Seminar: "Developing AI and research pipelines for operational use: towards Digital Twins" - James Byrne and Jonathan Smith](/videos/csdms_seminar_feb24) (Feb 2024)
