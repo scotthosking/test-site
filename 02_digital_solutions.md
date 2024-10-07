@@ -25,7 +25,7 @@ nav-menu: true
 <section id="two" class="spotlights">
 	<section>
 		<a href="https://www.turing.ac.uk/tricdigitaltwins" class="image">
-			<img src="{% link assets/images/tric-dt.jpg %}" alt="" data-position="center center" />
+			<img src="{% link assets/images/dt-antarctica-scott-hosking.png %}" alt="" data-position="center center" />
 		</a>
 		<div class="content">
 			<div class="inner">
