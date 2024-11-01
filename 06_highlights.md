@@ -31,10 +31,10 @@ nav-menu: true
 
 * [Al Jazeera: Scientists warn of irreversible sea ice melting in Antarctica](https://www.youtube.com/watch?v=ILkdToflkZ4) (June 2023)
 
+* [Keynote: 6th Annual Lecture on Resilience, Institution of Civil Engineers, Edinburgh](https://www.newcivilengineer.com/ice/lecture-series-looks-climate-resilience-challenge-16-10-2019/) (Nov 2019)
+
 * [Naked Scientists: UK Invests hard in Machine Learning and AI - A £200 million grant to change the landscape of AI](https://www.thenakedscientists.com/articles/interviews/uk-invests-hard-machine-learning-and-ai) (Feb 2019)
 
 * [Carbon Brief: UK onshore wind energy potential could ‘rise by 10%’ with 1.5C warming](https://www.carbonbrief.org/uk-onshore-wind-energy-potential-could-rise-by-10-with-1-5c-warming/) (May 2018)
 
 * [BBC News, my first quote!: "Earliest satellite maps of Antarctic and Arctic sea-ice"](https://www.bbc.com/news/science-environment-22271972) (Apr 2013)
-
-* [Keynote: 6th Annual Lecture on Resilience, Institution of Civil Engineers, Edinburgh](https://www.newcivilengineer.com/ice/lecture-series-looks-climate-resilience-challenge-16-10-2019/) (Nov 2019)
