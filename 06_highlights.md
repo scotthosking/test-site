@@ -9,6 +9,8 @@ nav-menu: true
 
 <h1>Seminars, Blogs, News, Interviews and Quotes</h1>
 
+* [Westminster launch of the Met Office and Turing partnership](https://www.turing.ac.uk/news/ai-crucial-tackling-environmental-challenges-say-experts-turing-and-met-office-event) (Nov 2024)
+
 * [Wired Gov: On the path to delivering next generation UK weather forecasts](https://www.wired-gov.net/wg/news.nsf/articles/on+the+path+to+delivering+next+generation+uk+weather+forecasts+06092024131500?open) (Sept 2024)
 
 * [Nature Magazine: Google AI predicts long-term climate trends and weather — in minutes](https://www.nature.com/articles/d41586-024-02391-9) (Jul 2024)
