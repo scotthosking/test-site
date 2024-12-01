@@ -102,6 +102,8 @@ I have secured over £25m in grant funding from public and private sectors as bo
 
 ## News
 
+**2024/11** - Host, Speaker, Panel Chair, [Launch event for the Met Office and Turing partnership](https://www.turing.ac.uk/news/ai-crucial-tackling-environmental-challenges-say-experts-turing-and-met-office-event), Westminster, UK
+
 **2024/05** - Keynote Speaker, Department for Environment Food & Rural Affairs (DEFRA) Group Innovation Event, UK
 
 **2024/04** - Chair, [13th International Conference on Climate Informatics](https://alan-turing-institute.github.io/climate-informatics-2024/), The Alan Turing Institute, UK
