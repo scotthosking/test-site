@@ -8,31 +8,26 @@ nav-menu: true
 ---
 
 <h1>Team</h1>
-
 * Harrison Abbot, BAS (Net Zero Operations)
-* Meghna Asthana, Turing (Biodiversity Monitoring)
 * Ellie Bowler, BAS (Earth Observation, Wildlife)
-* Alejandro Coca Castro, Turing (Open Data Science)
+* Alejandro Coca Castro, Turing (Environmental Forecasting, Open Data Science)
 * George Coombs, BAS (Net Zero Operations)
-* Natalia Efremova, Turing (Senior Research Fellow, AI for Agriculture)
-* Mohamad Elmasri, Turing (Digital Twinning)
+* Natalia Efremova, Turing (Senior Research Fellow)
 * Ben Evans, BAS (Earth Observation, Icebergs)
 * Ayat Fekry, BAS (Net Zero Operations)
-* Maria Fox, BAS (Group Leader, Net Zero Operations)
+* Maria Fox, BAS (Emeritus Fellow)
 * Samuel Hall, BAS (Net Zero Operations)
-* Martin Rogers, BAS (Earth Observation, Sea Ice)
-* Jonathan Smith, BAS (Co-Lead, Net Zero Operations)
+* Martin Rogers, BAS (Deputy Science Leader, Earth Observation, Sea Ice)
+* Jonathan Smith, BAS (Deputy Science Leader, Net Zero Operations)
 * Michael Thorne, BAS (Net Zero Operations)
-* Louisa van Zeeland, Turing (Earth Observation, Sea Ice)
-* Peter Yatsyshin, Turing (Environmental Forecast, Digital Twins)
-* Donya Yazdani, BAS (Net Zero Operations)
+* Louisa van Zeeland, Turing (Research Lead, Multi-modal Sea Ice)
+* Peter Yatsyshin, Turing (Turing Research Fellow, Physics-aware AI)
 
 ## PhD Students
 * Andrew Clelland (BAS & Durham University, 2021-), Supervisors: Gareth Marshall, Bob Baxter and Scott Hosking
 * Marc Girona-Mata (BAS & University of Cambridge, 2020-), Supervisors: Andrew Orr, Rich Turner, Scott Hosking
 * Flo Greaves (Univ. Leeds and BAS, 2023-), Supervisors: Andrew Ross, Leif Denby, Paul Field, Scott Hosking, Thomas Bracegirdle, Floortje Van Den Heuvel
 * Andrew McDonald (BAS & University of Cambridge, 2023-), Supervisors: Scott Hosking, Jonathan Smith and Rich Turner
-* Raghul Parthipan (BAS & University of Cambridge, 2020-), Supervisors: Damon Wischik, Scott Hosking and Hannah Christensen
 * Kenza Tazi (BAS & University of Cambridge, 2020-), Supervisors: Scott Hosking, Rich Turner, Andrew Orr
 * Arron Watson (University of Birmingham, 2022-), Supervisors: Luisa Orsini, Jiarui (Albert) Zhou, Scott Hosking
 
@@ -40,8 +35,11 @@ nav-menu: true
 
 <!-- ## Internship Students -->
 
-
 ## Past Members
+* Mohamad Elmasri (Turing, Research Associate, 2023-2024) 
+* Meghna Asthana (Turing, Research Associate, 2023-2024) 
+* Donya Yazdani (BAS, Research Associate, 2023-2024)
+* Raghul Parthipan (BAS & University of Cambridge, 2020-2024), Supervisors: Damon Wischik, Scott Hosking and Hannah Christensen
 * Risa Ueno, PhD student at BAS & University of Cambridge, 2018-2023, Supervisor with Alex Archibald
 * Tom Andersson, BAS (Research Associate, Environmental Prediction, 2019-2023)
 * Robert Rouse (University of Cambridge, PhD, 2018-2023), Co-supervisor with Allan McRobie and Emily Shuckburgh
