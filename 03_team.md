@@ -8,34 +8,46 @@ nav-menu: true
 ---
 
 <h1>Team</h1>
-* Harrison Abbot, BAS (Net Zero Operations)
-* Ellie Bowler, BAS (Earth Observation, Wildlife)
-* Alejandro Coca Castro, Turing (Environmental Forecasting, Open Data Science)
-* George Coombs, BAS (Net Zero Operations)
-* Natalia Efremova, Turing (Senior Research Fellow)
-* Ben Evans, BAS (Earth Observation, Icebergs)
-* Ayat Fekry, BAS (Net Zero Operations)
-* Maria Fox, BAS (Emeritus Fellow)
-* Samuel Hall, BAS (Net Zero Operations)
-* Martin Rogers, BAS (Deputy Science Leader, Earth Observation, Sea Ice)
-* Jonathan Smith, BAS (Deputy Science Leader, Net Zero Operations)
-* Michael Thorne, BAS (Net Zero Operations)
-* Louisa van Zeeland, Turing (Research Lead, Multi-modal Sea Ice)
-* Peter Yatsyshin, Turing (Turing Research Fellow, Physics-aware AI)
+
+| Name | Role | Institution | Expertise
+| ---  | --- | --- | --- |
+| Harrison Abbot        | Research Associate     | BAS     | Net Zero Operations
+| Ellie Bowler          | Research Associate     | BAS     | Earth Observation, Wildlife
+| Alejandro Coca Castro | Research Fellow        | Turing  | Environmental Forecasting, Open Data Science
+| Evangeline Corcoran   | Research Fellow        | Turing  | Computer Vision, Earth Observation
+| George Coombs         | Research Associate     | BAS     | Net Zero Operations
+| Natalia Efremova      | Senior Research Fellow | Turing  | Environmental Modelling, Earth Observation
+| Ben Evans             | Research Associate     | BAS     | Earth Observation, Icebergs
+| Ayat Fekry            | Research Associate     | BAS     | Net Zero Operations
+| Maria Fox             | Emeritus Fellow        | BAS     | Net Zero Operations
+| Samuel Hall           | Research Associate     | BAS     | Net Zero Operations
+| Martin Rogers         | Deputy Science Leader  | BAS     | Earth Observation, Sea Ice
+| Jonathan Smith        | Deputy Science Leader  | BAS     | Net Zero Operations
+| Michael Thorne        | Research Associate     | BAS     | Bioinformatics
+| Louisa van Zeeland    | Research Lead          | Turing  | Multi-modal Sea Ice
+| Peter Yatsyshin       | Turing Research Fellow | Turing  | Physics-aware AI
 
 ## PhD Students
-* Andrew Clelland (BAS & Durham University, 2021-), Supervisors: Gareth Marshall, Bob Baxter and Scott Hosking
-* Marc Girona-Mata (BAS & University of Cambridge, 2020-), Supervisors: Andrew Orr, Rich Turner, Scott Hosking
-* Flo Greaves (Univ. Leeds and BAS, 2023-), Supervisors: Andrew Ross, Leif Denby, Paul Field, Scott Hosking, Thomas Bracegirdle, Floortje Van Den Heuvel
-* Andrew McDonald (BAS & University of Cambridge, 2023-), Supervisors: Scott Hosking, Jonathan Smith and Rich Turner
-* Kenza Tazi (BAS & University of Cambridge, 2020-), Supervisors: Scott Hosking, Rich Turner, Andrew Orr
-* Arron Watson (University of Birmingham, 2022-), Supervisors: Luisa Orsini, Jiarui (Albert) Zhou, Scott Hosking
 
+| Name | Instituion(s) | Start | Supervisors
+| ---  | --- | --- | --- |
+| Andrew Clelland  | **BAS**, Durham University       | 2021 | **Gareth Marshall**, Bob Baxter, Scott Hosking |
+| Marc Girona-Mata | **BAS**, University of Cambridge | 2020 | **Andrew Orr**, Rich Turner, Scott Hosking |
+| Flo Greaves      | **University of Leeds**, BAS             | 2023 | **Andrew Ross**, Leif Denby, Paul Field, Scott Hosking, Thomas Bracegirdle, Floortje Van Den Heuvel |
+| Andrew McDonald  | **BAS**, University of Cambridge | 2023 | **Scott Hosking**, Richard Turner, Jonathan Smith 
+| Kenza Tazi       | **BAS**, University of Cambridge | 2020 | **Scott Hosking**, Richard Turner, Andrew Orr |
+| Arron Watson     | **University of Birmingham**     | 2022 | **Luisa Orsini**, Jiarui (Albert) Zhou, Scott Hosking |
+ 
 <!-- ## Masters Students -->
 
 <!-- ## Internship Students -->
 
 ## Past Members
+
+| Name | Role | Instituion(s) | Year(s) | Notes
+| ---  | ---  | --- | --- | --- |
+
+
 * Mohamad Elmasri (Turing, Research Associate, 2023-2024) 
 * Meghna Asthana (Turing, Research Associate, 2023-2024) 
 * Donya Yazdani (BAS, Research Associate, 2023-2024)
