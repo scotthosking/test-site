@@ -67,7 +67,7 @@ nav-menu: true
 | Kenza Tazi | MRes | University of Cambridge | 2023-24 | Supervisors: **Scott Hosking**, Richard Turner |
 | Anna Vaughan | MRes | University of Cambridge | 2020 | Supervisors: **Richard Turner**, Scott Hosking |
 | Daniel Bannister    | Research Associate | BAS | 2015-18 | |
-| Michelle McCrystall | PhD Student | **BAS**, University of Cambridge | 2014-17 | Supervisors: **Scott Hosking**, John Pyle |
+| Michelle McCrystall | PhD Student | BAS, University of Cambridge | 2014-17 | Supervisors: **Scott Hosking**, John Pyle |
 | Fruzsina Agocs | PhD Industrial Placement | University of Cambridge | 2019-20 | Supervisor: **Scott Hosking** |
 | Tom Andersson | MEng | University of Cambridge | 2019 | Supervisors: **Richard Turner**, Scott Hosking |
 | Aymeric Delon | MSc | ENS-Paris-Saclay | 2019 | Supervisors: **Scott Hosking**, Andrew Orr |
