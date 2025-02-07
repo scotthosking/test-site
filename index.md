@@ -102,6 +102,7 @@ I have secured over £25m in grant funding from public and private sectors as bo
 * [Ice shelves in a warming world: Filchner Ice Shelf system, Antarctica (FISS)](https://gtr.ukri.org/projects?ref=NE%2FL013770%2F1), NERC (NE/L013770/1), 2015-2020 (Co-I)
 
 ## News
+**2025/07** - Keynote Speaker, [Environmental and Ecological Statistics Conference](https://envecostats.wordpress.com), Lancaster, UK
 
 **2024/11** - Host, Speaker, Panel Chair, [Launch event for the Met Office and Turing partnership](https://www.turing.ac.uk/news/ai-crucial-tackling-environmental-challenges-say-experts-turing-and-met-office-event), Westminster, UK
 
