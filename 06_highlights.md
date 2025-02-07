@@ -9,6 +9,8 @@ nav-menu: true
 
 <h1>Seminars, Blogs, News, Interviews and Quotes</h1>
 
+* [Seminar: "Short-term, high-resolution sea ice forecasting with diffusion model ensembles" - Andrew McDonald](https://youtu.be/gBVghRtk4Ac?si=PojZ_01I2sj_Y1do&t=7878) (Jan 2025)
+
 * [Blog: Breaking the ice: Addressing data barriers in Polar research](https://www.ai.cam.ac.uk/blog/breaking-the-ice-addressing-data-barriers-in-polar-research) (Jan 2025)
 
 * [Westminster launch of the Met Office and Turing partnership](https://www.turing.ac.uk/news/ai-crucial-tackling-environmental-challenges-say-experts-turing-and-met-office-event) (Nov 2024)
